@@ -1,0 +1,69 @@
+2016-10-30 10:07:33 任务ID:13790 目标IP:0.0.0.0 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13790","Channel":"360","GameID":"demo","ChannelVersion":"1.3.6_492","GameVersion":"1.0_20161028185236375","IconID":"demo","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 10:18:39 任务ID:13790 目标IP:192.168.1.14 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13790","Channel":"360","GameID":"demo","ChannelVersion":"1.3.6_492","GameVersion":"1.0_20161028185236375","IconID":"demo","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 10:18:46 任务ID:13793 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13793","Channel":"UC","GameID":"demo","ChannelVersion":"5.2.3.5","GameVersion":"1.0_20161028185236375","IconID":"demo_uc","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 10:18:46 任务ID:13792 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13792","Channel":"Downjoy","GameID":"demo","ChannelVersion":"4.3.1","GameVersion":"1.0_20161028185236375","IconID":"demo_downjoy","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 10:18:46 任务ID:13791 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13791","Channel":"WanDouJia","GameID":"demo","ChannelVersion":"5.2.3","GameVersion":"1.0_20161028185236375","IconID":"demo","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 10:18:46 任务ID:13794 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13794","Channel":"XiaoMi","GameID":"demo","ChannelVersion":"4.6.11","GameVersion":"1.0_20161028185236375","IconID":"demo","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 10:19:26 任务ID:13796 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13796","Channel":"HuaWei","GameID":"demo","ChannelVersion":"7.1.1.301","GameVersion":"1.0_20161028185236375","IconID":"demo","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 10:19:26 任务ID:13797 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13797","Channel":"Oppo","GameID":"demo","ChannelVersion":"2.2.0","GameVersion":"1.0_20161028185236375","IconID":"demo","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 10:19:26 任务ID:13795 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13795","Channel":"Baidu","GameID":"demo","ChannelVersion":"3.7.2","GameVersion":"1.0_20161028185236375","IconID":"demo_baidu","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 10:19:27 任务ID:13798 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13798","Channel":"Vivo","GameID":"demo","ChannelVersion":"2.0.9","GameVersion":"1.0_20161028185236375","IconID":"demo","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 10:20:06 任务ID:13799 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13799","Channel":"YouKu","GameID":"demo","ChannelVersion":"2.7.1","GameVersion":"1.0_20161028185236375","IconID":"demo","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 10:21:26 任务ID:13791 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13791","Channel":"WanDouJia","GameID":"demo","ChannelVersion":"5.2.3","GameVersion":"1.0_20161028185236375","IconID":"demo","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 10:26:06 任务ID:13791 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13791","Channel":"WanDouJia","GameID":"demo","ChannelVersion":"5.2.3","GameVersion":"1.0_20161028185236375","IconID":"demo","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 10:28:06 任务ID:13791 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13791","Channel":"WanDouJia","GameID":"demo","ChannelVersion":"5.2.3","GameVersion":"1.0_20161028185236375","IconID":"demo","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 10:35:26 任务ID:13792 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13792","Channel":"Downjoy","GameID":"demo","ChannelVersion":"4.3.1","GameVersion":"1.0_20161028185236375","IconID":"demo_downjoy","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 11:06:06 任务ID:13793 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13793","Channel":"UC","GameID":"demo","ChannelVersion":"5.2.3.5","GameVersion":"1.0_20161028185236375","IconID":"demo_uc","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 11:06:06 任务ID:13793 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13793","Channel":"UC","GameID":"demo","ChannelVersion":"5.2.3.5","GameVersion":"1.0_20161028185236375","IconID":"demo_uc","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 11:06:06 任务ID:13794 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13794","Channel":"XiaoMi","GameID":"demo","ChannelVersion":"4.6.11","GameVersion":"1.0_20161028185236375","IconID":"demo","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 11:06:06 任务ID:13795 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13795","Channel":"Baidu","GameID":"demo","ChannelVersion":"3.7.2","GameVersion":"1.0_20161028185236375","IconID":"demo_baidu","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 11:08:47 任务ID:13796 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13796","Channel":"HuaWei","GameID":"demo","ChannelVersion":"7.1.1.301","GameVersion":"1.0_20161028185236375","IconID":"demo","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 11:09:27 任务ID:13797 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13797","Channel":"Oppo","GameID":"demo","ChannelVersion":"2.2.0","GameVersion":"1.0_20161028185236375","IconID":"demo","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 11:12:06 任务ID:13798 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13798","Channel":"Vivo","GameID":"demo","ChannelVersion":"2.0.9","GameVersion":"1.0_20161028185236375","IconID":"demo","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
+2016-10-30 11:12:06 任务ID:13799 目标IP:192.168.1.16 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"13799","Channel":"YouKu","GameID":"demo","ChannelVersion":"2.7.1","GameVersion":"1.0_20161028185236375","IconID":"demo","BatchNo":"20161030170717201","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
