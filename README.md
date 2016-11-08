@@ -8,7 +8,7 @@
 
 <p>支持渠道列表：<a href="http://www.typesdk.com/#channel">支持列表</a></p>
 
-<p>TypeSDK 部署文档：/dco/TypeSDK部署文档.pdf
+<p>TypeSdkManager部署文档：<a href="http://www.typesdk.com/docs/typesdk_install/typesdk-manager%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/">TypeSdkManager部署文档</a></p>
 
 <p>DEMO演示地址：<a href="http://114.55.175.18:56789">演示地址</a>  （用户名和密码：demo@typesdk.com/123.com）</p>
 
