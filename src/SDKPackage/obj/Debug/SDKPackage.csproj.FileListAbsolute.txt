@@ -63,5 +63,3 @@ D:\TypeSVN_Package\Controller\SDKPackage\obj\Debug\SDKPackage.pdb
 D:\工作资料文件夹\星渠\代码\Package\Package_Free\SDKPackage\obj\Debug\SDKPackage.csprojResolveAssemblyReference.cache
 D:\工作资料文件夹\星渠\代码\Package\Package_Free\SDKPackage\obj\Debug\SDKPackage.dll
 D:\工作资料文件夹\星渠\代码\Package\Package_Free\SDKPackage\obj\Debug\SDKPackage.pdb
-D:\工作资料文件夹\星渠\代码\Package\Git\TypeSDK_Manager\typesdk_manager\SDKPackage\obj\Debug\SDKPackage.csprojResolveAssemblyReference.cache
-D:\工作资料文件夹\星渠\代码\Package\Git\TypeSDK_Manager\typesdk_manager\SDKPackage\obj\Debug\SDKPackage.dll

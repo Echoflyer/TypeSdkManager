@@ -234,7 +234,6 @@ namespace SDKPackage.GameIcon
                 dic.Add("SystemID", systemname);
                 dic.Add("GameName", this.ddlGameList.SelectedValue);
                 aideNativeWebFacade.ExecuteStoredProcedure("sdk_setIcon", dic);
-                //DropDownListIcon.DataBind();
 
                 MessageLabel.Text = "成功上传图标组";
             }

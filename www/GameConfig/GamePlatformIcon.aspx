@@ -6,11 +6,11 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2>游戏渠道Icon配置</h2>
-					<ul class="nav navbar-right panel_toolbox">
+                    <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
                     </ul>
-				<div class="clearfix"></div>
+                <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
                     <div>
@@ -30,9 +30,11 @@
                     <hr />
                     <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSourceIcon" DataKeyNames="Id">
                         <EditItemTemplate>
-                            <div class="col-md-3">
-                                <div class="thumbnail">
-                                    <img data-src="holder.js/150x150?text=<%# Eval("IconName") %>" alt="150x150" style="width: 150px; height: 150px;" src="/icon/<%# Eval("GameName") %>/<%# Eval("IconName") %>/app_icon.png"></img>
+                            <div class="col-md-3 text-center">
+                                <div class="thumbnail" style="height:250px;">
+                                    <img data-src="holder.js/150x150?text=<%# Eval("IconName") %>" alt="150x150" style="width: 150px; height: 150px; margin-top:10px"" src="/icon/<%# Eval("GameName") %>/<%# Eval("IconName") %>/app_icon.png"></img>
+                                    <%# Eval("IconName") %>
+                                    <br /><br />
                                     <div class="row">
                                         <div class="col-xs-6 text-center">
                                             <asp:Button runat="server" CommandName="Update" CssClass="btn btn-sm btn-primary" Text="确认" ID="UpdateButton" />
@@ -41,9 +43,11 @@
                                             <asp:Button runat="server" CommandName="Cancel" CssClass="btn btn-sm btn-default" Text="取消" ID="CancelButton" />
                                         </div>
                                     </div>
+                                </div>
+                                    
                                     <asp:Label CssClass="hidden" Text='<%# Bind("IconName") %>' runat="server" ID="IconName" />
                                     <asp:Label CssClass="hidden" Text='<%# Bind("GameID") %>' runat="server" ID="GameID" />
-                                </div>
+                                
                             </div>
                         </EditItemTemplate>
                         <EmptyDataTemplate>
@@ -52,12 +56,14 @@
                             </div>
                         </EmptyDataTemplate>
                         <ItemTemplate>
-                            <div class="col-md-3">
-                                <div class="thumbnail text-center">
-                                    <img data-src="holder.js/150x150?text=<%# Eval("IconName") %>" alt="150x150" style="width: 150px; height: 150px;" src="/icon/<%# Eval("GameName") %>/<%# Eval("IconName") %>/app_icon.png"></img>
-                                    <asp:Button runat="server" CommandName="Edit" CssClass="btn btn-sm btn-primary" Text="选择图标" ID="EditButton" />
+                            <div class="col-md-3 text-center">
+                                <div class="thumbnail" style="height:250px;">
+                                    <img data-src="holder.js/150x150?text=<%# Eval("IconName") %>" alt="150x150" style="width: 150px; height: 150px; margin-top:10px"" src="/icon/<%# Eval("GameName") %>/<%# Eval("IconName") %>/app_icon.png"></img>
+                                <%# Eval("IconName") %>
+                                <br /><br />
+                                <asp:Button runat="server" CommandName="Edit" CssClass="btn btn-sm btn-primary" Text="选择此图标" ID="EditButton" />
                                 </div>
-                            </div>
+                                </div>
                         </ItemTemplate>
                         <LayoutTemplate>
                             <tr runat="server" id="itemPlaceholder"></tr>
@@ -75,8 +81,10 @@
                         </UpdateParameters>
                     </asp:SqlDataSource>
                 </div>
-				<a class="btn btn-default btn-sm navbar-right" style="" href='AddGamePlatfrom.aspx?gameid=<%=gameid %>&androidversionid=<%=androidversionid %>&iosversionid=<%=iosversionid %>&gamedisplayname=<%=gamedisplayname %>'><i class='fa fa-reply'></i> 返回</a>
             </div>
+        <div class="text-center">
+                <a class="btn btn-default btn-sm" style="" href='AddGamePlatfrom.aspx?gameid=<%=gameid %>&androidversionid=<%=androidversionid %>&iosversionid=<%=iosversionid %>&gamedisplayname=<%=gamedisplayname %>'><i class='fa fa-reply'></i> 返回</a>
+                </div>
         </div>
     </div>
 </asp:Content>

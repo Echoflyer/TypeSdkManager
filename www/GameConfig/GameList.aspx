@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="接入游戏管理" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="GameList.aspx.cs" Inherits="SDKPackage.GameConfig.GameList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <script src="/Scripts/jquery.form.js"></script>
+    <script src="/vendors/jquery.form/jquery.form.js"></script>
     <script type="text/javascript">
         $(function () {
             $('#MainContent_GameIocnFileUpload').change(function () {

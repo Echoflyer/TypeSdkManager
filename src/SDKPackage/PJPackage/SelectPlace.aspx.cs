@@ -106,11 +106,11 @@ namespace SDKPackage.PJPackage
                     dtNew.Rows[row]["error"] = "local.properties文件不存在";
                     return;
                 }
-                if (!System.IO.File.Exists(configPath + "replace_key.xml")) //判断config文件是否存在
-                {
-                    dtNew.Rows[row]["error"] = "replace_key文件不存在";
-                    return;
-                }
+                //if (!System.IO.File.Exists(configPath + "replace_key.xml")) //判断config文件是否存在
+                //{
+                //    dtNew.Rows[row]["error"] = "replace_key文件不存在";
+                //    return;
+                //}
                 if (pluginid == "1")
                 {
                     if (!ExistsPlugInFile(pluginid, pluginversion))

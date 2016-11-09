@@ -28,6 +28,8 @@ namespace SDKPackage.GameConfig
         static DataSet dsAndroidPlatformVersion = new DataSet();
         static DataSet dsIosPlatformVersion = new DataSet();
 
+        static DataSet dsGP = new DataSet();
+
         NativeWebFacade aideNativeWebFacade = new NativeWebFacade();
 
 
@@ -42,13 +44,34 @@ namespace SDKPackage.GameConfig
             //string sqlIos = string.Format(@"select id,PlatformID,[Version] from [sdk_PlatformVersion] where SystemID=2");
             dsAndroidPlatformVersion = aideNativeWebFacade.GetDataSetBySql(sqlAndroid);
             //dsIosPlatformVersion = aideNativeWebFacade.GetDataSetBySql(sqlIos);
+
+            string sqlGPAndroid = string.Format(@"select 
+                                            gi.GameID as GameID,
+                                            gpfi.VersionID as VersionID,
+                                            dpf.id as Platformid,
+                                            pv.[Version] as [Version]
+                                            from sdk_GamePlatFromInfo gpfi 
+	                                            inner join [sdk_GameInfo] gi on gpfi.GameID=gi.GameID and gi.GameID='{0}' and gpfi.SystemID='1' 
+	                                            inner join sdk_defaultPlatform dpf on gpfi.[VersionPlatFromID]=dpf.id 
+	                                            left join sdk_PlatformVersion pv on gpfi.VersionID=pv.ID", gameid);
+            dsGP = aideNativeWebFacade.GetDataSetBySql(sqlGPAndroid);
         }
 
+        private static object OrderGP(DataRow obj)
+        {
+            int ret = 1;
+            var dr = dsGP.Tables[0].AsEnumerable().Where(r => String.Equals(r["Version"].ToString(), obj["Version"].ToString())).Select(d => d);
+            if (dr.Count() > 0)
+            {
+                ret = 0;
+            }
+            return ret;
+        } 
 
         protected DataSet GetAndroidPlatformVersion(string pid)
         {
             DataSet dsPlatform = SetDsHead();
-            var dr = dsAndroidPlatformVersion.Tables[0].AsEnumerable().Where(r => r["PlatformID"].ToString() == pid).Select(d => d);
+            var dr = dsAndroidPlatformVersion.Tables[0].AsEnumerable().Where(r => r["PlatformID"].ToString() == pid).Select(d => d).OrderBy(p => OrderGP(p));
             if (dr.Count() > 0)
             {
                 foreach (var row in dr)

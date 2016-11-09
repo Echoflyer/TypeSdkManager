@@ -15,22 +15,27 @@
     <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
     <!-- PNotify -->
     <link href="/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
     <link href="/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
     <link href="/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
+
+    <!-- Switchery -->
+    <link href="/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+
     <!-- bootstrap-progressbar -->
     <link href="/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="/build/css/custom.min.css" rel="stylesheet">
-	
+  
     <!-- jQuery -->
     <script src="/vendors/jquery/dist/jquery.min.js"></script>
 </head>
 <body class="nav-md">
     <!-- main / large navbar -->
-	<form class="container body" runat="server">
+  <form class="container body" runat="server">
       <div class="main_container">
             <!-- left, vertical navbar & content -->
                 <!-- left, vertical navbar -->
@@ -43,7 +48,7 @@
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
-			
+      
                                 <asp:LoginView runat="server" ViewStateMode="Disabled">
                                     <AnonymousTemplate>
             <div class="profile">
@@ -72,30 +77,30 @@
             <!-- /menu profile quick info -->
 
             <br />
-			            <!-- sidebar menu -->
-			<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                  <!-- sidebar menu -->
+      <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>&nbsp</h3>
                     <ul class="nav side-menu">
-						<li><a><i class="fa fa-dashboard"></i> 首页 <span class="fa fa-chevron-down"></span></a>
-						<ul class="nav child_menu">
+            <li><a><i class="fa fa-dashboard"></i> 首页 <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
                         <li>
                             <a href="/Default">首页</a>
                         </li>
-						</ul>
-						</li>
-						<li><a><i class="fa fa-archive"></i> 打包 <span class="fa fa-chevron-down"></span></a>
-						<ul class="nav child_menu">
+            </ul>
+            </li>
+            <li><a><i class="fa fa-archive"></i> 打包 <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
                         <li>
                             <a href="/PJPackage/SelectGame">开始打包</a>
                         </li>
                         <li>
                             <a href="/PJPackage/PackageInfoList">打包任务</a>
                         </li>
-						</ul>
-						</li>
-						<li><a><i class="fa fa-download"></i> 下载 <span class="fa fa-chevron-down"></span></a>
-						<ul class="nav child_menu">
+            </ul>
+            </li>
+            <li><a><i class="fa fa-download"></i> 下载 <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
                         <li>
                             <a href="/DownLoad/DownLoadAndroidPackage">Android包下载</a>
                         </li>
@@ -138,14 +143,14 @@
                         <li id="m13">
                             <a href="/ADMIN/Users">平台用户管理</a>
                         </li>
-						</ul>
-						</li>
+            </ul>
+            </li>
 
                     </ul>
                 </div>
-				</div>
-				</div>
-				</div>
+        </div>
+        </div>
+        </div>
         <!-- top navigation -->
         <div class="top_nav">
           <div class="nav_menu">
@@ -158,7 +163,7 @@
                                     <AnonymousTemplate>
                                         <li class="">
                                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-											未登录<span class=" fa fa-angle-down"></span></a>
+                      未登录<span class=" fa fa-angle-down"></span></a>
                                             <ul class="dropdown-menu dropdown-usermenu pull-right">
                                                 <li><a runat="server" href="~/Account/Register">注册</a></li>
                                                 <li><a runat="server" href="~/Account/Login">登录</a></li>
@@ -181,24 +186,24 @@
                         <!-- /.navbar-collapse -->
             <!-- /.container -->
         </nav>
-		</div>
-		</div>
+    </div>
+    </div>
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main" runat="server">	
-			<div class="page-title">
+        <div class="right_col" role="main" runat="server">  
+      <div class="page-title">
               <div class="title_left">
                 <h3><%: Page.Title %></h3>
               </div>
             </div>
-			<div class="clearfix"></div>
+      <div class="clearfix"></div>
                     <!-- Content -->
                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>
-			    <!-- footer -->
-				<footer>
+          <!-- footer -->
+        <footer>
           <div class="pull-right">
             TypeSDK Team - &copy; 2014 <a href="http://typdsdk.com" target="_blank">typesdk.com</a>
           </div>
@@ -221,12 +226,19 @@
     <script src="/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
     <script src="/vendors/iCheck/icheck.min.js"></script>
+
   <!-- PNotify -->
     <script src="/vendors/pnotify/dist/pnotify.js"></script>
     <script src="/vendors/pnotify/dist/pnotify.buttons.js"></script>
     <script src="/vendors/pnotify/dist/pnotify.nonblock.js"></script>
+
+    <!-- Switchery -->
+    <script src="/vendors/switchery/dist/switchery.min.js"></script>
+
     <!-- Skycons -->
     <script src="/vendors/skycons/skycons.js"></script>
+  <!-- Jquery cookie -->
+    <script src="/vendors/jquery.cookie/jquery.cookie.min.js"></script>
     <!-- Flot -->
     <script src="/vendors/Flot/jquery.flot.js"></script>
     <script src="/vendors/Flot/jquery.flot.pie.js"></script>

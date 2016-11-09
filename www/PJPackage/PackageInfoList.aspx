@@ -69,11 +69,11 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2>查询打包任务</h2>
-					<ul class="nav navbar-right panel_toolbox">
+                    <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
                     </ul>
-				<div class="clearfix"></div>
+                <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
                     <div class="form-inline text-center">
@@ -100,7 +100,7 @@
                             </asp:DropDownList>
                         </div>
                         <div class="form-group">
-                            <asp:CheckBox ID="ckMy" runat="server" CssClass="control-label" Text="仅显示我的任务" />
+                            <asp:CheckBox ID="ckMy" runat="server" CssClass="control-label" Text=" 仅显示我的任务" />
                             <asp:Label ID="LabelMessage" runat="server" Text=""></asp:Label>
                         </div>
                     </div>
@@ -140,14 +140,14 @@
                                     </td>
                                     <td><%# Eval("PackageTaskStatus").ToString()=="0"?"等待调度":Eval("PackageTaskStatus").ToString()=="1"?"等待调度":Eval("PackageTaskStatus").ToString()=="2"?"进行中":Eval("PackageTaskStatus").ToString()=="3"?"<span style=\"color:#338610\">完成</span>":"<span style=\"color:#f00\">失败</span>" %></td>
 
-                                    <td><%# Eval("PackageTaskStatus").ToString()=="0"?" ":Eval("PackageTaskStatus").ToString()=="1"?" ":"<a onclick=\"openfile('"+Eval("RecID")+"','"+Eval("CreateTaskID")+"');\">详情</a>" %></td>
+                                    <td><%# Eval("PackageTaskStatus").ToString()=="0"?" ":Eval("PackageTaskStatus").ToString()=="1"?" ":"<a onclick=\"openfile('"+Eval("RecID")+"','"+Eval("CreateTaskID")+"');\" class=\"btn btn-default btn-sm\"><i class=\"fa fa-fw fa-info-circle\"></i>详情</a>" %></td>
 
-                                    <td><%# Eval("PackageTaskStatus").ToString()=="3"?(systemname=="Android"? "<a href=\"/share/output/apk/"+Eval("GameName")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\" class=\"btn btn-primary btn-sm\"><i class=\"fa fa-download\"></i> 下载</a>"
-                            :"<a class=\"btn btn-primary btn-sm\" href=\"http://192.168.1.125:8001/output/ipa/"+Eval("GameNameSpell")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\"><i class=\"fa fa-download\"></i> 下载</a>"):Eval("PackageTaskStatus").ToString()=="4"?"<a style=\"cursor:pointer;color:#F00;\" onclick=\"packageAgain("+Eval("RecID")+")\">重新打包</a>":" " %>
+                                    <td><%# Eval("PackageTaskStatus").ToString()=="3"?(systemname=="Android"? "<a href=\"/share/output/apk/"+Eval("GameName")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\" class=\"btn btn-primary btn-sm\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>"
+                            :"<a class=\"btn btn-primary btn-sm\" href=\"http://192.168.1.125:8001/output/ipa/"+Eval("GameNameSpell")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>"):Eval("PackageTaskStatus").ToString()=="4"?"<a style=\"cursor:pointer;\" onclick=\"packageAgain("+Eval("RecID")+")\" class=\"btn btn-warning btn-sm\"><i class=\"fa fa-fw fa-refresh\"></i>重新打包</a>":" " %>
 
                                         <a class="btn btn-danger btn-sm" style='<%#((Eval("qx").ToString()=="0"&&Eval("qx2").ToString()=="0")||(Eval("PackageTaskStatus").ToString()!="1"&&Eval("PackageTaskStatus").ToString()!="3"&&Eval("PackageTaskStatus").ToString()!="4"))?"display:none;": ""%>'
                                             onclick='deleteFile(this,<%#Eval("RecID").ToString() %>,"<%=systemname %>","<%#systemname=="Android"?Eval("GameName").ToString()+"/"+Eval("CreateTaskID").ToString()+"/"+Eval("PackageName").ToString():
-                            Eval("GameNameSpell").ToString()+"/"+Eval("CreateTaskID").ToString()+"/"+Eval("PackageName").ToString() %>")'><i class="fa fa-trash-o"></i> 删除</a>
+                            Eval("GameNameSpell").ToString()+"/"+Eval("CreateTaskID").ToString()+"/"+Eval("PackageName").ToString() %>")'><i class="fa fa-fw fa-trash-o"></i> 删除</a>
                                     </td>
                                 </tr>
                             </ItemTemplate>
@@ -235,7 +235,7 @@
     <script>
       $(document).ready(function() {
         $('#example').dataTable({
-			"order": [[ 0, "desc" ]],
+            "order": [[ 0, "desc" ]],
             "sPaginationType" : "full_numbers",
             "oLanguage" : {
                 "sLengthMenu": "每页显示 _MENU_ 条记录",
@@ -251,8 +251,8 @@
                 "sNext": "后一页",
                 "sLast": "尾页"
                 }
-			}
-		});
+            }
+        });
       });
     </script>
     <!-- /Datatables -->

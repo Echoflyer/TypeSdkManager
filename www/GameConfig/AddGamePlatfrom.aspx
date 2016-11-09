@@ -11,7 +11,6 @@
                     platformIdList = platformIdList + hiddenlist[i].value + ",";
                 }
                 platformIdList = platformIdList.substring(0, platformIdList.length - 1);
-                alert(platformIdList);
                 if (platformIdList.length > 0)
                     checkPlatform(platformIdList);
                 else {
@@ -47,7 +46,7 @@
                         strhidden = strhidden + checkboxList[i].value + ",";
                         strsign = strsign + $(checkboxList[i]).parent("div").parent("td").parent("tr").children("td").eq(3).children("select").val() + ",";
                         if ($(checkboxList[i]).parent("div").parent("td").parent("tr").children("td").eq(1).children("select").val() == null || $(checkboxList[i]).parent("div").parent("td").parent("tr").children("td").eq(1).children("select").val() == undefined) {
-        //                    alert("渠道版本未配置！");
+                            alert("渠道版本未配置！");
                             return false;
                         }
                         strVersion = strVersion + $(checkboxList[i]).parent("div").parent("td").parent("tr").children("td").eq(1).children("select").val() + ",";
@@ -118,6 +117,13 @@
         }
     </script>
 
+    <!-- Datatables -->
+    <link href="/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
@@ -132,8 +138,6 @@
                 <div class="x_content">
                     <div>
                         <a class="btn btn-primary " data-toggle="modal" data-target="#divandroidplatform" id="addAndroidPlatform"><i class="fa fa-check-square-o"></i> 选择游戏接入渠道</a>
-
-                        <a class="btn btn-primary " data-toggle="modal" data-target="#divGameSDKRedisList" id="syncRedis"><i class="fa fa-check-square-o"></i> 同步SDK服务器</a>
                     
                         <asp:Label ID="lblSyncRedis" runat="server" Text=""></asp:Label>
                     </div>
@@ -290,59 +294,6 @@
     </div>
     <!--android渠道列表end-->
 
-    <!--SDK Redis服务器列表-->
-    <div class="modal fade" id="divGameSDKRedisList" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        ×
-                    </button>
-                    <h2 class="modal-title">同步服务器配置</h2>
-                </div>
-                <!--内容-->
-                <div class="modal-body">
-                    <table id="ListViewAndroidPlatformList_itemGamesContainer" class="table table-striped jambo_table">
-                        <thead>
-                            <tr style="left: 30px; position: relative;">
-                                <th runat="server">Redis HOST</th>
-                                <th runat="server">PORT</th>
-                                <th runat="server">PASSWORD</th>
-                                <th runat="server">DB</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr style="left: 5px; position: relative;">
-                                <td>
-                                    <asp:TextBox ID="txtRedisHost" style="width:100px;" runat="server" Text="localhost"/>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="txtRedisPort" style="width:100px;" runat="server"  Text="6379"/>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="txtRedisPassword" style="width:100px;" runat="server" />
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="txtRedisDB" style="width:100px;" runat="server" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!--内容-->
-                <div class="modal-footer" id="modalfooterSDKRedisList">
-                    
-                    <button type="button" class="btn btn-default" data-dismiss="modal">
-                        关闭
-                    </button>
-                    <asp:Button ID="ButtonSyncRedis" runat="server" class="btn btn-primary" Text="同步" OnClick="ButtonSyncRedis_Click" />
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--SDK Redis服务器列表end-->
-
-    
 
     <asp:SqlDataSource ID="SqlDataSourceSignatureKey" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="select [Id],[KeyName] from [sdk_SignatureKey]" SelectCommandType="Text"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceAndroidPlatformList" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
@@ -369,5 +320,47 @@
     <asp:HiddenField ID="hfLeBianAndroidVersionList" runat="server" />
     <asp:HiddenField ID="hfInitSignList" runat="server" />
     <asp:HiddenField ID="hfIOSPlatformList" runat="server" />
-    <asp:HiddenField ID="hfIOSVersionList" runat="server" />
+    <asp:HiddenField ID="hfIOSVersionList" runat="server" />    <!-- Datatables -->
+    <script src="/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="/vendors/datatables.net-scroller/js/datatables.scroller.min.js"></script>
+    <script src="/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/vendors/pdfmake/build/vfs_fonts.js"></script>
+    
+    <!-- Datatables -->
+    <script>
+        $(document).ready(function() {
+        $('#ListViewAndroid_itemGamesContainer').dataTable({
+            "paging": false,
+            "order": [[ 1, "asc" ]],
+            "sPaginationType" : "full_numbers",
+            "aoColumnDefs" : [ { "bSortable": false, "aTargets": [0,2,3,4,5] } ],
+            "oLanguage" : {
+                "sLengthMenu": "每页显示 _MENU_ 条记录",
+                "sZeroRecords": "抱歉， 没有找到",
+                "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+                "sInfoEmpty": "没有数据",
+                "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
+                "sZeroRecords": "没有检索到数据",
+                "sSearch": "搜索:",
+                "oPaginate": {
+                "sFirst": "首页",
+                "sPrevious": "前一页",
+                "sNext": "后一页",
+                "sLast": "尾页"
+                }
+            }
+        });
+        });
+    </script>
 </asp:Content>

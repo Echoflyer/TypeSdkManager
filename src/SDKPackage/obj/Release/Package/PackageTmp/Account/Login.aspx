@@ -10,36 +10,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" media="screen" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" media="screen" href="/css/bootstrap-theme.min.css">
+    <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="/vendors/animate.css/animate.min.css" rel="stylesheet">
 
-    <!-- Bootstrap Admin Theme -->
-    <link rel="stylesheet" media="screen" href="/css/bootstrap-admin-theme.css">
+    <!-- Custom Theme Style -->
+    <link href="/build/css/custom.min.css" rel="stylesheet">
 
-    <!-- Custom styles -->
-    <style type="text/css">
-        .alert {
-            margin: 0 auto 20px;
-        }
-    </style>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-           <script type="text/javascript" src="js/html5shiv.js"></script>
-           <script type="text/javascript" src="js/respond.min.js"></script>
-        <![endif]-->
 </head>
-<body class="bootstrap-admin-without-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
+<body class="login">
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
                 <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                     <div class="alert alert-info">
                         <a class="close" data-dismiss="alert" href="#">&times;</a>
                         <asp:Literal runat="server" ID="FailureText" />
                     </div>
                 </asp:PlaceHolder>
-                <form class="bootstrap-admin-login-form" runat="server">
+                <form runat="server">
                     <h1>登录</h1>
                     <div class="form-group">
                         <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" placeholder="E-mail" />
@@ -58,33 +51,25 @@
                         </div>
                     </div>
                     <div class="form-group">
+                    <asp:Button ID="Button1" runat="server" OnClick="LogIn" Text="登录" CssClass="btn btn-default submit" style="float:none;"/>
                         <label>
                             <asp:CheckBox runat="server" ID="RememberMe" />
                             记住登录信息
                         </label>
                     </div>
-                    <asp:Button ID="Button1" runat="server" OnClick="LogIn" Text="登录" CssClass="btn btn-lg btn-block btn-primary" />
                 </form>
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="/js/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <!-- jQuery -->
+    <script src="/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(function () {
             // Setting focus
-            $('input[name="email"]').focus();
+            $('input[name="Email"]').focus();
 
-            // Setting width of the alert box
-            var alert = $('.alert');
-            var formWidth = $('.bootstrap-admin-login-form').innerWidth();
-            var alertPadding = parseInt($('.alert').css('padding'));
-
-            if (isNaN(alertPadding)) {
-                alertPadding = parseInt($(alert).css('padding-left'));
-            }
-
-            $('.alert').width(formWidth - 2 * alertPadding);
         });
     </script>
 </body>

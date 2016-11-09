@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="渠道管理" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="Platform.aspx.cs" Inherits="SDKPackage.PJConfig.Platform" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <script src="/Scripts/jquery.form.js"></script>
+    <script src="/vendors/jquery.form/jquery.form.js"></script>
     <script type="text/javascript">
         $(function () {
             $("#addPlatform").click(function () {
@@ -107,16 +107,23 @@
             }
         }
     </script>
+    <!-- Datatables -->
+    <link href="/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
                     <h2>渠道管理-客户端配置</h2>
-					<ul class="nav navbar-right panel_toolbox">
+                    <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
                     </ul>
-				<div class="clearfix"></div>
+                <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
                     <div class="form-inline">
@@ -167,7 +174,7 @@
                                     <td>
                                         <asp:Label ID="SdkVersionLabel" runat="server" Text='<%# Eval("SdkVersion") %>' />
                                     </td>
-                                    <td>
+                                    <td  data-toggle="modal" data-target='.<%# Eval("PlatformName") %>-icon-modal-sm'>
                                         <img src='<%#Eval("platformicon").ToString()==""?"/img/upimg.jpg":Eval("platformicon").ToString() %>' style="width: 20px; height: 20px;" />
                                     </td>
                                     <td>
@@ -179,6 +186,22 @@
                                         <asp:LinkButton ID="LinkButtonNullity" runat="server" CommandName="nullity" CommandArgument='<%#Eval("dpfid")+","+Eval("nullity") %>'><%#(byte)Eval("Nullity")==0?"<span class='btn btn-success btn-sm'><i class='fa fa-cogs'></i> 使用中</span>":"<span class='btn btn-warning btn-sm'><i class='fa fa-exclamation-triangle'></i> 维护中</span>" %></asp:LinkButton>
                                     </td>
                                 </tr>
+                                            <div <div class='modal fade <%# Eval("PlatformName") %>-icon-modal-sm' tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                              <div class="modal-content">
+
+                                                <div class="modal-header">
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                                                  </button>
+                                                  <h4 class="modal-title" id="myModalLabel2"><%# Eval("PlatformDisplayName") %> 角标</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                <img src='<%#Eval("platformicon").ToString()==""?"/img/upimg.jpg":Eval("platformicon").ToString() %>' style="width: 100%" />
+                                                </div>
+
+                                              </div>
+                                            </div>
+                                          </div>
                             </ItemTemplate>
 
                             <LayoutTemplate>
@@ -215,7 +238,7 @@
                                     <td>
                                         <div style="position: relative; width: 30px; height: 30px; overflow: hidden;">
                                             <img src='<%#Eval("platformicon").ToString()==""?"/img/upimg.jpg":Eval("platformicon") %>' style="width: 30px; height: 30px;" id="gameicon" />
-                                            <asp:FileUpload ID="GameIocnFileUpload" runat="server" CssClass="form-control" Style="cursor: pointer; padding: 0; height: 30px; width: 30px; filter: alpha(opacity=0); -moz-opacity: 0; -khtml-opacity: 0; opacity: 0; position: absolute; top: 0;" />
+                                            <asp:FileUpload ID="GameIocnFileUpload" runat="server" CssClass="form-control" Style="cursor: pointer; padding: 0; height: 30px; width: 30px; filter: alpha(opacity=0); -moz-opacity: 0; -khtml-opacity: 0; opacity: 0; position: absolute; top: 0; left: 0;" />
                                         </div>
                                     </td>
                                     <td>
@@ -258,4 +281,48 @@
     <input id="hfreturnVal" type="hidden" />
     <asp:HiddenField ID="hfPlatfomrIcon" runat="server" Value="" />
     <asp:HiddenField ID="hfVersionVal" runat="server" Value="0" />
+
+    <!-- Datatables -->
+    <script src="/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="/vendors/datatables.net-scroller/js/datatables.scroller.min.js"></script>
+    <script src="/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/vendors/pdfmake/build/vfs_fonts.js"></script>
+
+    <!-- Datatables -->
+    <script>
+        $(document).ready(function() {
+        $('#itemPlaceholderContainer').dataTable({
+            "paging": false,
+            "order": [[ 4, "desc" ]],
+            "sPaginationType" : "full_numbers",
+            "aoColumnDefs" : [ { "bSortable": false, "aTargets": [0,2,3,5,6] } ],
+            "oLanguage" : {
+                "sLengthMenu": "每页显示 _MENU_ 条记录",
+                "sZeroRecords": "抱歉， 没有找到",
+                "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+                "sInfoEmpty": "没有数据",
+                "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
+                "sZeroRecords": "没有检索到数据",
+                "sSearch": "搜索:",
+                "oPaginate": {
+                "sFirst": "首页",
+                "sPrevious": "前一页",
+                "sNext": "后一页",
+                "sLast": "尾页"
+                }
+            }
+        });
+        });
+    </script>
 </asp:Content>

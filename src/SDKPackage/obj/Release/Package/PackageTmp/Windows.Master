@@ -18,24 +18,26 @@
     <!-- bootstrap-progressbar -->
     <link href="/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
 
+    <!-- Custom Theme Style -->
+    <link href="/build/css/custom.min.css" rel="stylesheet">
     <!-- jQuery -->
     <script src="/vendors/jquery/dist/jquery.min.js"></script>
-	
+    
 </head>
 <body>
 <br />
-    <form id="form1" runat="server">
-        <div class="col-sm-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="panel-title">上传项目文件</div>
-                </div>
-                <div class="panel-body">
+    <form id="form1" runat="server" class="form-horizontal form-label-left">
+    
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
                     </asp:ContentPlaceHolder>
-                </div>
             </div>
         </div>
     </form>
+    <!-- Bootstrap -->
+    <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="/build/js/custom.min.js"></script>
 </body>
 </html>

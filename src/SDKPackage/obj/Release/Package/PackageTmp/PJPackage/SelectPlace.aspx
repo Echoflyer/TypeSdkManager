@@ -1,20 +1,27 @@
 ﻿<%@ Page Title="SDK打包管理系统" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="SelectPlace.aspx.cs" Inherits="SDKPackage.PJPackage.SelectPlace" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <!-- Datatables -->
+    <link href="/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
                     <h2>选择渠道</h2>
-					<ul class="nav navbar-right panel_toolbox">
+                    <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
                     </ul>
-				<div class="clearfix"></div>
+                <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
                     <div id="wizard" class="form_wizard wizard_horizontal">
-					<ul class="wizard_steps anchor">
+                    <ul class="wizard_steps anchor">
                         <li>
                           <a href="#step-1" class="done" isdone="1" rel="1">
                             <span class="step_no">1</span>
@@ -94,8 +101,8 @@
 
                             <ItemTemplate>
                                 <tr>
-								<td>
-										<input type="checkbox" class="flat" value="<%#Eval("Id")+"_"+Eval("PlugInID") %>" <%#Eval("iconFlag").ToString()=="0"?"disabled='true'":Eval("error").ToString()!=""?"disabled='true'":"name='table_records'" %> /></td>
+                                <td>
+                                        <input type="checkbox" class="flat" value="<%#Eval("Id")+"_"+Eval("PlugInID") %>" <%#Eval("Nullity").ToString()=="1"?"disabled='true'":Eval("iconFlag").ToString()=="0"?"disabled='true'":Eval("error").ToString()!=""?"disabled='true'":"name='table_records'" %> /></td>
                                     <td>
                                         <%#Eval("PlugInID").ToString() == "1"?"乐变"+ Eval("PlatformDisplayName")+"渠道":Eval("PlatformDisplayName")%></td>
 
@@ -104,7 +111,7 @@
                                     <td><%#Eval("Version") %><input type="hidden" value='<%#Eval("PlugInID") %>' />
                                     </td>
 
-                                    <td><%#Eval("iconFlag").ToString()=="0"?"<span style='color:#f00;'>该渠道还没有配置图标组</span>":Eval("error").ToString()==""?"可以打包":"<span style='color:#f00;'>"+Eval("error").ToString()+"</span>"%></td>
+                                    <td><%#Eval("Nullity").ToString()=="1"?"<span style='color:#f00;'>此渠道维护中</span>":Eval("iconFlag").ToString()=="0"?"<span style='color:#f00;'>该渠道还没有配置图标组</span>":Eval("error").ToString()==""?"可以打包":"<span style='color:#f00;'>"+Eval("error").ToString()+"</span>"%></td>
 
                                 </tr>
                             </ItemTemplate>
@@ -280,5 +287,48 @@
         }
 
         //})
+    </script>
+    <!-- Datatables -->
+    <script src="/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="/vendors/datatables.net-scroller/js/datatables.scroller.min.js"></script>
+    <script src="/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/vendors/pdfmake/build/vfs_fonts.js"></script>
+
+    <!-- Datatables -->
+    <script>
+        $(document).ready(function() {
+        $('#itemPlaceholderContainer').dataTable({
+            "paging": false,
+            "order": [[ 2, "asc" ]],
+            "sPaginationType" : "full_numbers",
+            "aoColumnDefs" : [ { "bSortable": false, "aTargets": [0,1,3,4] } ],
+            "oLanguage" : {
+                "sLengthMenu": "每页显示 _MENU_ 条记录",
+                "sZeroRecords": "抱歉， 没有找到",
+                "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+                "sInfoEmpty": "没有数据",
+                "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
+                "sZeroRecords": "没有检索到数据",
+                "sSearch": "搜索:",
+                "oPaginate": {
+                "sFirst": "首页",
+                "sPrevious": "前一页",
+                "sNext": "后一页",
+                "sLast": "尾页"
+                }
+            }
+        });
+        });
     </script>
 </asp:Content>

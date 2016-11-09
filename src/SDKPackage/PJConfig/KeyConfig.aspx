@@ -15,7 +15,6 @@
                 <div class="x_content">
                     <a href="#addKey" class="btn btn-primary" data-toggle="modal">添加新的密钥</a>
                     <asp:Label ID="LabelLog" runat="server" Text=""></asp:Label>
-                    <hr />
                     <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSourceSignekey" DataKeyNames="Id">
                         <EmptyDataTemplate>
                             <table runat="server">

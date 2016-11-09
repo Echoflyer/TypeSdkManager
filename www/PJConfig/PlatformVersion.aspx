@@ -116,7 +116,7 @@
                                 <h2 class="modal-title">添加新版本</h2>
                             </div>
                             <!--内容-->
-                            <div class="form-group" style="margin: 20px 0 0 20px;">
+                            <div class="form-group" style="margin: 20px 0 20px 20px;">
                                 <label>请输入版本号:</label>
                                 <asp:TextBox ID="TextBoxVersion" runat="server" placeholder="请输入版本号 如1.0" CssClass="form-control" Style="width: 250px;"></asp:TextBox>
                             </div>

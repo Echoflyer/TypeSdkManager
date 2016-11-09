@@ -38,17 +38,3 @@ D:\TypeSVN_Package\Controller\Services\SDKPackage.IData\bin\Debug\SDKPackage.Uti
 D:\TypeSVN_Package\Controller\Services\SDKPackage.IData\obj\Debug\SDKPackage.IData.csprojResolveAssemblyReference.cache
 D:\TypeSVN_Package\Controller\Services\SDKPackage.IData\obj\Debug\SDKPackage.IData.dll
 D:\TypeSVN_Package\Controller\Services\SDKPackage.IData\obj\Debug\SDKPackage.IData.pdb
-D:\工作资料文件夹\星渠\代码\Package\Git\TypeSDK_Manager\typesdk_manager\Services\SDKPackage.IData\bin\Debug\SDKPackage.IData.dll
-D:\工作资料文件夹\星渠\代码\Package\Git\TypeSDK_Manager\typesdk_manager\Services\SDKPackage.IData\bin\Debug\SDKPackage.IData.pdb
-D:\工作资料文件夹\星渠\代码\Package\Git\TypeSDK_Manager\typesdk_manager\Services\SDKPackage.IData\bin\Debug\Newtonsoft.Json.dll
-D:\工作资料文件夹\星渠\代码\Package\Git\TypeSDK_Manager\typesdk_manager\Services\SDKPackage.IData\bin\Debug\SDKPackage.Entity.dll
-D:\工作资料文件夹\星渠\代码\Package\Git\TypeSDK_Manager\typesdk_manager\Services\SDKPackage.IData\bin\Debug\SDKPackage.Kernel.dll
-D:\工作资料文件夹\星渠\代码\Package\Git\TypeSDK_Manager\typesdk_manager\Services\SDKPackage.IData\bin\Debug\SDKPackage.Utils.dll
-D:\工作资料文件夹\星渠\代码\Package\Git\TypeSDK_Manager\typesdk_manager\Services\SDKPackage.IData\bin\Debug\ICSharpCode.SharpZipLib.dll
-D:\工作资料文件夹\星渠\代码\Package\Git\TypeSDK_Manager\typesdk_manager\Services\SDKPackage.IData\bin\Debug\SDKPackage.Kernel.pdb
-D:\工作资料文件夹\星渠\代码\Package\Git\TypeSDK_Manager\typesdk_manager\Services\SDKPackage.IData\bin\Debug\SDKPackage.Entity.pdb
-D:\工作资料文件夹\星渠\代码\Package\Git\TypeSDK_Manager\typesdk_manager\Services\SDKPackage.IData\bin\Debug\Newtonsoft.Json.xml
-D:\工作资料文件夹\星渠\代码\Package\Git\TypeSDK_Manager\typesdk_manager\Services\SDKPackage.IData\bin\Debug\SDKPackage.Utils.pdb
-D:\工作资料文件夹\星渠\代码\Package\Git\TypeSDK_Manager\typesdk_manager\Services\SDKPackage.IData\obj\Debug\SDKPackage.IData.csprojResolveAssemblyReference.cache
-D:\工作资料文件夹\星渠\代码\Package\Git\TypeSDK_Manager\typesdk_manager\Services\SDKPackage.IData\obj\Debug\SDKPackage.IData.dll
-D:\工作资料文件夹\星渠\代码\Package\Git\TypeSDK_Manager\typesdk_manager\Services\SDKPackage.IData\obj\Debug\SDKPackage.IData.pdb

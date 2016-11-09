@@ -103,7 +103,7 @@
                         <ItemTemplate>
                             <div class="col-md-3">
                                 <div class="thumbnail">
-                                    <img data-src="holder.js/150x150?text=<%# Eval("IconName") %>" alt="150x150" style="width: 150px; height: auto;" src="/icon/<%# Eval("GameName") %>/<%# Eval("IconName") %>/app_icon.png"></img>
+                                    <img data-src="holder.js/150x150?text=<%# Eval("IconName") %>" alt="150x150" style="width: 150px; height: auto; margin-top:10px" src="/icon/<%# Eval("GameName") %>/<%# Eval("IconName") %>/app_icon.png"></img>
                                     <label style="text-align:center" class="btn-block"><%# Eval("IconName") %></label>
                                 </div>
                             </div>
