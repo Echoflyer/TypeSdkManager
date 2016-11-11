@@ -2697,14 +2697,10 @@ GO
 CREATE PROCEDURE [dbo].[sdk_setIcon]
 	@IconName nvarchar(200),
 	@SystemID int,
-	@GameName nvarchar(32)
+	@GameID int
 AS
 BEGIN
 	SET NOCOUNT ON;
-
-	declare @GameID int
-	
-	select @GameID=GameID from sdk_GameInfo where GameName = @GameName 
 
 	if not exists (select 1 from sdk_icon where iconName = @IconName and SystemID=@SystemID and GameID=@GameID)
 		insert into sdk_icon(iconName,SystemID,GameID) values(@IconName,@SystemID,@GameID)
