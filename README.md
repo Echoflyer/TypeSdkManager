@@ -1,10 +1,9 @@
+
 <h2 style="margin-top:5px;margin-right:0;margin-bottom:16px;margin-left: 0">
     <a></a><span style="color: rgb(0, 0, 0);"><strong><span style="text-decoration: none; font-size: 19px; line-height: 173%; font-family: 微软雅黑, sans-serif; background: white;">TypeSdk是一个手机游戏渠道SDK开源接入框架，解决手机游戏发布需要耗费大量人力和时间接入不同渠道SDK的问题， 并解决发行过程中大量隐藏的问题，实现一次接入多渠道上线。 TypeSDK支持Unity3D、cocos2项目开发的手机游戏，支持发布Android和IOS游戏渠道包。 游戏开发者可安上线需求自行部署和管理线上环境和编译环境， 运营数据不通过第三方转发，直接与渠道签约和收款，无需担心游戏代码外泄、运营数据外流、</span></strong><strong style="color: rgb(0, 0, 0);"><span style="text-decoration: none; font-size: 19px; line-height: 173%; font-family: 微软雅黑, sans-serif; background: white;">被第三</span></strong><strong style="text-decoration: none;"><span style="text-decoration: none; font-size: 19px; line-height: 173%; font-family: 微软雅黑, sans-serif; background: white;">方扣量扣款等风<span style="text-decoration: none; font-size: 19px; line-height: 173%; font-family: 微软雅黑, sans-serif; background: white; color: rgb(0, 0, 0);">险</span><span style="color:#548dd4"><span style="text-decoration: none; font-size: 19px; line-height: 173%; font-family: 微软雅黑, sans-serif; background: white; color: rgb(0, 0, 0);">。</span></span></span></strong></span>
 </h2>
 <hr/>
-<p>
-    <br/>
-</p>
+
 <h2 style="margin-top:5px;margin-right:0;margin-bottom:16px;margin-left: 0">
     <span style="color: rgb(84, 141, 212);"><strong><span style="font-size: 19px; line-height: 173%; font-family: 黑体;">TypeSdkManager</span></strong><strong><span style="font-size: 19px; line-height: 173%; font-family: 黑体;">是TypeSdk统一渠道接入框架的集中管理平台，主要包含：</span></strong></span>
 </h2>
@@ -27,9 +26,6 @@
     <a></a><a></a>
 </p>
 <hr/>
-<p>
-    <br/>
-</p>
 <h3 style="margin: 16px 0;background: white">
     <span style="font-size: 19px; font-family: 黑体; color: rgb(255, 0, 0);">特别注意：</span>
 </h3>
@@ -39,35 +35,31 @@
 <h3 style="margin: 16px 0;background: white">
     <span style="color: rgb(255, 0, 0);"><span style="font-size: 19px; font-family: Arial, sans-serif;">2</span><span style="font-size: 19px;">、</span><span style="font-size: 19px; font-family: 黑体;">简单理解为Manager就是整个统一接入框架的用户操作和管理模块。</span></span>
 </h3>
+
+<h3 style="margin: 16px 0;background: white">
+    <span style="color: rgb(255, 0, 0);"><span style="font-size: 19px; font-family: Arial, sans-serif;">3</span><span style="font-size: 19px;">、</span><span style="font-size: 19px; font-family: 黑体;">Manager的版本和功能目前已比较完善和稳定，不定期更新版本，以修复BUG为主。</span></span>
+</h3>
+
 <hr/>
-<p>
-    <br/>
-</p>
 <p style="margin: 5px 0 16px">
     <span style="font-family: 黑体">联系QQ：1771930259</span>
 </p>
 <p style="margin: 0 0 16px">
-    <span style="font-family: 黑体">官方网站：</span><a href="http://www.typesdk.com/"><span style="font-family:黑体;color:black">http://www.typesdk.com</span></a>
+    <span style="font-family: 黑体">官方网站：</span><a href="http://114.215.254.106/"><span style="font-family:黑体;color:black">http://www.typesdk.com</span></a>
 </p>
 <p style="margin: 0 0 16px">
-    <span style="font-family: 黑体">支持渠道列表：</span><a href="http://www.typesdk.com/#channel"><span style="font-family:黑体;color:black">支持列表</span></a>
+    <span style="font-family: 黑体">支持渠道列表：</span><a href="http://114.215.254.106/#channel"><span style="font-family:黑体;color:black">支持列表</span></a>
 </p>
 <p style="margin: 0 0 16px">
-    <span style="font-family: 黑体">TypeSdkServer服务器部署文档：</span><a href="http://www.typesdk.com/docs/typesdk_install/typesdk_server/"><span style="font-family:黑体;color:black">服务器部署文档</span></a>
+    <span style="font-family: 黑体">TypeSdkServer服务器部署文档：</span><a href="http://114.215.254.106/docs/typesdk_install/typesdk_server/"><span style="font-family:黑体;color:black">服务器部署文档</span></a>
 </p>
 <p style="margin: 0 0 16px">
-    <span style="font-family: 黑体">游戏服务器接入文档：</span><a href="http://www.typesdk.com/docs/%E6%9C%8D%E5%8A%A1%E7%AB%AF/"><span style="font-family:黑体;color:black">游戏服务器接入文档</span></a>
+    <span style="font-family: 黑体">游戏服务器接入文档：</span><a href="http://114.215.254.106/docs/%E6%9C%8D%E5%8A%A1%E7%AB%AF/"><span style="font-family:黑体;color:black">游戏服务器接入文档</span></a>
 </p>
 <p style="margin: 0 0 16px">
     <span style="font-family: 黑体">DEMO演示地址：</span><a href="http://114.55.175.18:56789/"><span style="font-family:黑体;color:black">演示地址</span></a><span style="font-family: Calibri, sans-serif">&nbsp;</span><span style="font-family: 黑体">（用户名和密码：</span><a href="mailto:demo@typesdk.com/123.com"><span style="font-family:黑体;color:black">demo@typesdk.com/123.com</span></a><span style="font-family: 黑体">）</span>
 </p>
-<p>
-    <br/>
-</p>
 <hr/>
-<p>
-    <br/>
-</p>
 <p style="margin: 5px 0 16px">
     <span style="font-family: 黑体">目前已经支持的渠道列表如下：</span>
 </p>
@@ -893,13 +885,7 @@
 <p style="margin: 5px 0 16px">
     <span style="font-family: 黑体">渠道陆续增加中…………</span>
 </p>
-<p>
-    <br/>
-</p>
 <hr/>
-<p>
-    <br/>
-</p>
 <p style="margin: 5px 0 16px">
     <span style="font-family: 黑体">海外Android：</span>
 </p>
@@ -946,13 +932,7 @@
 <p style="margin: 5px 0 16px">
     <span style="font-family: 黑体">渠道陆续增加中…………</span>
 </p>
-<p>
-    <br/>
-</p>
 <hr/>
-<p>
-    <br/>
-</p>
 <p style="margin: 5px 0 16px">
     <span style="font-family: 黑体">国内IOS：</span>
 </p>
