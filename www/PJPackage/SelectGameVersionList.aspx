@@ -76,9 +76,6 @@
                             <span class="value text-primary"><%= platform %></span>
                         </div>
                     </div>
-                    <div class="navbar-right">
-                        <a class="btn btn-primary btn-sm" onclick="openfile()">上传新项目文件</a>
-                    </div>
                     <div>
                         <asp:ListView ID="GameVersionList" runat="server" DataSourceID="SqlDataSource1" DataKeyNames="ID" OnItemCommand="GameVersionList_ItemCommand">
                             <EmptyDataTemplate>
@@ -93,13 +90,18 @@
                                 <tr>
                                     <td>
                                         <input type="radio" class="flat" name="radiogame" value="<%#Eval("ID") %>" />
-						  </td>
+						            </td>
                                     <td><%#Eval("GameVersion") %></td>
                                     <td><%#Eval("PageageTable") %></td>
                                     <td><%#Eval("CollectDatetime") %></td>
                                     <td><%#Eval("FileSize") %>M</td>
                                     <td><%#Eval("Compellation") %></td>
-                                    <td><a class="btn btn-xs btn-danger" onclick='deleteGamePackage(this,<%#"\""+Eval("ID").ToString()+"\"" %>,<%#"\""+Eval("GameVersion").ToString()+"\""%>,<%#"\""+Eval("StrCollectDatetime").ToString()+"\""%>)'><i class="fa fa-trash"></i> 删除</a></td>
+                                    <td>
+                                        <%# Eval("Status").Equals(0) ? "未审核"
+                                                                     : Eval("Status").Equals(1) ? "已通过"
+                                                                                                : "已打回"
+                                        %>
+                                    </td>
                                 </tr>
                           </div>
                           </div>
@@ -115,7 +117,7 @@
                                             <th>创建时间</th>
                                             <th>大小</th>
                                             <th>所有者</th>
-                                            <th>删除文件</th>
+                                            <th>审核状态</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -126,11 +128,12 @@
                             </LayoutTemplate>
                         </asp:ListView>
                     </div>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="select upi.ID,upi.[GameVersion],upi.[PageageTable],upi.[CollectDatetime],upi.FileSize,upi.StrCollectDatetime,us.[Compellation] from 
-  [sdk_UploadPackageInfo] upi inner join AspNetUsers us on upi.UploadUser=us.UserName and GameID=@GameID and GamePlatFrom=@SystemName order by upi.id desc">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="select upi.ID,upi.[GameVersion],upi.[PageageTable],upi.[CollectDatetime],upi.FileSize,upi.StrCollectDatetime,us.[Compellation],upi.[Status] from 
+  [sdk_UploadPackageInfo] upi inner join AspNetUsers us on upi.UploadUser=us.UserName and GameID=@GameID and GamePlatFrom=@SystemName and (case when @Status = 0 then upi.[Status] else @Status end) = upi.[Status] order by upi.id desc">
                         <SelectParameters>
                             <asp:QueryStringParameter QueryStringField="gameid" Type="Int32" Name="GameID" />
                             <asp:QueryStringParameter QueryStringField="platform" Type="String" Name="SystemName" />
+                            <%--<asp:Parameter Name="Status" Type="Int32"  DefaultValue="0" />--%>
                         </SelectParameters>
                     </asp:SqlDataSource>
                     <div class="text-center">
@@ -214,16 +217,6 @@
         }
         var timer;
         var winOpen;
-        function openfile() {
-            $("#hfreturnVal").val("");
-            var selgamename = document.getElementById('savegamename').value; //游戏名称
-            var selgameid = document.getElementById('savegameid').value;     //游戏ID
-            var selplatform = document.getElementById('saveplatform').value; //平台
-            var selgamenamespell = document.getElementById('savegamenamespell').value;     //游戏全拼
-            var str_href = "GameVersionAdd.aspx?gameid=" + selgameid + "&gamename=" + selgamename + "&gamenamespell=" + selgamenamespell + "&platform=" + selplatform;
-            winOpen = window.open(str_href, '上传文件', 'height=320,width=800,top=20%,left=30%,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no');
-            timer = window.setInterval("IfWindowClosed()", 500);
-        }
 
         function IfWindowClosed() {
             if (winOpen.closed == true) {
@@ -234,34 +227,7 @@
                     window.location.reload();
             }
         }
-        function deleteGamePackage(obj, id, version, strdatetime) {
-            if (confirm("确定要删除数据吗？")) {
-                var tr = $(obj).parent("td").parent("tr");
-                var platform = "<%=platform%>";
-                var filepath = "";
-                var gamename = "";
-                var gamename1 = "<%=gameName%>";
-                var gamename2 = "<%=gamenamespell%>";
-                if (platform == "Android") {
-                    filepath = version + "_" + strdatetime;
-                    gamename = gamename1;
-                }
-                else {
-                    filepath = strdatetime;
-                    gamename = gamename2;
-                }
-                $.ajax({
-                    contentType: "application/json",
-                    async: false,
-                    url: "/WS/WSNativeWeb.asmx/DeleteGamePackage",
-                    data: "{id:'" + id + "',platform:'" + platform + "',gameName:'" + gamename + "',filepath:'" + filepath + "'}",
-                    type: "POST",
-                    dataType: "json", success: function () {
-                        tr.hide();
-                    }
-                });
-            }
-        }
+        
     </script>
 </asp:Content>
 

@@ -44,14 +44,14 @@ namespace SDKPackage.PJPackage
             this.GamePlaceList.DataBind();
             var p = ds.Tables[0].AsEnumerable().Where(r => r["PackageTaskStatus"].ToString() == "0" || r["PackageTaskStatus"].ToString() == "1" || r["PackageTaskStatus"].ToString() == "2").Select(d => d);
 
-            if (p != null && p.Count() > 0)
-            {
-                this.Timer1.Enabled = true;
-            }
-            else
-            {
-                this.Timer1.Enabled = false;
-            }
+            //if (p != null && p.Count() > 0)
+            //{
+            //    this.Timer1.Enabled = true;
+            //}
+            //else
+            //{
+            //    this.Timer1.Enabled = false;
+            //}
             //this.GamePlaceList.DataSource = ClientIDSeparator;
         }
 

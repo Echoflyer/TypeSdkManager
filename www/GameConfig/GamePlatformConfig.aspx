@@ -170,11 +170,9 @@
                                 <td>
                                     <asp:Label ToolTip='<%# Eval("StringValue") %>' ID="StringValueLabel" runat="server" Text='<%# Eval("StringValue") %>' />
                                 </td>
-
                                 <td data-toggle="tooltip" data-placement="top" title='用户填写参数'>
                                     <%# Eval("isUser").ToString()=="True"?"<div style='display:none;'>&nbsp;</div>":"" %><asp:CheckBox ID="isUserCheckBox" runat="server" Checked='<%# Eval("isUser") %>' Enabled="false" />
                                 </td>
-
                                 <td data-toggle="tooltip" data-placement="top" title='CPSetting'>
                                     <asp:CheckBox ID="isCPSettingCheckBox" runat="server" Checked='<%# Eval("isCPSetting") %>' Enabled="false" />
                                 </td>

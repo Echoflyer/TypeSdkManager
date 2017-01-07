@@ -27,7 +27,6 @@ namespace SDKPackage.GameConfig
         protected string platformid = GameRequest.GetQueryString("platformid");
         static DataSet dsAndroidPlatformVersion = new DataSet();
         static DataSet dsIosPlatformVersion = new DataSet();
-
         static DataSet dsGP = new DataSet();
 
         NativeWebFacade aideNativeWebFacade = new NativeWebFacade();
@@ -41,9 +40,9 @@ namespace SDKPackage.GameConfig
         private void BindingDsAndroidPlatformVersion()
         {
             string sqlAndroid = string.Format(@"select id,PlatformID,[Version] from [sdk_PlatformVersion] where SystemID=1");
-            //string sqlIos = string.Format(@"select id,PlatformID,[Version] from [sdk_PlatformVersion] where SystemID=2");
+            string sqlIos = string.Format(@"select id,PlatformID,[Version] from [sdk_PlatformVersion] where SystemID=2");
             dsAndroidPlatformVersion = aideNativeWebFacade.GetDataSetBySql(sqlAndroid);
-            //dsIosPlatformVersion = aideNativeWebFacade.GetDataSetBySql(sqlIos);
+            dsIosPlatformVersion = aideNativeWebFacade.GetDataSetBySql(sqlIos);
 
             string sqlGPAndroid = string.Format(@"select 
                                             gi.GameID as GameID,
@@ -72,6 +71,7 @@ namespace SDKPackage.GameConfig
         {
             DataSet dsPlatform = SetDsHead();
             var dr = dsAndroidPlatformVersion.Tables[0].AsEnumerable().Where(r => r["PlatformID"].ToString() == pid).Select(d => d).OrderBy(p => OrderGP(p));
+
             if (dr.Count() > 0)
             {
                 foreach (var row in dr)
@@ -113,18 +113,39 @@ namespace SDKPackage.GameConfig
 
         protected DataSet GetIosPlatformVersion(string pid)
         {
+            DataSet dsPlatform = SetDsHead();
             var dr = dsIosPlatformVersion.Tables[0].AsEnumerable().Where(r => r["PlatformID"].ToString() == pid).Select(d => d);
+
             if (dr.Count() > 0)
             {
-                DataSet dsPlatform = new DataSet();
                 foreach (var row in dr)
                 {
                     dsPlatform.Tables[0].ImportRow(row);
                 }
-                return dsPlatform;
+                
             }
-            return SetDsHead();
+            return dsPlatform;
+        }
 
+         /// <summary>
+        /// 添加渠道关联
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void ButtonAddIOSPlatform_Click(object sender, EventArgs e)
+        {
+            string platfromList = this.hfIOSPlatformList.Value;
+            string versionList = this.hfIOSVersionList.Value;
+
+            Message umsg = aideNativeWebFacade.UpdateGamePlatform(gameid, platfromList, versionList, 2);
+            if (umsg.Success)
+            {
+                //UpdateFile(0);
+                ListViewIOS.DataBind();
+            }
+            else
+            {
+            }
         }
 
         /// <summary>
@@ -215,7 +236,16 @@ namespace SDKPackage.GameConfig
                     });
                 }
 
-                string sqlGameChannelAttrs = string.Format(@"SELECT [GameName],[PlatformName],[SDKKey],[StringValue] FROM [sdk_PlatformConfig] WHERE [GameName]='{0}' AND SDKKey!='SignatureKey'  AND [isServer] = 1 order by SDKKey", gameid);
+                string sqlGameChannelAttrs = string.Format(@"SELECT [GameName],[PlatformName],[SDKKey],[StringValue] 
+                                                              FROM [sdk_PlatformConfig] conf 
+                                                              WHERE [GameName]='{0}' 
+                                                              AND SDKKey!='SignatureKey'  
+                                                              AND [isServer] = 1 
+                                                              AND [PlatformName] IN ( 
+                                                                SELECT convert(varchar(20),[VersionPlatFromID]) 
+                                                                FROM [sdk_GamePlatFromInfo] info 
+                                                                WHERE  info.[GameID] =conf.[GameName])
+                                                              ORDER BY SDKKey", gameid);
                 var gamechannelattrsobj = aideNativeWebFacade.GetDataSetBySql(sqlGameChannelAttrs).Tables[0].AsEnumerable();
                 //string json = JsonConvert.SerializeObject(gamechannelattrsobj);
                 Dictionary<string, Dictionary<string, object>> dicattrslist = new Dictionary<string, Dictionary<string, object>>();
@@ -276,26 +306,6 @@ namespace SDKPackage.GameConfig
                 return;
             } 
         }
-
-        /// <summary>
-        /// 添加IOS渠道关联
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void ButtonIOSPlatform_Click(object sender, EventArgs e)
-        {
-            string platfromList = this.hfIOSPlatformList.Value;
-            Message umsg = aideNativeWebFacade.UpdateGamePlatform(gameid, platfromList, 2);
-            if (umsg.Success)
-            {
-                //UpdateFile();
-                ListViewIOS.DataBind();
-            }
-            else
-            {
-            }
-        }
-
 
         private void UpdateFile(int pluginid)
         {

@@ -18,25 +18,47 @@ namespace SDKPackage.PJPackage
         protected string gameDisplayName = GameRequest.GetQueryString("gameDisplayName");
         protected string gamenamespell = GameRequest.GetQueryString("gamenamespell");
         protected string taskid = GameRequest.GetQueryString("taskid");
+        protected int rstatus = 1;
         protected bool isBack = false;
         NativeWebFacade aideNativeWebFacade = new NativeWebFacade();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(taskid))
                 isBack = true;
-            if (Cache["Roleid"] == null || Cache["Roleid"].ToString() == "")
+
+            if (Cache["Roleid"] == null || Cache["Roleid"].ToString() == "" || Cache["Roles"] == null)
             {
                 BindingCache();
             }
+
+            if (((HashSet<string>)Cache["Roles"]).Contains("1") ||
+                ((HashSet<string>)Cache["Roles"]).Contains("2") ||
+                ((HashSet<string>)Cache["Roles"]).Contains("3"))
+                SqlDataSource1.SelectParameters.Add("Status", DbType.Int32, "0");
+            else
+                SqlDataSource1.SelectParameters.Add("Status", DbType.Int32, "1");
         }
 
         private void BindingCache()
         {
-            string sql = string.Format(@"  select * from [AspNetUserRoles] r inner join AspNetUsers u on r.UserId=u.Id and u.UserName='{0}' and RoleId in (2,3)", Context.User.Identity.Name);
+            string sql = string.Format(@"  select * from [AspNetUserRoles] r inner join AspNetUsers u on r.UserId=u.Id and u.UserName='{0}'", Context.User.Identity.Name);// and RoleId in (2,3)
             DataSet ds = aideNativeWebFacade.GetDataSetBySql(sql);
-            if (ds.Tables[0].Rows.Count > 0)
+
+            DataView dv = ds.Tables[0].DefaultView;
+            dv.RowFilter = "RoleId IN (2,3)";
+            DataTable newTable = dv.ToTable();
+ 
+            var roles = new HashSet<string>();
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                //var c = r["RoleId"];
+                roles.Add(r["RoleId"].ToString());
+            }
+            Cache["Roles"] = roles;
+
+            if (newTable.Rows.Count > 0)
                 Cache["Roleid"] = "0";
-            else
+            else 
                 Cache["Roleid"] = "1";
         }
 

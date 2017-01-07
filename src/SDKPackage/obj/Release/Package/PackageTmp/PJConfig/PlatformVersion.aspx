@@ -90,12 +90,12 @@
                         </ItemTemplate>
                     </asp:ListView>
                 </div>
-                <asp:SqlDataSource ID="DataSourceIDPlatform" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="sdk_getPlatformList" SelectCommandType="StoredProcedure">
+                <asp:SqlDataSource ID="DataSourceIDPlatform" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="sdk_getPlatformList" SelectCommandType="StoredProcedure">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="DropDownListSystem" Name="SystemID" Type="Int32" PropertyName="SelectedValue" />
                     </SelectParameters>
                 </asp:SqlDataSource>
-                <asp:SqlDataSource ID="SqlDataSourcePlatformVersion" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="sdk_getPlatformVersion" SelectCommandType="StoredProcedure"
+                <asp:SqlDataSource ID="SqlDataSourcePlatformVersion" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="sdk_getPlatformVersion" SelectCommandType="StoredProcedure"
                     InsertCommand="sdk_setPlatformVersion" InsertCommandType="StoredProcedure" DeleteCommand="delete from sdk_PlatformVersion where id=@ID">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="DropDownListPlatform" Name="PlatformID" Type="Int32" PropertyName="SelectedValue" />

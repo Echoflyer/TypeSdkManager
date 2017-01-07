@@ -24,6 +24,11 @@ namespace SDKPackage.Entity.NativeWeb
         public const string _GameName = "GameName";
 
         // <summary>
+        /// 游戏编号
+        /// </summary>
+        public const string _GameID = "GameID";
+
+        // <summary>
         /// 渠道简称
         /// </summary>
         public const string _PlatFormName = "PlatFormName";
@@ -100,6 +105,7 @@ namespace SDKPackage.Entity.NativeWeb
         #region 变量
         private int m_recid;
         private string m_gamename;
+        private string m_gameid;
         private string m_platformname;
         private string m_gameversion;
         private string m_strcollectdatetime;
@@ -136,6 +142,12 @@ namespace SDKPackage.Entity.NativeWeb
         {
             get { return m_gamename; }
             set { m_gamename = value; }
+        }
+
+        public string GameID
+        {
+            get { return m_gameid; }
+            set { m_gameid = value; }
         }
 
 

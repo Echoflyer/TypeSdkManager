@@ -87,7 +87,7 @@
                         <div class="form-group">
                             <label class="control-label">游戏名称</label>
                             <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" DataSourceID="SqlDataSourceGame" DataTextField="GameDisplayName" DataValueField="gameid"></asp:DropDownList>
-                            <asp:SqlDataSource ID="SqlDataSourceGame" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="select gameid=0,GameDisplayName='--全部--' union all select gameid,GameDisplayName from sdk_GameInfo"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlDataSourceGame" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="select gameid=0,GameDisplayName='--全部--' union all select gameid,GameDisplayName from sdk_GameInfo"></asp:SqlDataSource>
                             <asp:HiddenField ID="HiddenFieldUserName" runat="server" />
                         </div>
                         <div class="form-group">
@@ -116,7 +116,7 @@
 
                             <ItemTemplate>
                                 <tr>
-                                    <td title='<%#Eval("CreateTaskID") %>'>
+                                    <td class="clRec" title='<%#Eval("CreateTaskID") %>'>
                                         <%#Eval("RecID") %>
                                     </td>
                                     <td>
@@ -138,12 +138,12 @@
                                     <td>
                                         <%#Eval("Compellation") %>
                                     </td>
-                                    <td><%# Eval("PackageTaskStatus").ToString()=="0"?"等待调度":Eval("PackageTaskStatus").ToString()=="1"?"等待调度":Eval("PackageTaskStatus").ToString()=="2"?"进行中":Eval("PackageTaskStatus").ToString()=="3"?"<span style=\"color:#338610\">完成</span>":"<span style=\"color:#f00\">失败</span>" %></td>
+                                    <td class="clStatus" id='<%#Eval("RecID") %>' data-status="<%# Eval("PackageTaskStatus")%>"><i id="spinner" class="hidden fa fa=fw fa-spinner fa-spin"></i> <%# Eval("PackageTaskStatus").ToString()=="0"?"等待调度":Eval("PackageTaskStatus").ToString()=="1"?"等待调度":Eval("PackageTaskStatus").ToString()=="2"?"进行中":Eval("PackageTaskStatus").ToString()=="3"?"<span style=\"color:#338610\">完成</span>":"<span style=\"color:#f00\">失败</span>" %></td>
 
-                                    <td><%# Eval("PackageTaskStatus").ToString()=="0"?" ":Eval("PackageTaskStatus").ToString()=="1"?" ":"<a onclick=\"openfile('"+Eval("RecID")+"','"+Eval("CreateTaskID")+"');\" class=\"btn btn-default btn-sm\"><i class=\"fa fa-fw fa-info-circle\"></i>详情</a>" %></td>
+                                    <td><%# (Eval("PackageTaskStatus").ToString()=="0" || Eval("PackageTaskStatus").ToString()=="1" || Eval("PackageTaskStatus").ToString()=="2" )?" ":"<a onclick=\"openfile('"+Eval("RecID")+"','"+Eval("CreateTaskID")+"');\" class=\"btn btn-default btn-sm\"><i class=\"fa fa-fw fa-info-circle\"></i>详情</a>" %></td>
 
-                                    <td><%# Eval("PackageTaskStatus").ToString()=="3"?(systemname=="Android"? "<a href=\"/share/output/apk/"+Eval("GameName")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\" class=\"btn btn-primary btn-sm\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>"
-                            :"<a class=\"btn btn-primary btn-sm\" href=\"http://192.168.1.125:8001/output/ipa/"+Eval("GameNameSpell")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>"):Eval("PackageTaskStatus").ToString()=="4"?"<a style=\"cursor:pointer;\" onclick=\"packageAgain("+Eval("RecID")+")\" class=\"btn btn-warning btn-sm\"><i class=\"fa fa-fw fa-refresh\"></i>重新打包</a>":" " %>
+                                    <td><%# Eval("PackageTaskStatus").ToString()=="3"?(systemname=="Android"? "<a href=\"/share/output/apk/"+Eval("GameID")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\" class=\"btn btn-primary btn-sm\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>"
+                            :"<a class=\"btn btn-primary btn-sm\" href=\"/share/ios-output/ipa/"+Eval("GameID")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>"):Eval("PackageTaskStatus").ToString()=="4"?"<a style=\"cursor:pointer;\" onclick=\"packageAgain("+Eval("RecID")+")\" class=\"btn btn-warning btn-sm\"><i class=\"fa fa-fw fa-refresh\"></i>重新打包</a>":" " %>
 
                                         <a class="btn btn-danger btn-sm" style='<%#((Eval("qx").ToString()=="0"&&Eval("qx2").ToString()=="0")||(Eval("PackageTaskStatus").ToString()!="1"&&Eval("PackageTaskStatus").ToString()!="3"&&Eval("PackageTaskStatus").ToString()!="4"))?"display:none;": ""%>'
                                             onclick='deleteFile(this,<%#Eval("RecID").ToString() %>,"<%=systemname %>","<%#systemname=="Android"?Eval("GameName").ToString()+"/"+Eval("CreateTaskID").ToString()+"/"+Eval("PackageName").ToString():
@@ -176,7 +176,7 @@
                                 </table>
                             </LayoutTemplate>
                         </asp:ListView>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="sdk_getPackageTaskList" SelectCommandType="StoredProcedure">
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="sdk_getPackageTaskList" SelectCommandType="StoredProcedure">
                             <SelectParameters>
                                 <%--<asp:ControlParameter ControlID="DropDownList1" Name="GameID" Type="Int32" PropertyName="SelectedValue" DefaultValue="0" />--%>
                                 <asp:QueryStringParameter QueryStringField="gameid" Type="Int32" Name="GameID" DefaultValue="0" />
@@ -195,7 +195,6 @@
         </div>
     </div>
 
-    <asp:Timer ID="Timer1" runat="server" Interval="30000" OnTick="Timer1_Tick" Enabled="False"></asp:Timer>
     <script type="text/javascript">
         function deleteFile(obj, id, platform, filepath) {
             if (confirm("确定要删除数据吗？")) {
@@ -252,6 +251,57 @@
                 "sLast": "尾页"
                 }
             }
+        });
+
+        var statuslist = $(".clStatus");
+        
+        var id = [];
+        for (var k = 0; k < statuslist.length; k++) {
+            var c = statuslist.eq(k).attr('data-status');
+            if (c < 3) {
+                id.push(statuslist.eq(k).attr('id'));
+                if (c <= 1) {
+                    statuslist.eq(k).children('i').removeClass('hidden').css('color', '#ff0000');
+                } else if (c == 2){
+                    statuslist.eq(k).children('i').removeClass('hidden').css('color', '#00ff00');
+                }
+            }
+        }
+        var systemname = $("#MainContent_DropDownList3").val();
+        
+        $(function(){
+            function getWorkStatus(){
+                if (id.length > 0){
+                    $.ajax({
+                        contentType: "application/json",
+                        async: false,
+                        url: "/WS/WSNativeWeb.asmx/GetPackgeStatus",
+                        data: "{id:'" + id.join(',') + "',systemname:'" + systemname + "'}",
+                        type: "POST",
+                        dataType: "json",
+                        success: function (json) {
+                            json = eval("(" + json.d + ")");
+                            if (json.ret === 0) {
+                                $.each(json.data,function(idx,item){
+                                    if (item.PackageTaskStatus === 4){
+                                        $('#'+item.RecID).html('<span style="color:#f00">失败</span>');
+                                            id.splice($.inArray('item.RecID',id),1);
+                                            window.location.reload();
+                                    } else if (item.PackageTaskStatus === 3){
+                                        $('#'+item.RecID).html('<span style="color:#338610">完成</span>');
+                                            id.splice($.inArray('item.RecID',id),1);
+                                            window.location.reload();
+                                    } else if (item.PackageTaskStatus === 2){
+                                        $('#'+item.RecID).html('<i id="spinner" class="fa fa=fw fa-spinner fa-spin" style="color: #00ff00;"></i> 进行中');
+                                    }
+                                });
+                            } else {
+                            }
+                        }
+                    });
+                }
+            }
+            setInterval(getWorkStatus,3000);
         });
       });
     </script>

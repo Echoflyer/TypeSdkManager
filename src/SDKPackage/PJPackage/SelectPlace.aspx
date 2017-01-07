@@ -111,7 +111,7 @@
                                     <td><%#Eval("Version") %><input type="hidden" value='<%#Eval("PlugInID") %>' />
                                     </td>
 
-                                    <td><%#Eval("Nullity").ToString()=="1"?"<span style='color:#f00;'>此渠道维护中</span>":Eval("iconFlag").ToString()=="0"?"<span style='color:#f00;'>该渠道还没有配置图标组</span>":Eval("error").ToString()==""?"可以打包":"<span style='color:#f00;'>"+Eval("error").ToString()+"</span>"%></td>
+                                    <td><%#Eval("Nullity").ToString()=="1"?"<span style='color:#f00;'>渠道维护中</span>":Eval("iconFlag").ToString()=="0"?"<span style='color:#f00;'>该渠道还没有配置图标组</span>":Eval("error").ToString()==""?"可以打包":"<span style='color:#f00;'>"+Eval("error").ToString()+"</span>"%></td>
 
                                 </tr>
                             </ItemTemplate>
@@ -126,7 +126,7 @@
                                             <th>渠道名称</th>
                                             <th>渠道编号</th>
                                             <th>渠道版本</th>
-                                            <th>资源检测</th>
+                                            <th>渠道状态</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -136,7 +136,7 @@
                                 </table>
                             </LayoutTemplate>
                         </asp:ListView>
-                        <asp:SqlDataSource ID="SqlDataSourceGamePlaceList" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="sdk_getGamePlatforms" SelectCommandType="StoredProcedure">
+                        <asp:SqlDataSource ID="SqlDataSourceGamePlaceList" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="sdk_getGamePlatforms" SelectCommandType="StoredProcedure">
                             <SelectParameters>
                                 <asp:QueryStringParameter Name="GameID" Type="Int32" QueryStringField="gameid" />
                                 <asp:QueryStringParameter Name="SystemID" Type="String" QueryStringField="platform" />
@@ -311,6 +311,7 @@
         $('#itemPlaceholderContainer').dataTable({
             "paging": false,
             "order": [[ 2, "asc" ]],
+            "orderFixed": [ 4, "asc" ],
             "sPaginationType" : "full_numbers",
             "aoColumnDefs" : [ { "bSortable": false, "aTargets": [0,1,3,4] } ],
             "oLanguage" : {

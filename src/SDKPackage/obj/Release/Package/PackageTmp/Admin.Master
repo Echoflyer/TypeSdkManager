@@ -15,15 +15,8 @@
     <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-
-    <!-- PNotify -->
-    <link href="/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
-    <link href="/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
-    <link href="/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
-
     <!-- Switchery -->
     <link href="/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
-
     <!-- bootstrap-progressbar -->
     <link href="/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
 
@@ -105,15 +98,7 @@
                             <a href="/DownLoad/DownLoadAndroidPackage">Android包下载</a>
                         </li>
                         <li>
-                            <a href="#" onClick="
-                new PNotify({
-                                  title: '提示',
-                                  text: 'TypeSDK免费版本不支持IOS打包，请购买高级或企业版本。',
-                                  type: 'info',
-                                  styling: 'bootstrap3',
-                                  addclass: 'dark',
-                  delay: 5000
-                              });">IOS包下载</a>
+                            <a href="/DownLoad/DownLoadIOSPackage">IOS包下载</a>
                         </li>
             </ul>
             </li>
@@ -127,6 +112,12 @@
                         </li>--%>
                         <li>
                             <a href="/GameConfig/GameList">游戏管理</a>
+                        </li>
+                        <li>
+                            <a href="/GameConfig/GameProjectVersionManage">游戏版本管理</a>
+                        </li>
+                        <li>
+                            <a href="/GameConfig/GameChannelPackageManage">游戏渠道包管理</a>
                         </li>
                         <li>
                             <a href="/GameIcon/GameIconList">图标管理</a>
@@ -226,15 +217,8 @@
     <script src="/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
     <script src="/vendors/iCheck/icheck.min.js"></script>
-
-  <!-- PNotify -->
-    <script src="/vendors/pnotify/dist/pnotify.js"></script>
-    <script src="/vendors/pnotify/dist/pnotify.buttons.js"></script>
-    <script src="/vendors/pnotify/dist/pnotify.nonblock.js"></script>
-
     <!-- Switchery -->
     <script src="/vendors/switchery/dist/switchery.min.js"></script>
-
     <!-- Skycons -->
     <script src="/vendors/skycons/skycons.js"></script>
   <!-- Jquery cookie -->

@@ -136,7 +136,7 @@
                                 </table>
                             </LayoutTemplate>
                         </asp:ListView>
-                        <asp:SqlDataSource ID="SqlDataSourceGamePlaceList" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="sdk_getGamePlatforms" SelectCommandType="StoredProcedure">
+                        <asp:SqlDataSource ID="SqlDataSourceGamePlaceList" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="sdk_getGamePlatforms" SelectCommandType="StoredProcedure">
                             <SelectParameters>
                                 <asp:QueryStringParameter Name="GameID" Type="Int32" QueryStringField="gameid" />
                                 <asp:QueryStringParameter Name="SystemID" Type="String" QueryStringField="platform" />

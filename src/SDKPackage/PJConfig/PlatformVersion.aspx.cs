@@ -29,8 +29,18 @@ namespace SDKPackage.PJConfig
             string sqlQuery = string.Format(@"select platformName from sdk_DefaultPlatform where id={0}", platformid);
             string platformName = aideNativeWebFacade.GetScalarBySql(sqlQuery);
             string platformVersion = CtrlHelper.GetText(TextBoxVersion);
-            string SDKPackageDir = ConfigurationManager.AppSettings["SDKPackageDir"];
-            SDKPackageDir = SDKPackageDir + "SDK\\Channel_SDK\\" + platformName + "\\" + platformVersion + "\\";
+
+            string systemId = CtrlHelper.GetSelectValue(DropDownListSystem);
+
+            string SDKPackageDir = "";
+            string SDKAndroidPackageDir = ConfigurationManager.AppSettings["SDKPackageDir"];
+            string SDKIOSPackageDir = ConfigurationManager.AppSettings["SDKIOSPackageDir"];
+
+            if (string.Equals(systemId,"1"))
+                SDKPackageDir = SDKAndroidPackageDir + "SDK\\Channel_SDK\\" + platformName + "\\" + platformVersion + "\\";
+            else
+                SDKPackageDir = SDKIOSPackageDir + "SDKFile\\ChannelSDKFramework\\sdk_include_" + platformName + "\\" + platformVersion + "\\";
+
             if (!System.IO.Directory.Exists(SDKPackageDir))
             {
                 Response.Write("<script>alert('渠道版本创建失败\\r\\n该渠道版本文件夹不存在！')</script>");

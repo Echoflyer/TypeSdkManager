@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDKPackage", "SDKPackage\SDKPackage.csproj", "{1E0CBD23-D205-4087-A875-C703B72218CF}"
 EndProject
@@ -66,8 +66,5 @@ Global
 		{A1ADE8A1-C286-4C3F-9516-2A3035F63892} = {A4551613-2CA5-48DF-AAF5-B0272C400CD8}
 		{08DB320B-3C0C-44BD-B33E-7FCD12A58555} = {A4551613-2CA5-48DF-AAF5-B0272C400CD8}
 		{9791D6CA-BEF3-46E7-9E17-F025452B054B} = {A4551613-2CA5-48DF-AAF5-B0272C400CD8}
-	EndGlobalSection
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal

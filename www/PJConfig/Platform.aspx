@@ -18,7 +18,7 @@
                 $("#hfreturnVal").val("");
                 openfile(strhref, strParam);
             });
-            $("#MainContent_ListView1_itemPlaceholderContainer input:file").change(function () {
+            $("#itemPlaceholderContainer input:file").change(function () {
                 //return;
                 var fileName = $(this).val();
                 //判断上传文件的后缀名  
@@ -183,7 +183,7 @@
                                     <td>
                                         <asp:Button ID="DeteteButton" runat="server" CommandName="Delete" class="btn btn-danger btn-sm fa" Text="&#xf1f8; 删除" OnClientClick="return confirm('确定要删除数据吗？')" /></td>
                                     <td>
-                                        <asp:LinkButton ID="LinkButtonNullity" runat="server" CommandName="nullity" CommandArgument='<%#Eval("dpfid")+","+Eval("nullity") %>'><%#(byte)Eval("Nullity")==0?"<span class='btn btn-success btn-sm'><i class='fa fa-cogs'></i> 使用中</span>":"<span class='btn btn-warning btn-sm'><i class='fa fa-exclamation-triangle'></i> 维护中</span>" %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButtonNullity" runat="server" CommandName="nullity" CommandArgument='<%#Eval("dpfid")+","+Eval("nullity") %>'><%#(byte)Eval("Nullity")==0?"<div class='btn btn-success btn-sm fa'><i class='fa fa-cogs'></i> 使用中</div>":"<div class='btn btn-warning btn-sm fa'><i class='fa fa-exclamation-triangle'></i> 维护中</div>" %></asp:LinkButton>
                                     </td>
                                 </tr>
                                             <div <div class='modal fade <%# Eval("PlatformName") %>-icon-modal-sm' tabindex="-1" role="dialog" aria-hidden="true">
@@ -249,13 +249,13 @@
                                     <td>
                                         <asp:Button ID="DeteteButton" runat="server" CommandName="Delete" class="btn btn-danger btn-sm fa" Text="&#xf1f8; 删除" OnClientClick="return confirm('确定要删除数据吗？')" /></td>
                                     <td>
-                                        <asp:LinkButton ID="LinkButtonNullity" runat="server" CommandName="nullity" CommandArgument='<%#Eval("dpfid")+","+Eval("nullity") %>'><%#(byte)Eval("Nullity")==0?"<span class='btn btn-success btn-sm'><i class='fa fa-cogs'></i> 使用中</span>":"<span class='btn btn-warning btn-sm'><i class='fa fa-exclamation-triangle'></i> 维护中</span>" %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButtonNullity" runat="server" CommandName="nullity" CommandArgument='<%#Eval("dpfid")+","+Eval("nullity") %>'><%#(byte)Eval("Nullity")==0?"<span class='btn btn-success btn-sm fa'><i class='fa fa-cogs'></i> 使用中</span>":"<span class='btn btn-warning btn-sm fa'><i class='fa fa-exclamation-triangle'></i> 维护中</span>" %></asp:LinkButton>
                                     </td>
 
                                 </tr>
                             </EditItemTemplate>
                         </asp:ListView>
-                        <asp:SqlDataSource ID="SqlDataSourcePlatform" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+                        <asp:SqlDataSource ID="SqlDataSourcePlatform" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>"
                             SelectCommand="sdk_getPlatformListInfo" SelectCommandType="StoredProcedure"
                             UpdateCommand="Update [sdk_Platform] set SdkVersion=@SdkVersion where ID=@ID" UpdateCommandType="Text" DeleteCommand="delete from sdk_Platform where MyVersionID=@SdkVersion and [SystemID]=@Platforms and id=@ID">
                             <SelectParameters>

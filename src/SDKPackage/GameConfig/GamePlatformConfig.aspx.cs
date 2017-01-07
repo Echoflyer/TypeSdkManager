@@ -97,18 +97,20 @@ namespace SDKPackage.GameConfig
             //TextBox1.Text = jsonCpSetting;
             string system = GameRequest.GetQueryString("systemid");
             String SDKPackageDir = string.Empty;
+            string filePatch = string.Empty;
             if (system == "1")
             {
                 SDKPackageDir = System.Configuration.ConfigurationManager.AppSettings["SDKAndroidPackageConfig"];
+                filePatch = SDKPackageDir + gameid + "\\" + GameRequest.GetQueryString("platformname");
             }
             else
             {
                 //IOS不确定
-                SDKPackageDir = "";//System.Configuration.ConfigurationManager.AppSettings["SDKAndroidPackageConfig"];
-                return;
+                SDKPackageDir = System.Configuration.ConfigurationManager.AppSettings["SDKIOSPackageConfig"]; //System.Configuration.ConfigurationManager.AppSettings["SDKAndroidPackageConfig"];
+                filePatch = SDKPackageDir + gameid + "\\sdk_res_" + GameRequest.GetQueryString("platformname") + "\\cpsettings";
             }
             //string system = GameRequest.GetQueryString("systemid") == "1" ? "Android\\" : "IOS\\";
-            string filePatch = SDKPackageDir + GameRequest.GetQueryString("gamename") + "\\" + GameRequest.GetQueryString("platformname");
+
             if (pluginid == "1")
             {
                 filePatch += "_LeBian";
@@ -128,19 +130,21 @@ namespace SDKPackage.GameConfig
             DataView dvLocalConfig = (DataView)SqlDataSourceLocal.Select(DataSourceSelectArguments.Empty);
             String localConfig = ToConfig(dvLocalConfig);
             String SDKPackageDir = string.Empty;
+            string filePatch = string.Empty;
             string system = GameRequest.GetQueryString("systemid");
             if (system == "1")
             {
                 SDKPackageDir = System.Configuration.ConfigurationManager.AppSettings["SDKAndroidPackageConfig"];
+                filePatch = SDKPackageDir + gameid + "\\" + GameRequest.GetQueryString("platformname");
             }
             else
             {
                 //IOS不确定
-                SDKPackageDir = "";//System.Configuration.ConfigurationManager.AppSettings["SDKAndroidPackageConfig"];
-                return;
+                SDKPackageDir = System.Configuration.ConfigurationManager.AppSettings["SDKIOSPackageConfig"];//System.Configuration.ConfigurationManager.AppSettings["SDKAndroidPackageConfig"];
+                filePatch = SDKPackageDir + gameid + "\\sdk_res_" + GameRequest.GetQueryString("platformname");
             }
             //string system = GameRequest.GetQueryString("systemid") == "1" ? "Android\\" : "IOS\\";
-            string filePatch = SDKPackageDir + GameRequest.GetQueryString("gamename") + "\\" + GameRequest.GetQueryString("platformname");
+
             if (pluginid == "1")
             {
                 filePatch += "_LeBian";
@@ -193,8 +197,8 @@ namespace SDKPackage.GameConfig
         {
             String SDKPackageDir = System.Configuration.ConfigurationManager.AppSettings["SDKPackageDir"];
             string system = GameRequest.GetQueryString("systemid") == "1" ? "Android\\" : "IOS\\";
-            string filePatch = SDKPackageDir + system + "Config\\" + GameRequest.GetQueryString("gamename") + "\\" + GameRequest.GetQueryString("platformname") + "\\";
-            string saveFilePath = SDKPackageDir + system + "Config\\" + GameRequest.GetQueryString("gamename") + "\\Config.zip";
+            string filePatch = SDKPackageDir + system + "Config\\" + gameid + "\\" + GameRequest.GetQueryString("platformname") + "\\";
+            string saveFilePath = SDKPackageDir + system + "Config\\" + gameid + "\\Config.zip";
             if (File.Exists(filePatch + "Config.zip"))
             {
                 File.Delete(filePatch + "Config.zip");

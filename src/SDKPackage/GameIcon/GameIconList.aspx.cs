@@ -50,6 +50,25 @@ namespace SDKPackage.GameIcon
 
         }
 
+        /// <summary>
+        /// 合成图标
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void ButtonComposeIcon_Click(object sender, EventArgs e)
+        {
+            string systemname = this.DropDownListSystem.SelectedValue;
+            if (systemname == "1")
+            {
+                ComposeAndroidIcon();
+            }
+            else
+            {
+                //IOS代确认
+                ComposeIOSIcon();
+            }
+
+        }
 
 
         private void createPatch(string patch)
@@ -83,8 +102,8 @@ namespace SDKPackage.GameIcon
             }
             if (string.IsNullOrEmpty(imgPath)) return;
 
-            string gameName = this.ddlGameList.SelectedValue;
-            string uploadPatch = SDKPackageDir + gameName + "\\" + IconName + "\\";
+            string gameID = this.ddlGameList.SelectedValue;
+            string uploadPatch = SDKPackageDir + gameID + "\\" + IconName + "\\";
             try
             {
                 if (!System.IO.Directory.Exists(uploadPatch))
@@ -130,8 +149,9 @@ namespace SDKPackage.GameIcon
                 Dictionary<string, string> dic = new Dictionary<string, string>();
                 dic.Add("IconName", IconName);
                 dic.Add("SystemID", systemname);
-                dic.Add("GameName", this.ddlGameList.SelectedValue);
+                dic.Add("GameID", this.ddlGameList.SelectedValue);
                 aideNativeWebFacade.ExecuteStoredProcedure("sdk_setIcon", dic);
+                DropDownListIcon.DataBind();
 
                 MessageLabel.Text = "成功上传图标组";
             }
@@ -162,8 +182,8 @@ namespace SDKPackage.GameIcon
             }
             if (string.IsNullOrEmpty(imgPath)) return;
 
-            string gameName = this.ddlGameList.SelectedValue;
-            string uploadPatch = SDKPackageDir + gameName + "\\" + IconName + "\\";
+            string gameID = this.ddlGameList.SelectedValue;
+            string uploadPatch = SDKPackageDir + gameID + "\\" + IconName + "\\";
             try
             {
                 if (!System.IO.Directory.Exists(uploadPatch))
@@ -232,8 +252,9 @@ namespace SDKPackage.GameIcon
                 Dictionary<string, string> dic = new Dictionary<string, string>();
                 dic.Add("IconName", IconName);
                 dic.Add("SystemID", systemname);
-                dic.Add("GameName", this.ddlGameList.SelectedValue);
+                dic.Add("GameID", this.ddlGameList.SelectedValue);
                 aideNativeWebFacade.ExecuteStoredProcedure("sdk_setIcon", dic);
+                DropDownListIcon.DataBind();
 
                 MessageLabel.Text = "成功上传图标组";
             }
@@ -243,6 +264,191 @@ namespace SDKPackage.GameIcon
             }
         }
 
+        /// <summary>
+        /// 合成Android图标组
+        /// </summary>
+        private void ComposeAndroidIcon()
+        {
+            string saveIconPatch;
+            string bodyIconFile;
+            string IconName = TextBox1.Text;
+            string systemname = this.DropDownListSystem.SelectedValue;
+            string SDKPackageDir = string.Empty;
+            SDKPackageDir = System.Configuration.ConfigurationManager.AppSettings["SDKAndroidPackageIcon"];
+            string iconPatch = SDKPackageDir;
+            string gameName = this.ddlGameList.SelectedValue;
+            string masterSaveFileName;
+            string masterIconPatch;
+
+            masterIconPatch = SDKPackageDir + gameName + "\\" + DropDownListIcon.SelectedValue + "\\";
+
+            string ssUploadFileMd5;
+            string ssUploadFileLastName;
+            string ssUploadFileName;
+            string ssSavePatch;
+            string ssSaveFileName;
+            if (this.radio_s.Value=="1")
+            {
+                if (SSFileUpload.HasFile)
+                {
+                    ssUploadFileName = SSFileUpload.FileName;
+                    ssUploadFileLastName = ssUploadFileName.Substring(ssUploadFileName.LastIndexOf(".") + 1, (ssUploadFileName.Length - ssUploadFileName.LastIndexOf(".") - 1));
+                    ssUploadFileMd5 = GetMD5HashFromFile(SSFileUpload.FileContent);
+                    ssSavePatch = iconPatch + "\\Upload";
+                    createPatch(ssSavePatch);
+
+                    ssSaveFileName = ssSavePatch + "\\" + ssUploadFileMd5 + "." + ssUploadFileLastName;
+                    SSFileUpload.SaveAs(ssSaveFileName);
+                    if (ssUploadFileLastName == "psd")
+                    {
+                        SDKPackage.PJConfig.ImagePsd _Psd = new SDKPackage.PJConfig.ImagePsd(ssSaveFileName);
+                        _Psd.PSDImage.Save(ssSavePatch + "\\" + ssUploadFileMd5 + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                        ssSaveFileName = ssSavePatch + "\\" + ssUploadFileMd5 + ".png";
+                    }
+                    if (SizeDropDownList.SelectedValue != "0")
+                    {
+                        int sizePx = int.Parse(SizeDropDownList.SelectedValue);
+                        ssSaveFileName = SDKPackage.PJConfig.IconCreate.generateCreateMark(ssSaveFileName, sizePx, sizePx);
+                    }
+                }
+                else
+                {
+                    MessageLabel.Text = "合成图标时没有选择角标！";
+                    return;
+                }
+            }
+            else
+            {
+                ssSaveFileName = Server.MapPath(this.DropDownList2.SelectedValue);
+            }
+
+            string IconPatch = SDKPackageDir + gameName + "\\" + IconName + "\\";
+            createPatch(IconPatch);
+
+            string[] IconType = { "drawable", "drawable-ldpi", "drawable-mdpi", "drawable-hdpi", "drawable-xhdpi", "drawable-xxhdpi", "drawable-xxxhdpi" };
+            //string[] IconType = { "29", "40", "80", "58", "57", "114", "180", "120", "50", "100", "72" ,"144" ,"76" ,"152", "512" };
+            string bodyIcon = SDKPackageDir + "white\\";
+            try
+            {
+                
+                for (int i = 0; i < IconType.Length; i++)
+                {
+                    masterSaveFileName = masterIconPatch + IconType[i] + "\\app_icon.png";
+                    saveIconPatch = IconPatch + IconType[i];
+                    createPatch(saveIconPatch);
+                    bodyIconFile = bodyIcon + IconType[i] + "\\app_icon.png";
+                    createIcon(masterSaveFileName, ssSaveFileName, saveIconPatch);
+                }
+
+                createIcon(masterIconPatch + "app_icon.png", ssSaveFileName, IconPatch);
+                Dictionary<string, string> dic = new Dictionary<string, string>();
+                dic.Add("IconName", IconName);
+                dic.Add("SystemID", systemname);
+                dic.Add("GameID", this.ddlGameList.SelectedValue);
+                aideNativeWebFacade.ExecuteStoredProcedure("sdk_setIcon", dic);
+
+                DropDownListIcon.DataBind();
+                MessageLabel.Text = "成功合成图标组";
+            }
+            catch (Exception ex)
+            {
+                MessageLabel.Text = ex.Message.ToString();
+            }
+
+        }
+
+        /// <summary>
+        /// 合成IOS图标组
+        /// </summary>
+        private void ComposeIOSIcon()
+        {
+            string saveIconPatch;
+            string bodyIconFile;
+            string IconName = TextBox1.Text;
+            string systemname = this.DropDownListSystem.SelectedValue;
+            string SDKPackageDir = string.Empty;
+            SDKPackageDir = System.Configuration.ConfigurationManager.AppSettings["SDKIOSPackageIcon"];
+            string iconPatch = SDKPackageDir;
+
+            string gameID = this.ddlGameList.SelectedValue;
+
+            string masterSaveFileName;
+            string masterIconPatch;
+
+            masterIconPatch = SDKPackageDir + gameID + "\\" + DropDownListIcon.SelectedValue + "\\AppIcon.appiconset\\";
+
+            string ssUploadFileMd5;
+            string ssUploadFileLastName;
+            string ssUploadFileName;
+            string ssSavePatch;
+            string ssSaveFileName;
+            if (this.radio_s.Value=="1")
+            {
+                if (SSFileUpload.HasFile)
+                {
+                    ssUploadFileName = SSFileUpload.FileName;
+                    ssUploadFileLastName = ssUploadFileName.Substring(ssUploadFileName.LastIndexOf(".") + 1, (ssUploadFileName.Length - ssUploadFileName.LastIndexOf(".") - 1));
+                    ssUploadFileMd5 = GetMD5HashFromFile(SSFileUpload.FileContent);
+                    ssSavePatch = iconPatch + "\\Upload";
+                    createPatch(ssSavePatch);
+                    ssSaveFileName = ssSavePatch + "\\" + ssUploadFileMd5 + "." + ssUploadFileLastName;
+                    SSFileUpload.SaveAs(ssSaveFileName);
+                    if (ssUploadFileLastName == "psd")
+                    {
+                        SDKPackage.PJConfig.ImagePsd _Psd = new SDKPackage.PJConfig.ImagePsd(ssSaveFileName);
+                        _Psd.PSDImage.Save(ssSavePatch + "\\" + ssUploadFileMd5 + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                        ssSaveFileName = ssSavePatch + "\\" + ssUploadFileMd5 + ".png";
+                    }
+                    if (SizeDropDownList.SelectedValue != "0")
+                    {
+                        int sizePx = int.Parse(SizeDropDownList.SelectedValue);
+                        ssSaveFileName = SDKPackage.PJConfig.IconCreate.generateCreateMark(ssSaveFileName, sizePx, sizePx);
+                    }
+                }
+                else
+                {
+                    MessageLabel.Text = "合成图标时没有选择角标！";
+                    return;
+                }
+            }
+            else
+            {
+                ssSaveFileName = Server.MapPath(this.DropDownList2.SelectedValue);
+            }
+
+            string IconPatch = SDKPackageDir + gameID + "\\" + IconName + "\\";
+            createPatch(IconPatch);
+
+            string[] IconType = { "icon", "icon@2x", "icon-2", "icon-29-2", "Icon-40@2x", "icon-40-2", "Icon-41", "icon-58-2", "Icon-60@2x", "Icon-60@3x", "icon-72", 
+                                      "Icon-72@2x", "Icon-76", "icon-80-2", "icon-120-2", "icon-152","Icon-Small","Icon-Small@2x","Icon-Small-50","Icon-Small-50@2x","iTunesArtwork"};
+            //string[] IconType = { "29", "40", "80", "58", "57", "114", "180", "120", "50", "100", "72" ,"144" ,"76" ,"152", "512" };
+            string bodyIcon = SDKPackageDir + "white\\";
+            try
+            {
+                for (int i = 0; i < IconType.Length; i++)
+                {
+                    masterSaveFileName = masterIconPatch + IconType[i] + ".png";
+                    saveIconPatch = IconPatch + "\\AppIcon.appiconset\\";//IconType[i];
+                    createPatch(saveIconPatch);
+                    bodyIconFile = bodyIcon + IconType[i] + "\\app_icon.png";
+                    createIcon(masterSaveFileName, ssSaveFileName, saveIconPatch, IconType[i]);
+                }
+                createIcon(masterIconPatch + "app_icon.png", ssSaveFileName, IconPatch);
+                Dictionary<string, string> dic = new Dictionary<string, string>();
+                dic.Add("IconName", IconName);
+                dic.Add("SystemID", systemname);
+                dic.Add("GameID", this.ddlGameList.SelectedValue);
+                aideNativeWebFacade.ExecuteStoredProcedure("sdk_setIcon", dic);
+
+                DropDownListIcon.DataBind();
+                MessageLabel.Text = "成功合成图标组";
+            }
+            catch (Exception ex)
+            {
+                MessageLabel.Text = ex.Message.ToString();
+            }
+
+        }
 
         private void createIcon(string masterIcon, string SSIcon, string savePatch)
         {
@@ -284,32 +490,5 @@ namespace SDKPackage.GameIcon
                 //throw new Exception("error");
             }
         }
-
-        private void beginProgress()
-        {
-            //根据ProgressBar.htm显示进度条界面
-            string templateFileName = Path.Combine(Server.MapPath("~"), "ProgressBar.htm");
-            StreamReader reader = new StreamReader(@templateFileName, System.Text.Encoding.GetEncoding("GB2312"));
-            string html = reader.ReadToEnd();
-            reader.Close();
-            Response.Write(html);
-            Response.Flush();
-        }
-
-        private void setProgress(string percent)
-        {
-            string jsBlock = "<script>SetPorgressBar('" + percent.ToString() + "'); </script>";
-            //Page.ClientScript.RegisterStartupScript(ClientScript.GetType(), "mya", jsBlock);
-            Response.Write(jsBlock);
-            Response.Flush();
-        }
-
-        private void finishProgress()
-        {
-            string jsBlock = "<script>SetCompleted();</script>";
-            Response.Write(jsBlock);
-            Response.Flush();
-        }
-
     }
 }

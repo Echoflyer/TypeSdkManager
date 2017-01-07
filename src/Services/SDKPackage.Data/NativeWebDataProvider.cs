@@ -120,11 +120,12 @@ namespace SDKPackage.Data
         /// <param name="platformlist"></param>
         /// <param name="systemid"></param>
         /// <returns></returns>
-        public Message UpdateGamePlatform(int gameid, string platformlist, int systemid)
+        public Message UpdateGamePlatform(int gameid, string platformlist, string versionList, int systemid)
         {
             List<DbParameter> prams = new List<DbParameter>();
             prams.Add(Database.MakeInParam("GameID", gameid));
             prams.Add(Database.MakeInParam("PlatfomrList", platformlist));
+            prams.Add(Database.MakeInParam("VersionList", versionList));
             prams.Add(Database.MakeInParam("SystemID", systemid));
             prams.Add(Database.MakeOutParam("strErrorDescribe", typeof(string), 127));
             return MessageHelper.GetMessage(Database, "sdk_UpdateGamePlatform_IOS", prams);

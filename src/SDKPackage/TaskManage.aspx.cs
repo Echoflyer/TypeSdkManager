@@ -92,23 +92,24 @@ namespace SDKPackage
                         {
                             string recid = gt.RecID.ToString();
 
-                            //try
-                            //{
+                            try
+                            {
                                 CheckManifest(gt);
-                            //}
-                            //catch (Exception ex)
-                            //{
-                            //    msg = "{\"status\":\"error99\",\"msg\":\"" + Server.UrlEncode(ex.Message) + "\",\"data\":null}"; Response.Write(msg);
-                            //    PrintLog(recid, platform, msg);
-                            //    PrintServerLog(recid, platform, "Manifest:" + msg);
-                            //    string sql = string.Format(@"update {1} set PackageTaskStatus=4,FinishDatetime=getdate() where recid={0} and (PackageTaskStatus=2 or PackageTaskStatus=0)", recid, platform == "Android" ? "[sdk_NewPackageCreateTask]" : "[sdk_NewPackageCreateTask_IOS]");
-                            //    aideNativeWebFacade.ExecuteSql(sql);
-                            //    return;
-                            //}
+                            }
+                            catch (Exception ex)
+                            {
+                                msg = "{\"status\":\"error99\",\"msg\":\"" + Server.UrlEncode(ex.Message) + "\",\"data\":null}"; Response.Write(msg);
+                                PrintLog(recid, platform, msg);
+                                PrintServerLog(recid, platform, "Manifest:" + msg);
+                                string sql = string.Format(@"update {1} set PackageTaskStatus=4,FinishDatetime=getdate() where recid={0} and (PackageTaskStatus=2 or PackageTaskStatus=0)", recid, platform == "Android" ? "[sdk_NewPackageCreateTask]" : "[sdk_NewPackageCreateTask_IOS]");
+                                aideNativeWebFacade.ExecuteSql(sql);
+                                return;
+                            }
 
 
                             //string urlHead = "http://" + HttpContext.Current.Request.Url.Host + ":" + HttpContext.Current.Request.Url.Port + "/";
 
+                            string gameid = gt.GameID;
                             string gamename = gt.GameName;
                             string platFormName = gt.PlatFormName;
                             string gameVersion = gt.GameVersion;
@@ -124,7 +125,7 @@ namespace SDKPackage
                             string strCompileMode = gt.CompileMode;
                             string strKeyname = gt.KeyName;
 
-                            msg = "{\"status\":\"success\",\"msg\":\"gainTask_OK\",\"data\":[{\"TaskID\":\"" + recid + "\",\"Channel\":\"" + platFormName + "\",\"GameID\":\"" + gamename + "\",\"ChannelVersion\":\"" + strChannelVersion + "\",\"GameVersion\":\"" + gameVersion + "_" + strCollectDatetime + "\",\"IconID\":\"" + strIconPath + "\",\"BatchNo\":\"" + strCreateTaskID + "\",\"SdkVer\":\"" + strmyversion + "\",\"IsEncrypt\":\"" + strIsEncryption + "\",\"AdID\":\"" + strAdID + "\",\"PluginID\":\"" + strPlugInID + "\",\"PluginVersion\":\"" + strPlugInVersion + "\",\"CompileMode\":\"" + strCompileMode + "\",\"SignKey\":\"" + strKeyname + "\"}]}";
+                            msg = "{\"status\":\"success\",\"msg\":\"gainTask_OK\",\"data\":[{\"TaskID\":\"" + recid + "\",\"Channel\":\"" + platFormName + "\",\"GameID\":\"" + gameid + "\",\"ChannelVersion\":\"" + strChannelVersion + "\",\"GameVersion\":\"" + gameVersion + "_" + strCollectDatetime + "\",\"IconID\":\"" + strIconPath + "\",\"BatchNo\":\"" + strCreateTaskID + "\",\"SdkVer\":\"" + strmyversion + "\",\"IsEncrypt\":\"" + strIsEncryption + "\",\"AdID\":\"" + strAdID + "\",\"PluginID\":\"" + strPlugInID + "\",\"PluginVersion\":\"" + strPlugInVersion + "\",\"CompileMode\":\"" + strCompileMode + "\",\"SignKey\":\"" + strKeyname + "\"}]}";
 
                             PrintLog(recid, platform, msg);
 
@@ -152,6 +153,7 @@ namespace SDKPackage
                         {
                             string urlHead = "http://" + HttpContext.Current.Request.Url.Host + ":" + HttpContext.Current.Request.Url.Port + "/";
                             string recid = gt.RecID.ToString();
+                            string gameid = gt.GameID;
                             string gamename = gt.GameName;
                             string platFormName = gt.PlatFormName;
                             string gameVersion = gt.GameVersion;
@@ -159,11 +161,13 @@ namespace SDKPackage
                             string strIconPath = gt.IconPath;
                             string strCreateTaskID = gt.CreateTaskID;
                             string strmyversion = gt.MyVersion;
+                            string strChannelVersion = gt.ChannelVersion;
                             string strgamenamespell = gt.GameNameSpell;
                             string strunityver = gt.UnityVer;
                             string strproductname = gt.ProductName;
 
-                            msg = "{\"status\":\"success\",\"msg\":\"gainTask_OK\",\"data\":[{\"TaskID\":\"" + recid + "\",\"Channel\":\"" + platFormName.ToLower() + "\",\"GameID\":\"" + strgamenamespell + "\",\"GameVersion\":\"" + strCollectDatetime + "\",\"IconID\":\"" + strIconPath + "\",\"BatchNo\":\"" + strCreateTaskID + "\",\"SdkVer\":\"" + strmyversion + "\",\"GameFileName\":\"" + gameVersion + "\",\"UnityVer\":\"" + strunityver + "\",\"ProductName\":\"" + strproductname + "\"}]}";
+                            //msg = "{\"status\":\"success\",\"msg\":\"gainTask_OK\",\"data\":[{\"TaskID\":\"" + recid + "\",\"Channel\":\"" + platFormName.ToLower() + "\",\"GameID\":\"" + strgamenamespell + "\",\"GameVersion\":\"" + strCollectDatetime + "\",\"IconID\":\"" + strIconPath + "\",\"BatchNo\":\"" + strCreateTaskID + "\",\"SdkVer\":\"" + strmyversion + "\",\"GameFileName\":\"" + gameVersion + "\",\"UnityVer\":\"" + strunityver + "\",\"ProductName\":\"" + strproductname + "\"}]}";
+                            msg = "{\"status\":\"success\",\"msg\":\"gainTask_OK\",\"data\":[{\"TaskID\":\"" + recid + "\",\"Channel\":\"" + platFormName + "\",\"GameID\":\"" + gameid + "\",\"ChannelVersion\":\"" + strChannelVersion + "\",\"GameVersion\":\"" + gameVersion + "\",\"IconID\":\"" + strIconPath + "\",\"BatchNo\":\"" + strCreateTaskID + "\",\"SdkVer\":\"" + strmyversion + "\",\"GameFileName\":\"" + gamename + "\",\"UnityVer\":\"" + strunityver + "\",\"ProductName\":\"" + strproductname + "\"}]}";
 
                             PrintLog(recid, platform, msg);
                         }
@@ -435,6 +439,8 @@ namespace SDKPackage
             {
                 AndroidManifest1 = GetPrimaryAndroidManifest(AndroidManifest1);
                 GetManifest(xmlfile + "4.xml", AndroidManifest1.InnerXml, platformname, out content);
+                //插件需删除主xml中的一个activety android:name="com.galaxy.sdk.android.amigo.MainActivity"
+
             }
             GetManifest(xmlfile + "2.xml", pluginid == 0 ? AndroidManifest1.InnerXml : content, out content);
             GetManifest(xmlfile + "3.xml", content, out content);
@@ -458,6 +464,7 @@ namespace SDKPackage
             string platformversion = gt.ChannelVersion;
             string myversion = gt.MyVersion;
             string gamename = gt.GameName;
+            string gameid = gt.GameID;
             string gameversion = gt.GameVersion + "_" + gt.StrCollectDatetime;
             int pluginid = gt.PlugInID;
             string pluginversion = gt.PlugInVersion;
@@ -471,13 +478,13 @@ namespace SDKPackage
             //SDK基础库项目配置
             string typeManifest = SDKPackageDir + "SDK\\Type_SDK\\" + myversion + "\\lib\\TypeSDKBaseLibrary\\AndroidManifest.xml";
             //CP Unity项目生成的配置
-            string gamefileManifest = SDKPackageDir + "game_file\\" + gamename + "\\" + gameversion + "\\AndroidManifest.xml";
+            string gamefileManifest = SDKPackageDir + "game_file\\" + gameid + "\\" + gameversion + "\\AndroidManifest.xml";
 
            
 
             if (!System.IO.File.Exists(gamefileManifest))
             {
-                string gamefile = System.Configuration.ConfigurationManager.AppSettings["SDKPackageDir"] + "game_file\\" + gamename + "\\" + gameversion + "\\";
+                string gamefile = System.Configuration.ConfigurationManager.AppSettings["SDKPackageDir"] + "game_file\\" + gameid + "\\" + gameversion + "\\";
                 UnZip(gamefile + "game.zip", gamefile, "");
             }
             string pluginManifest = "";
@@ -510,6 +517,7 @@ namespace SDKPackage
                 {
                     AndroidManifest1 = GetPrimaryAndroidManifest(AndroidManifest1);
                     GetManifest(xmlfile + "4.xml", AndroidManifest1.InnerXml,gt.PlatFormName, out content);
+                    //插件需删除主xml中的一个activety android:name="com.galaxy.sdk.android.amigo.MainActivity"
 
                 }
                 GetManifest(xmlfile + "2.xml", pluginid == 0 ? AndroidManifest1.InnerXml : content, out content);
@@ -668,6 +676,44 @@ namespace SDKPackage
             {
                 manifest.SelectSingleNode("application").InnerXml += AndroidManifest.SelectSingleNode("manifest").SelectSingleNode("application").InnerXml;
             }
+
+            //乐变manifest 需改变主文件的application key=android:name
+            if (xmlPath.Substring(xmlPath.Length - 5, 5) == "4.xml")
+            {
+                XmlNode node = AndroidManifest.SelectSingleNode("manifest").SelectSingleNode("application");
+                if (node != null)
+                {
+                    string strvalue = node.Attributes["android:name"].Value;
+                    manifest.SelectSingleNode("application").Attributes["android:name"].Value = strvalue;
+                    XmlNodeList nodelist = manifest.SelectSingleNode("application").SelectNodes("activity");//node.SelectNodes("activity");
+                    foreach (XmlNode n in nodelist)
+                    {
+                        string androidname = n.Attributes["android:name"].Value;
+                        int index = androidname.LastIndexOf(".") + 1;
+                        string strGalaxySDKSplash = androidname.Substring(index, androidname.Length - index);
+                        if (strGalaxySDKSplash == "GalaxySDKSplash")//闪屏
+                        {
+                            //乐变闪屏 需改变主文件的activity  android:name="com.excelliance.open.KXQP" 下的 meta-data ndroid:value="com.galaxy.sdk.android.@channelName@.MainActivity"
+
+                            for (int i = 0; i < manifest.SelectSingleNode("application").SelectNodes("activity").Count; i++)
+                            {
+                                XmlNode nd = manifest.SelectSingleNode("application").SelectNodes("activity")[i];
+                                string androidname2 = nd.Attributes["android:name"].Value;
+                                int index2 = androidname2.LastIndexOf(".") + 1;
+                                string strKXQP = androidname2.Substring(index2, androidname2.Length - index2);
+                                if (strKXQP == "KXQP")//找到替换字段
+                                {
+                                    string replace_name = manifest.SelectSingleNode("application").SelectNodes("activity")[i].SelectSingleNode("meta-data").Attributes["android:value"].Value;
+                                    int index3 = replace_name.LastIndexOf(".") + 1;
+                                    manifest.SelectSingleNode("application").SelectNodes("activity")[i].SelectSingleNode("meta-data").Attributes["android:value"].Value = replace_name.Substring(0, index3) + strGalaxySDKSplash;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
             content = MainAndroidManifest.InnerXml;
         }
 
@@ -732,6 +778,50 @@ namespace SDKPackage
                 manifest.SelectSingleNode("application").InnerXml += AndroidManifest.SelectSingleNode("manifest").SelectSingleNode("application").InnerXml;
             }
 
+            //乐变manifest 需改变主文件的application key=android:name
+            if (xmlPath.Substring(xmlPath.Length - 5, 5) == "4.xml")
+            {
+                XmlNode node = AndroidManifest.SelectSingleNode("manifest").SelectSingleNode("application");
+                if (node != null)
+                {
+                    string strvalue = node.Attributes["android:name"].Value;
+                    manifest.SelectSingleNode("application").Attributes["android:name"].Value = strvalue;
+                    XmlNodeList nodelist = manifest.SelectSingleNode("application").SelectNodes("activity");//node.SelectNodes("activity");
+                    foreach (XmlNode n in nodelist)
+                    {
+                        string androidname = n.Attributes["android:name"].Value;
+                        int index = androidname.LastIndexOf(".") + 1;
+                        string strGalaxySDKSplash = androidname.Substring(index, androidname.Length - index);
+                        if (strGalaxySDKSplash == "GalaxySDKSplash")//闪屏
+                        {
+                            //乐变闪屏 需改变主文件的activity  android:name="com.excelliance.open.KXQP" 下的 meta-data ndroid:value="com.galaxy.sdk.android.@channelName@.MainActivity"
+
+                            for (int i = 0; i < manifest.SelectSingleNode("application").SelectNodes("activity").Count; i++)
+                            {
+                                XmlNode nd = manifest.SelectSingleNode("application").SelectNodes("activity")[i];
+                                string androidname2 = nd.Attributes["android:name"].Value;
+                                int index2 = androidname2.LastIndexOf(".") + 1;
+                                string strKXQP = androidname2.Substring(index2, androidname2.Length - index2);
+                                if (strKXQP == "KXQP")//找到替换字段
+                                {
+                                    string replace_name = manifest.SelectSingleNode("application").SelectNodes("activity")[i].SelectSingleNode("meta-data").Attributes["android:value"].Value;
+                                    int index3 = replace_name.LastIndexOf(".") + 1;
+                                    manifest.SelectSingleNode("application").SelectNodes("activity")[i].SelectSingleNode("meta-data").Attributes["android:value"].Value = replace_name.Substring(0, index3) + strGalaxySDKSplash;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                    if (platformName == "Lenovo")//联想
+                    {
+                        XmlNamespaceManager xmlnsManager = new XmlNamespaceManager(new XmlDocument().NameTable);
+                        xmlnsManager.AddNamespace("android", "http://schemas.android.com/apk/res/android");
+                        MainAndroidManifest.SelectSingleNode("manifest").SelectSingleNode("application//activity[@android:name='com.excelliance.open.KXQP']", xmlnsManager).SelectSingleNode("meta-data").Attributes["android:value"].Value = "com.lenovo.lsf.gamesdk.ui.WelcomeActivity";
+                    }
+
+                }
+            }
             content = MainAndroidManifest.InnerXml;
         }
 

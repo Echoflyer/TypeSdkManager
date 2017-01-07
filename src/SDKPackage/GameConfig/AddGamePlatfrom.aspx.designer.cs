@@ -76,6 +76,24 @@ namespace SDKPackage.GameConfig {
         protected global::System.Web.UI.WebControls.Button ButtonAddAndroidPlatform;
         
         /// <summary>
+        /// ListViewIOSPlatformList 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView ListViewIOSPlatformList;
+        
+        /// <summary>
+        /// ButtonAddIOSPlatform 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonAddIOSPlatform;
+        
+        /// <summary>
         /// txtRedisHost 控件。
         /// </summary>
         /// <remarks>

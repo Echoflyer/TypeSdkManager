@@ -172,7 +172,7 @@
             </div>
         </LayoutTemplate>
     </asp:ListView>
-    <asp:SqlDataSource ID="SqlDataSourceGame" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT * FROM [sdk_Games] WHERE ([Id] = @Id)" UpdateCommand="UPDATE [sdk_Games] SET [GameName] = @GameName, [GameDisplayName] = @GameDisplayName, [GamePic] = @GamePic, [GameIntroduce] = @GameIntroduce, [GameWebSite] = @GameWebSite WHERE [Id] = @Id">
+    <asp:SqlDataSource ID="SqlDataSourceGame" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="SELECT * FROM [sdk_Games] WHERE ([Id] = @Id)" UpdateCommand="UPDATE [sdk_Games] SET [GameName] = @GameName, [GameDisplayName] = @GameDisplayName, [GamePic] = @GamePic, [GameIntroduce] = @GameIntroduce, [GameWebSite] = @GameWebSite WHERE [Id] = @Id">
         <SelectParameters>
             <asp:QueryStringParameter Name="Id" QueryStringField="id" Type="Int32" />
         </SelectParameters>

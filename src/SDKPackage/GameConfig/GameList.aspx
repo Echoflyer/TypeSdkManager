@@ -39,6 +39,21 @@
     </script>
     <script type="text/javascript">
         $(function () {
+            $("#addGame").click(function () {
+                $("#gametitle").text("添加游戏");
+                $("#MainContent_hfSubmitType").val("add");
+                whatShow();
+                $("#MainContent_txtGameDisplayName option:first").prop("selected", 'selected');
+                $("#MainContent_ddlAndroidVersionList option:first").prop("selected", 'selected');
+                $("#MainContent_ddlIOSVersionList option:first").prop("selected", 'selected');
+                $("#MainContent_txtGameDisplayName").val("");
+                $("#MainContent_txtGameName").val("");
+                $("#MainContent_txtGameNameSpell").val("");
+                $("#MainContent_txtUnityVer").val("");
+                $("#MainContent_txtProductName").val("");
+                $("#gameicon").attr("src", "/img/upimg.jpg");
+                $("#MainContent_hfGameIcon").val("");
+            });
             $("#btnPlatform").click(function () {
                 $("#gametitle").text("编辑渠道");
                 $("#MainContent_hfSubmitType").val("platform");
@@ -109,8 +124,8 @@
             }
         }
     </script>
-    <!--编辑游戏-->
-    <div class="modal fade" id="divEditGame" tabindex="-1" role="dialog" aria-hidden="true">
+    <!--添加游戏-->
+    <div class="modal fade" id="divAddGame" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -249,7 +264,7 @@
             </div>
         </div>
     </div>
-    <!--编辑游戏end-->
+    <!--添加游戏end-->
     <!--渠道-->
     <div class="modal fade" id="divplatform" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
@@ -278,24 +293,16 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2>接入游戏管理</h2>
-					<ul class="nav navbar-right panel_toolbox">
+                    <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
                     </ul>
-				<div class="clearfix"></div>
+                <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
 
                     <div>
-                        <a id="addGame" class="btn btn-primary" onClick="
-                new PNotify({
-                                  title: '提示',
-                                  text: 'TypeSDK免费版本只支持一个游戏，请购买高级或企业版本。',
-                                  type: 'info',
-                                  styling: 'bootstrap3',
-                                  addclass: 'dark',
-                  delay: 5000
-                              });" href="#">新增游戏</a>
+                        <a id="addGame" class="btn btn-primary" data-toggle="modal" href="#divAddGame">新增游戏</a>
                         <asp:Label ID="MessageLabel" runat="server" Text="" Style="color: #f00;"></asp:Label>
                         
                     </div>
@@ -349,11 +356,11 @@
                                 <td><%#Eval("SDKGameID") %></td>
                                 <td><%#Eval("SDKGameKey") %></td>
                                 <td>
-                                    <button id="btnEdit" type="button" data-toggle="modal" class="btn btn-primary btn-sm" data-target="#divEditGame" onclick='GetEditInfo(this,"1")'><i class='fa fa-edit'></i> 编辑 </button>
+                                    <button id="btnEdit" type="button" data-toggle="modal" class="btn btn-primary btn-sm fa" data-target="#divAddGame" onclick='GetEditInfo(this,"1")'><i class='fa fa-edit'></i> 编辑 </button>
 
                                     <asp:Button ID="btnDelete" runat="server" class="fa fa-trash" Text="&#xf014; 删除" CommandName="del" CommandArgument='<%#Eval("GameID") + "_" + Eval("GameName") + "_" + Eval("GameNameSpell") %>' CssClass="btn btn-danger btn-sm fa" OnClientClick="return confirm('确定要删除数据吗？')" />
 
-                                    <a href='AddGamePlatfrom.aspx?gameid=<%#Eval("GameID") %>&androidversionid=<%#Eval("AndroidVersionID") %>&iosversionid=<%#Eval("IOSVersionID") %>&gamedisplayname=<%#Eval("GameDisplayName") %>' class="btn btn-info btn-sm">接入渠道</a>
+                                    <a href='AddGamePlatfrom.aspx?gameid=<%#Eval("GameID") %>&androidversionid=<%#Eval("AndroidVersionID") %>&iosversionid=<%#Eval("IOSVersionID") %>&gamedisplayname=<%#Eval("GameDisplayName") %>' class="btn btn-info btn-sm fa"><i class='fa fa-check-square'></i> 接入渠道</a>
                                 </td>
                             </tr>
                         </ItemTemplate>

@@ -8,6 +8,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 
+using Newtonsoft.Json;
+
+
 namespace SDKPackage.WS
 {
     /// <summary>
@@ -108,16 +111,16 @@ namespace SDKPackage.WS
         /// <param name="gameName"></param>
         /// <param name="filepath"></param>
         [WebMethod]
-        public void DeleteGamePackage(int id, string platform, string gameName, string filepath)
+        public void DeleteGamePackage(int id, string platform, string gameId, string filepath)
         {
             string SDKPackageDir = "";
             if (platform == "Android")
             {
-                SDKPackageDir = System.Configuration.ConfigurationManager.AppSettings["SDKAndroidPackageGameFile"] + gameName + "\\" + filepath;
+                SDKPackageDir = System.Configuration.ConfigurationManager.AppSettings["SDKAndroidPackageGameFile"] + gameId + "\\" + filepath;
             }
             else
             {
-                SDKPackageDir = System.Configuration.ConfigurationManager.AppSettings["SDKIOSPackageGameFile"] + gameName + "\\" + filepath;
+                SDKPackageDir = System.Configuration.ConfigurationManager.AppSettings["SDKIOSPackageGameFile"] + gameId + "\\" + filepath;
             }
             if (System.IO.Directory.Exists(SDKPackageDir))
             {
@@ -319,5 +322,75 @@ namespace SDKPackage.WS
 
         }
         #endregion
+
+        [WebMethod]
+        public string ReviewPackage(int id, int status)
+        {
+            string sql = string.Format(@"UPDATE [sdk_NewPackageCreateTask] SET [PackageReviewStatus] = {0} WHERE [RecID] = {1}", status, id);
+            int nRet = aideNativeWebFacade.ExecuteSql(sql);
+
+            var objJson = new { ret = 0 };
+            if (nRet <= 0) objJson = new { ret = 1 };
+
+            string strJson = "";
+            strJson = JsonConvert.SerializeObject(objJson);
+
+            return strJson;
+        }
+        
+        [WebMethod]
+        public string ReviewGameProjectVersion(int id, int status)
+        {
+            string sql = string.Format(@"UPDATE [sdk_UploadPackageInfo] SET [Status] = {0} WHERE [ID] = {1}",status, id);
+            int nRet = aideNativeWebFacade.ExecuteSql(sql);
+
+            var objJson = new { ret = 0 };
+            if (nRet <= 0) objJson = new { ret = 1 };
+
+            string strJson = "";
+            strJson = JsonConvert.SerializeObject(objJson);
+
+            return strJson;
+        }
+
+        [WebMethod]
+        public string GetPackgeStatus(string id, string systemname)
+        {
+            if (String.IsNullOrWhiteSpace(id))
+            {
+                id = "(0)";
+            }
+            else
+            {
+                id = "(" + id+ ")";
+            }
+            string sql = string.Format(@"SELECT [RecID],[PackageTaskStatus] FROM {0} WHERE [RecID] in {1}", String.Equals(systemname, "Android") ? "sdk_NewPackageCreateTask" : "sdk_NewPackageCreateTask_IOS", id);
+
+            DataSet ds = aideNativeWebFacade.GetDataSetBySql(sql);
+            var oData = ds.Tables[0].AsEnumerable();
+
+            var objJson = new { ret = 1, data = new List<object>() };
+
+            if (oData.Count() != 0)
+            {
+                var objtasklist = ds.Tables[0].AsEnumerable();
+                List<object> tasklist = new List<object>();
+                foreach (var item in objtasklist)
+                {
+                    tasklist.Add(new
+                    {
+                        RecID = item["RecID"],
+                        PackageTaskStatus = item["PackageTaskStatus"]
+                    });
+                }
+
+                objJson = new { ret = 0, data = tasklist };
+            }
+
+            string strJson = "";
+            strJson = JsonConvert.SerializeObject(objJson);
+
+            return strJson;
+        }
     }
 }

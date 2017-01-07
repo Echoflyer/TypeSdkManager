@@ -94,9 +94,9 @@ namespace SDKPackage.Facade
         /// <param name="platformlist"></param>
         /// <param name="systemid"></param>
         /// <returns></returns>
-        public Message UpdateGamePlatform(int gameid, string platformlist, int systemid)
+        public Message UpdateGamePlatform(int gameid, string platformlist, string versionList, int systemid)
         {
-            return aideNativeWebData.UpdateGamePlatform(gameid, platformlist, systemid);
+            return aideNativeWebData.UpdateGamePlatform(gameid, platformlist, versionList, systemid);
         }
 
         #endregion

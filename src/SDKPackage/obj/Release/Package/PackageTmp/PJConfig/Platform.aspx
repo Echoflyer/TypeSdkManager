@@ -18,7 +18,7 @@
                 $("#hfreturnVal").val("");
                 openfile(strhref, strParam);
             });
-            $("#MainContent_ListView1_itemPlaceholderContainer input:file").change(function () {
+            $("#itemPlaceholderContainer input:file").change(function () {
                 //return;
                 var fileName = $(this).val();
                 //判断上传文件的后缀名  
@@ -255,7 +255,7 @@
                                 </tr>
                             </EditItemTemplate>
                         </asp:ListView>
-                        <asp:SqlDataSource ID="SqlDataSourcePlatform" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+                        <asp:SqlDataSource ID="SqlDataSourcePlatform" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>"
                             SelectCommand="sdk_getPlatformListInfo" SelectCommandType="StoredProcedure"
                             UpdateCommand="Update [sdk_Platform] set SdkVersion=@SdkVersion where ID=@ID" UpdateCommandType="Text" DeleteCommand="delete from sdk_Platform where MyVersionID=@SdkVersion and [SystemID]=@Platforms and id=@ID">
                             <SelectParameters>

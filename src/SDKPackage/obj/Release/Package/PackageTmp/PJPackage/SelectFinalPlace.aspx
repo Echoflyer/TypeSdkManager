@@ -1,6 +1,15 @@
 ﻿<%@ Page Title="SDK打包管理系统" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="SelectFinalPlace.aspx.cs" Inherits="SDKPackage.PJPackage.SelectFinalPlace" %>
-
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+<style>
+.form-group .text-danger label{
+    padding-left: 5px;
+    margin-bottom: 0px;
+    line-height: 24px;
+}
+.form-group span{
+    line-height: 25px;
+}
+</style>
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
@@ -116,7 +125,7 @@
                     </table>
 
 
-                    <asp:SqlDataSource ID="SqlDataSourceGamePlaceList" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="[sdk_getGameFinalPlatforms]" SelectCommandType="StoredProcedure">
+                    <asp:SqlDataSource ID="SqlDataSourceGamePlaceList" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="[sdk_getGameFinalPlatforms]" SelectCommandType="StoredProcedure">
                         <SelectParameters>
                             <asp:QueryStringParameter Name="GameID" Type="Int32" QueryStringField="gameid" />
                             <asp:QueryStringParameter Name="SystemID" Type="String" QueryStringField="platform" />

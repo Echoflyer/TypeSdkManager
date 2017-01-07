@@ -32,7 +32,7 @@
                         <EditItemTemplate>
                             <div class="col-md-3 text-center">
                                 <div class="thumbnail" style="height:250px;">
-                                    <img data-src="holder.js/150x150?text=<%# Eval("IconName") %>" alt="150x150" style="width: 150px; height: 150px; margin-top:10px"" src="/icon/<%# Eval("GameName") %>/<%# Eval("IconName") %>/app_icon.png"></img>
+                                    <img data-src="holder.js/150x150?text=<%# Eval("IconName") %>" alt="150x150" style="width: 150px; height: 150px; margin-top:10px"" src="/icon<%# (systemname == "2") ? "-ios" : "" %>/<%# Eval("GameID") %>/<%# Eval("IconName") %>/app_icon.png"></img>
                                     <%# Eval("IconName") %>
                                     <br /><br />
                                     <div class="row">
@@ -58,7 +58,7 @@
                         <ItemTemplate>
                             <div class="col-md-3 text-center">
                                 <div class="thumbnail" style="height:250px;">
-                                    <img data-src="holder.js/150x150?text=<%# Eval("IconName") %>" alt="150x150" style="width: 150px; height: 150px; margin-top:10px"" src="/icon/<%# Eval("GameName") %>/<%# Eval("IconName") %>/app_icon.png"></img>
+                                    <img data-src="holder.js/150x150?text=<%# Eval("IconName") %>" alt="150x150" style="width: 150px; height: 150px; margin-top:10px"" src="/icon<%# (systemname == "2") ? "-ios" : "" %>/<%# Eval("GameID") %>/<%# Eval("IconName") %>/app_icon.png"></img>
                                 <%# Eval("IconName") %>
                                 <br /><br />
                                 <asp:Button runat="server" CommandName="Edit" CssClass="btn btn-sm btn-primary" Text="选择此图标" ID="EditButton" />

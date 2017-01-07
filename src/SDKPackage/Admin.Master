@@ -15,20 +15,13 @@
     <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-
-    <!-- PNotify -->
-    <link href="/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
-    <link href="/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
-    <link href="/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
-
     <!-- Switchery -->
     <link href="/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
-
     <!-- bootstrap-progressbar -->
     <link href="/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="/build/css/custom.min.css" rel="stylesheet">
+    <link href="/build/css/custom.css" rel="stylesheet">
   
     <!-- jQuery -->
     <script src="/vendors/jquery/dist/jquery.min.js"></script>
@@ -42,7 +35,7 @@
                 <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="/" class="site_title"><i class="fa fa-rocket"></i> <span>TypeSDK Platform</span></a>
+              <a href="/" class="site_title"><i style="border:none;" class="fa fa-paper-plane"></i> <span style=" font-size: 16px">TypeSDK 出包管理平台</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -105,15 +98,7 @@
                             <a href="/DownLoad/DownLoadAndroidPackage">Android包下载</a>
                         </li>
                         <li>
-                            <a href="#" onClick="
-                new PNotify({
-                                  title: '提示',
-                                  text: 'TypeSDK免费版本不支持IOS打包，请购买高级或企业版本。',
-                                  type: 'info',
-                                  styling: 'bootstrap3',
-                                  addclass: 'dark',
-                  delay: 5000
-                              });">IOS包下载</a>
+                            <a href="/DownLoad/DownLoadIOSPackage">IOS包下载</a>
                         </li>
             </ul>
             </li>
@@ -129,6 +114,12 @@
                             <a href="/GameConfig/GameList">游戏管理</a>
                         </li>
                         <li>
+                            <a href="/GameConfig/GameProjectVersionManage">游戏版本管理</a>
+                        </li>
+                        <li>
+                            <a href="/GameConfig/GameChannelPackageManage">游戏渠道包管理</a>
+                        </li>
+                        <li>
                             <a href="/GameIcon/GameIconList">图标管理</a>
                         </li>
                         <li>
@@ -142,6 +133,17 @@
                         </li>--%>
                         <li id="m13">
                             <a href="/ADMIN/Users">平台用户管理</a>
+                        </li>
+            </ul>
+            </li>
+            <li>
+			<a><i class="fa fa-github"></i> 源代码 <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+                        <li>
+                            <a target="_blank" href="http://www.typesdk.com/download/?c=5">CSDN</a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://github.com/typesdk">GitHub</a>
                         </li>
             </ul>
             </li>
@@ -226,15 +228,8 @@
     <script src="/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
     <script src="/vendors/iCheck/icheck.min.js"></script>
-
-  <!-- PNotify -->
-    <script src="/vendors/pnotify/dist/pnotify.js"></script>
-    <script src="/vendors/pnotify/dist/pnotify.buttons.js"></script>
-    <script src="/vendors/pnotify/dist/pnotify.nonblock.js"></script>
-
     <!-- Switchery -->
     <script src="/vendors/switchery/dist/switchery.min.js"></script>
-
     <!-- Skycons -->
     <script src="/vendors/skycons/skycons.js"></script>
   <!-- Jquery cookie -->
@@ -255,7 +250,7 @@
     <script src="/js/datepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="/build/js/custom.min.js"></script>
+    <script src="/build/js/custom.js"></script>
 
     <!-- Flot -->
     <script>

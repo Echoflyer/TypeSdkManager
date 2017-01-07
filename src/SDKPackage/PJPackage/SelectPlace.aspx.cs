@@ -88,14 +88,14 @@ namespace SDKPackage.PJPackage
             if (platform == "Android")
             {
                 string iconPath = System.Configuration.ConfigurationManager.AppSettings["SDKAndroidPackageIcon"];
-                iconPath += gameName + "\\" + iconName + "\\";
+                iconPath += gameId + "\\" + iconName + "\\";
                 if (!System.IO.Directory.Exists(iconPath))//判断图标文件是否存在
                 {
                     dtNew.Rows[row]["error"] = "图标文件不存在";
                     return;
                 }
                 string configPath = System.Configuration.ConfigurationManager.AppSettings["SDKAndroidPackageConfig"];
-                configPath += gameName + "\\" + (pluginid == "0" ? platformName : platformName + "_LeBian") + "\\";
+                configPath += gameId + "\\" + (pluginid == "0" ? platformName : platformName + "_LeBian") + "\\";
                 if (!System.IO.Directory.Exists(configPath)) //判断config文件是否存在
                 {
                     dtNew.Rows[row]["error"] = "config文件不存在";
@@ -131,7 +131,7 @@ namespace SDKPackage.PJPackage
             else
             {
                 string iconPath = System.Configuration.ConfigurationManager.AppSettings["SDKIOSPackageIcon"];
-                iconPath += gamenamespell + "\\" + iconName + "\\";
+                iconPath += gameId + "\\" + iconName + "\\";
                 if (!System.IO.Directory.Exists(iconPath))//判断图标文件是否存在
                 {
                     dtNew.Rows[row]["error"] = "图标文件不存在";

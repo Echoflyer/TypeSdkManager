@@ -33,12 +33,12 @@
                                 <div class="form-group">
                                     <label class="control-label">查看游戏</label>
                                     <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" DataSourceID="SqlDataSourceGame" DataTextField="GameDisplayName" DataValueField="GameID" AutoPostBack="True"></asp:DropDownList>
-                                    <asp:SqlDataSource ID="SqlDataSourceGame" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="select GameID,GameDisplayName from sdk_gameInfo"></asp:SqlDataSource>
+                                    <asp:SqlDataSource ID="SqlDataSourceGame" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="select GameID,GameDisplayName from sdk_gameInfo"></asp:SqlDataSource>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">查看版本</label>
                                     <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control" DataSourceID="SqlDataSourceGameVersion" DataTextField="GameVersion" DataValueField="id" AutoPostBack="True"></asp:DropDownList>
-                                    <asp:SqlDataSource ID="SqlDataSourceGameVersion" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="  select id=0,GameVersion='--全部--' union all select id,(GameVersion+'_'+PageageTable) as GameVersion from [sdk_UploadPackageInfo] where GameID=@GameID and GamePlatFrom='Android'">
+                                    <asp:SqlDataSource ID="SqlDataSourceGameVersion" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="  select id=0,GameVersion='--全部--' union all select id,(GameVersion+'_'+PageageTable) as GameVersion from [sdk_UploadPackageInfo] where GameID=@GameID and GamePlatFrom='Android'">
                                         <SelectParameters>
                                             <asp:ControlParameter ControlID="DropDownList1" Name="GameID" PropertyName="SelectedValue" Type="Int32" />
                                         </SelectParameters>
@@ -77,7 +77,7 @@
                                             <asp:Label ID="Label4" runat="server" Text='<%# Eval("Compellation") %>' />
                                         </td>
                                         <td>
-                                            <%#Eval("IsSign").ToString()=="1"?"<a class=\"btn btn-primary btn-sm\" href=\"/share/output/apk/"+Eval("GameName")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>":"<a class=\"btn btn-primary btn-xs\" href=\"/share/output/apk/"+Eval("GameName")+"/"+Eval("CreateTaskID")+"/us_"+Eval("PackageName")+"\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>" %>
+                                            <%#Eval("IsSign").ToString()=="1"?"<a class=\"btn btn-primary btn-sm\" href=\"/share/output/apk/"+Eval("GameID")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>":"<a class=\"btn btn-primary btn-xs\" href=\"/share/output/apk/"+Eval("GameName")+"/"+Eval("CreateTaskID")+"/us_"+Eval("PackageName")+"\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>" %>
                                         </td>
                                     </tr>
                                 </AlternatingItemTemplate>
@@ -110,7 +110,7 @@
                                             <asp:Label ID="Label4" runat="server" Text='<%# Eval("Compellation") %>' />
                                         </td>
                                         <td>
-                                            <%#Eval("IsSign").ToString()=="1"?"<a class=\"btn btn-primary btn-sm\" href=\"/share/output/apk/"+Eval("GameName")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>":"<a class=\"btn btn-primary btn-xs\" href=\"/share/output/apk/"+Eval("GameName")+"/"+Eval("CreateTaskID")+"/us_"+Eval("PackageName")+"\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>" %>
+                                            <%#Eval("IsSign").ToString()=="1"?"<a class=\"btn btn-primary btn-sm\" href=\"/share/output/apk/"+Eval("GameID")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>":"<a class=\"btn btn-primary btn-xs\" href=\"/share/output/apk/"+Eval("GameName")+"/"+Eval("CreateTaskID")+"/us_"+Eval("PackageName")+"\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>" %>
                                         </td>
                                     </tr>
                                 </ItemTemplate>
@@ -134,12 +134,14 @@
                                     </table>
                                 </LayoutTemplate>
                             </asp:ListView>
-                            <asp:SqlDataSource ID="SqlDataSourcePackage" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="sdk_getPackageList" SelectCommandType="StoredProcedure">
+                            <asp:SqlDataSource ID="SqlDataSourcePackage" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="sdk_getPackageList" SelectCommandType="StoredProcedure">
                                 <SelectParameters>
                                     <asp:ControlParameter ControlID="DropDownList1" Name="GameID" Type="Int32" DefaultValue="0" />
                                     <asp:ControlParameter ControlID="DropDownList2" Name="PackTaskID" Type="Int32" DefaultValue="0" />
                                     <asp:Parameter Name="SystemName" Type="String" DefaultValue="Android" />
                                     <asp:ControlParameter ControlID="DropDownList4" Name="IsSign" Type="String" />
+
+                                    <asp:Parameter Name="PackageReviewStatus" Type="Int32" DefaultValue="1" />
                                 </SelectParameters>
                             </asp:SqlDataSource>
 

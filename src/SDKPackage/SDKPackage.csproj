@@ -56,6 +56,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PListNet, Version=2.0.6166.27818, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PListNet.dll</HintPath>
+    </Reference>
     <Reference Include="ServiceStack.Common">
       <HintPath>..\ServiceStack.Common.dll</HintPath>
     </Reference>
@@ -224,8 +228,6 @@
     <Content Include="build\css\custom.min.css" />
     <Content Include="build\js\custom.js" />
     <Content Include="build\js\custom.min.js" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\Site.css" />
     <Content Include="css\bootstrap-admin-theme-change-size.css" />
     <Content Include="css\bootstrap-admin-theme-small.css" />
     <Content Include="css\bootstrap-admin-theme.css" />
@@ -249,8 +251,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\Ubuntu-LICENSE.txt" />
     <Content Include="GameConfig\AddGamePlatfrom.aspx" />
+    <Content Include="GameConfig\GameChannelPackageManage.aspx" />
     <Content Include="GameConfig\GameConfig.aspx" />
     <Content Include="GameConfig\GameList.aspx" />
+    <Content Include="GameConfig\GameProjectVersionManage.aspx" />
     <Content Include="GameConfig\GamePlatformConfig.aspx" />
     <Content Include="GameConfig\GamePlatformIcon.aspx" />
     <Content Include="GameConfig\GamePlatformReplaceKey.aspx" />
@@ -259,19 +263,10 @@
     <Content Include="ICSharpCode.SharpZipLib.dll" />
     <Content Include="images\bg-input-focus.png" />
     <Content Include="images\bg-input.png" />
-    <Content Include="images\img.jpg" />
     <Content Include="images\logo-meritoo.png" />
     <Content Include="images\sprite.png" />
-    <Content Include="img\Android.png" />
-    <Content Include="img\gameicon\20161025105502_9371.png" />
-    <Content Include="img\IOS.png" />
     <Content Include="img\er.gif" />
     <Content Include="img\ok.gif" />
-    <Content Include="img\platformicon\20160219165352_7038.png" />
-    <Content Include="img\platformicon\20160816113411_8463.png" />
-    <Content Include="img\platformicon\20160816113516_3932.png" />
-    <Content Include="img\platformicon\20160816113609_4401.png" />
-    <Content Include="img\platformicon\20160816114622_4401.png" />
     <Content Include="img\scz.gif" />
     <Content Include="img\upimg.jpg" />
     <Content Include="img\wait.gif" />
@@ -311,44 +306,8 @@
     <Content Include="PJPackage\SelectPackageInfo.aspx" />
     <Content Include="PJPackage\SelectPlace.aspx" />
     <Content Include="PJPackage\SelectPlatform.aspx" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="packages.config" />
     <Content Include="js\maps\us-unemployment.json" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\jquery.fileDownload.js" />
-    <Content Include="Scripts\jquery.fileupload.js" />
-    <Content Include="Scripts\jquery.form.js" />
-    <Content Include="Scripts\jquery.ui.widget.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\modernizr.min.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\WebForms\DetailsView.js" />
-    <Content Include="Scripts\WebForms\Focus.js" />
-    <Content Include="Scripts\WebForms\GridView.js" />
-    <Content Include="Scripts\WebForms\Menu.js" />
-    <Content Include="Scripts\WebForms\MenuStandards.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
-    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
-    <Content Include="Scripts\WebForms\SmartNav.js" />
-    <Content Include="Scripts\WebForms\TreeView.js" />
-    <Content Include="Scripts\WebForms\WebForms.js" />
-    <Content Include="Scripts\WebForms\WebParts.js" />
-    <Content Include="Scripts\WebForms\WebUIValidation.js" />
-    <None Include="Scripts\_references.js" />
-    <Content Include="share\share.txt" />
     <Content Include="SystemManagement\SystemManagement.aspx" />
     <Content Include="TaskManage.aspx" />
     <Content Include="WS\WSNativeWeb.asmx" />
@@ -378,7 +337,6 @@
     <Content Include="Bundle.config" />
     <Content Include="Upload_Img.ashx" />
     <Content Include="SystemManagement\Web.config" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -528,6 +486,13 @@
     <Compile Include="GameConfig\AddGamePlatfrom.aspx.designer.cs">
       <DependentUpon>AddGamePlatfrom.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GameConfig\GameChannelPackageManage.aspx.cs">
+      <DependentUpon>GameChannelPackageManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GameConfig\GameChannelPackageManage.aspx.designer.cs">
+      <DependentUpon>GameChannelPackageManage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GameConfig\GameConfig.aspx.cs">
       <DependentUpon>GameConfig.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -541,6 +506,13 @@
     </Compile>
     <Compile Include="GameConfig\GameList.aspx.designer.cs">
       <DependentUpon>GameList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GameConfig\GameProjectVersionManage.aspx.cs">
+      <DependentUpon>GameProjectVersionManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GameConfig\GameProjectVersionManage.aspx.designer.cs">
+      <DependentUpon>GameProjectVersionManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="GameConfig\GamePlatformConfig.aspx.cs">
       <DependentUpon>GamePlatformConfig.aspx</DependentUpon>
@@ -725,6 +697,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\zh-Hans\" />
+    <Folder Include="Scripts\" />
     <Folder Include="TaskLog\" />
   </ItemGroup>
   <ItemGroup>

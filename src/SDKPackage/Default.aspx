@@ -5,7 +5,7 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2><i class="fa fa-flag"> 欢迎</i></h2>
-                    <ul class="nav navbar-right panel_toolbox">
+					<ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
                     </ul>
@@ -20,11 +20,11 @@
         </div>
     </div>
 
-    <div class="row">
+        <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2><i class="fa fa-download"> Demo下载</i></h2>
+                    <h2><i class="fa fa-book"> 使用帮助</i></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -32,8 +32,11 @@
                 <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <p>您可以下载我们为您准备的Unity Demo源代码:</p>
-                    <div class="row"><div class="col-md-3 col-sm-6 col-xs-12" style=" float: none; margin: 0 auto;"><a class="btn btn-success btn-block" target="_block" href="https://code.aliyun.com/typesdk/TypeSdk_Client/tree/master/TypeSDKClientPackage/2.0/TypeSDKDemo">Unity Demo 源代码</a></div></div>
+                    <p>请点击下面按钮移步浏览我们的平台使用说明：</p>
+                    <div class="row"><div class="col-md-3 col-sm-6 col-xs-12" style=" float: none; margin: 0 auto;"><a class="btn btn-success btn-block" target="_block" href="http://www.typesdk.com/docs/typesdk_install/manage_guilde/">TypeSDK打包平台使用说明</a></div></div>
+                    
+                    <p>或直接下载我们为您准备的Unity Demo源代码:</p>
+                    <div class="row"><div class="col-md-3 col-sm-6 col-xs-12" style=" float: none; margin: 0 auto;"><a class="btn btn-success btn-block" target="_block" href="http://120.27.201.22:30003/TypeSDKDemo.zip">Unity Demo 源代码</a></div></div>
                     
                 </div>
             </div>
@@ -97,17 +100,4 @@
             </div>
         </div>
     </div>
-
-<script>
-$(window).load(function(){
-      new PNotify({
-          title: '提示',
-          text: '当前为免费版本，如需分布式打包并开放效率工具，请购买高级或企业版本。',
-          type: 'info',
-          styling: 'bootstrap3',
-          addclass: 'dark',
-          delay: 5000
-      });
-    });
-</script>
 </asp:Content>

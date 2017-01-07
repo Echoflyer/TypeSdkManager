@@ -1,4 +1,5 @@
-﻿<%@ Page Title="密钥管理" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="KeyConfig.aspx.cs" Inherits="SDKPackage.PJConfig.KeyConfig" %>
+﻿
+<%@ Page Title="密钥管理" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="KeyConfig.aspx.cs" Inherits="SDKPackage.PJConfig.KeyConfig" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
@@ -52,7 +53,7 @@
                         </LayoutTemplate>
                     </asp:ListView>
 
-                    <asp:SqlDataSource ID="SqlDataSourceSignekey" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" DeleteCommand="DELETE FROM [sdk_SignatureKey] WHERE [Id] = @Id" InsertCommand="INSERT INTO [sdk_SignatureKey] ([KeyName], [KeyStore], [KeyStorePassword], [KeyAlias], [KeyAliasPassword]) VALUES (@KeyName, @KeyStore, @KeyStorePassword, @KeyAlias, @KeyAliasPassword)" SelectCommand="SELECT * FROM [sdk_SignatureKey]" UpdateCommand="UPDATE [sdk_SignatureKey] SET [KeyName] = @KeyName, [KeyStore] = @KeyStore, [KeyStorePassword] = @KeyStorePassword, [KeyAlias] = @KeyAlias, [KeyAliasPassword] = @KeyAliasPassword WHERE [Id] = @Id">
+                    <asp:SqlDataSource ID="SqlDataSourceSignekey" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" DeleteCommand="DELETE FROM [sdk_SignatureKey] WHERE [Id] = @Id" InsertCommand="INSERT INTO [sdk_SignatureKey] ([KeyName], [KeyStore], [KeyStorePassword], [KeyAlias], [KeyAliasPassword]) VALUES (@KeyName, @KeyStore, @KeyStorePassword, @KeyAlias, @KeyAliasPassword)" SelectCommand="SELECT * FROM [sdk_SignatureKey]" UpdateCommand="UPDATE [sdk_SignatureKey] SET [KeyName] = @KeyName, [KeyStore] = @KeyStore, [KeyStorePassword] = @KeyStorePassword, [KeyAlias] = @KeyAlias, [KeyAliasPassword] = @KeyAliasPassword WHERE [Id] = @Id">
                         <DeleteParameters>
                             <asp:Parameter Name="Id" Type="Int32" />
                         </DeleteParameters>

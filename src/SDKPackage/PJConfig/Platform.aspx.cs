@@ -15,6 +15,7 @@ namespace SDKPackage.PJConfig
         protected string platfromid = string.Empty;
         protected string myversion = string.Empty;
         static DataSet ds = new DataSet();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             platfromid = this.ddlPlatforms.SelectedValue;
@@ -28,7 +29,8 @@ namespace SDKPackage.PJConfig
         private void BindingDsPlatformVersion()
         {
             string systemid = this.ddlPlatforms.SelectedValue;
-            string sqlAndroid = string.Format(@"select id,PlatformID,[Version] from [sdk_PlatformVersion] where SystemID=" + systemid + " order by Version desc");
+            //string sqlAndroid = string.Format(@"select id,PlatformID,[Version] from [sdk_PlatformVersion] where SystemID=" + systemid + " order by Version desc");
+            string sqlAndroid = string.Format(@"select id,PlatformID,[Version],[SystemID] from [sdk_PlatformVersion] order by Version desc");
             ds = aideNativeWebFacade.GetDataSetBySql(sqlAndroid);
         }
 
@@ -70,6 +72,7 @@ namespace SDKPackage.PJConfig
             dt.Columns.Add("id", typeof(string));
             dt.Columns.Add("PlatformID", typeof(string));
             dt.Columns.Add("Version", typeof(string));
+            dt.Columns.Add("SystemID", typeof(string));
             ds.Tables.Add(dt);
             return ds;
         }

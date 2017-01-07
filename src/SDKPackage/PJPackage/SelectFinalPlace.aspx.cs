@@ -186,10 +186,10 @@ namespace SDKPackage.PJPackage
         private bool ExisitFile(string platformName, string platformVersion, string iconName)
         {
             string iconPath = System.Configuration.ConfigurationManager.AppSettings["SDKAndroidPackageIcon"];
-            iconPath += gameName + "\\" + iconName + "\\";
+            iconPath += gameId + "\\" + iconName + "\\";
             if (!System.IO.Directory.Exists(iconPath)) return false;//判断图标文件是否存在
             string configPath = System.Configuration.ConfigurationManager.AppSettings["SDKAndroidPackageConfig"];
-            configPath += gameName + "\\" + platformName + "\\";
+            configPath += gameId + "\\" + platformName + "\\";
             if (!System.IO.Directory.Exists(configPath)) return false;//判断config文件是否存在
             string platformVersionPath = System.Configuration.ConfigurationManager.AppSettings["SDKPlatformVersion"];
             platformVersionPath += platformName + "\\" + platformVersion + "\\";

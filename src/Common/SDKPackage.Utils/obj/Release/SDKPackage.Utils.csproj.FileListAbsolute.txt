@@ -12,3 +12,11 @@ D:\TypeSVN_Package\Controller\Common\SDKPackage.Utils\bin\Release\Newtonsoft.Jso
 D:\TypeSVN_Package\Controller\Common\SDKPackage.Utils\obj\Release\SDKPackage.Utils.csprojResolveAssemblyReference.cache
 D:\TypeSVN_Package\Controller\Common\SDKPackage.Utils\obj\Release\SDKPackage.Utils.dll
 D:\TypeSVN_Package\Controller\Common\SDKPackage.Utils\obj\Release\SDKPackage.Utils.pdb
+D:\工作资料文件夹\星渠\代码\Package\Package_Enterprise\Common\SDKPackage.Utils\bin\Release\SDKPackage.Utils.dll
+D:\工作资料文件夹\星渠\代码\Package\Package_Enterprise\Common\SDKPackage.Utils\bin\Release\SDKPackage.Utils.pdb
+D:\工作资料文件夹\星渠\代码\Package\Package_Enterprise\Common\SDKPackage.Utils\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\工作资料文件夹\星渠\代码\Package\Package_Enterprise\Common\SDKPackage.Utils\bin\Release\Newtonsoft.Json.dll
+D:\工作资料文件夹\星渠\代码\Package\Package_Enterprise\Common\SDKPackage.Utils\bin\Release\Newtonsoft.Json.xml
+D:\工作资料文件夹\星渠\代码\Package\Package_Enterprise\Common\SDKPackage.Utils\obj\Release\SDKPackage.Utils.csprojResolveAssemblyReference.cache
+D:\工作资料文件夹\星渠\代码\Package\Package_Enterprise\Common\SDKPackage.Utils\obj\Release\SDKPackage.Utils.dll
+D:\工作资料文件夹\星渠\代码\Package\Package_Enterprise\Common\SDKPackage.Utils\obj\Release\SDKPackage.Utils.pdb

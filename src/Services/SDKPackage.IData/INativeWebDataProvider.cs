@@ -56,7 +56,7 @@ namespace SDKPackage.IData
         /// <param name="platformlist"></param>
         /// <param name="systemid"></param>
         /// <returns></returns>
-        Message UpdateGamePlatform(int gameid, string platformlist, int systemid);
+        Message UpdateGamePlatform(int gameid, string platformlist, string versionList, int systemid);
         #endregion
 
         #region 打包任务处理

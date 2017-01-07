@@ -26,3 +26,13 @@ D:\TypeSVN_Package\Controller\Common\SDKPackage.Kernel\bin\Debug\Newtonsoft.Json
 D:\TypeSVN_Package\Controller\Common\SDKPackage.Kernel\obj\Debug\SDKPackage.Kernel.csprojResolveAssemblyReference.cache
 D:\TypeSVN_Package\Controller\Common\SDKPackage.Kernel\obj\Debug\SDKPackage.Kernel.dll
 D:\TypeSVN_Package\Controller\Common\SDKPackage.Kernel\obj\Debug\SDKPackage.Kernel.pdb
+D:\工作资料文件夹\星渠\代码\Package\Package_Enterprise\Common\SDKPackage.Kernel\bin\Debug\SDKPackage.Kernel.dll
+D:\工作资料文件夹\星渠\代码\Package\Package_Enterprise\Common\SDKPackage.Kernel\bin\Debug\SDKPackage.Kernel.pdb
+D:\工作资料文件夹\星渠\代码\Package\Package_Enterprise\Common\SDKPackage.Kernel\bin\Debug\Newtonsoft.Json.dll
+D:\工作资料文件夹\星渠\代码\Package\Package_Enterprise\Common\SDKPackage.Kernel\bin\Debug\SDKPackage.Utils.dll
+D:\工作资料文件夹\星渠\代码\Package\Package_Enterprise\Common\SDKPackage.Kernel\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\工作资料文件夹\星渠\代码\Package\Package_Enterprise\Common\SDKPackage.Kernel\bin\Debug\SDKPackage.Utils.pdb
+D:\工作资料文件夹\星渠\代码\Package\Package_Enterprise\Common\SDKPackage.Kernel\bin\Debug\Newtonsoft.Json.xml
+D:\工作资料文件夹\星渠\代码\Package\Package_Enterprise\Common\SDKPackage.Kernel\obj\Debug\SDKPackage.Kernel.csprojResolveAssemblyReference.cache
+D:\工作资料文件夹\星渠\代码\Package\Package_Enterprise\Common\SDKPackage.Kernel\obj\Debug\SDKPackage.Kernel.dll
+D:\工作资料文件夹\星渠\代码\Package\Package_Enterprise\Common\SDKPackage.Kernel\obj\Debug\SDKPackage.Kernel.pdb
