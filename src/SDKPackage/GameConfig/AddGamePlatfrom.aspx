@@ -94,12 +94,13 @@
                             if (arrList[i] == checkboxList[j].value) {
                                 $(checkboxList[j]).parent("div").addClass("checked");
                                 $(checkboxList[j]).attr("checked", true);
-                                    for (var k = 0; k < pfidlist.length; k++) {
-                                        if (pfidlist[k].value == checkboxList[j].value) {
-                                            $(checkboxList[j]).closest("tr").children("td:nth-child(1) > select").val($(pfidlist[k]).closest("tr").children("td:nth-child(2) > input").val());//version list 选中
-                                            $(checkboxList[j]).closest("tr").children("td:nth-child(3) > select").val($(pfidlist[k]).closest("tr").children("td:nth-child(2) > input").val());//sign list 选中
-                                        }
+
+                                for (var k = 0; k < pfidlist.length; k++) {
+                                    if (pfidlist[k].value == checkboxList[j].value) {
+                                        $(checkboxList[j]).closest("tr").find("td:nth-child(2) > select").val($(pfidlist[k]).closest("tr").find("td:nth-child(3) > input").val());//version list 选中
+                                        $(checkboxList[j]).closest("tr").find("td:nth-child(4) > select").val($(pfidlist[k]).closest("tr").find("td:nth-child(4) > input").val());//sign list 选中
                                     }
+                                }
                                 break;
                             }
                             $(checkboxList[j]).next("input:checkbox").attr("checked", false);
@@ -120,7 +121,7 @@
 
                         for (var k = 0; k < pfidlist.length; k++) {
                             if (pfidlist[k].value == checkboxList[j].value) {
-                                $(checkboxList[j]).closest("tr").children("td:nth-child(1) > select").val($(pfidlist[k]).closest("tr").children("td:nth-child(2) > input").val());//version list 选中
+                                $(checkboxList[j]).closest("tr").find("td:nth-child(2) > select").val($(pfidlist[k]).closest("tr").find("td:nth-child(3) > input").val());//version list 选中
                             }
                         }
 

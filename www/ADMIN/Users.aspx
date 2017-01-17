@@ -205,7 +205,7 @@
                             </table>
                         </LayoutTemplate>
                     </asp:ListView>
-                    <asp:SqlDataSource ID="SqlDataSourceUser" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="sdk_getUsers" SelectCommandType="StoredProcedure" UpdateCommand="sdk_setUserRole" UpdateCommandType="StoredProcedure" DeleteCommand="sdk_deleteUser" DeleteCommandType="StoredProcedure">
+                    <asp:SqlDataSource ID="SqlDataSourceUser" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="sdk_getUsers" SelectCommandType="StoredProcedure" UpdateCommand="sdk_setUserRole" UpdateCommandType="StoredProcedure" DeleteCommand="sdk_deleteUser" DeleteCommandType="StoredProcedure">
                         <UpdateParameters>
                             <asp:Parameter Name="Id" Type="String" />
                             <asp:Parameter Name="Compellation" Type="String" />

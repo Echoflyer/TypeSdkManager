@@ -231,8 +231,8 @@ namespace SDKPackage.GameConfig
                 {
                     BindingList();
                     MessageLabel.Text = "游戏新增成功";
-                    CreateGameImgList("", gamename, gameicon, false);
-                    //CreateIOSIcon(CtrlHelper.GetText(hfgameID), gamename, gameicon, true);
+                    CreateGameImgList(umsg.Content, gamename, gameicon, false);
+                    CreateIOSIcon(umsg.Content, gameNameSpell, gameicon, true);
                 }
                 else
                 {
@@ -289,7 +289,7 @@ namespace SDKPackage.GameConfig
                 string[] IconType = { "drawable", "drawable-ldpi", "drawable-mdpi", "drawable-hdpi", "drawable-xhdpi", "drawable-xxhdpi", "drawable-xxxhdpi", "512" };
                 int imgsize = 0;
                 string SDKAndroidPackageIcon = System.Configuration.ConfigurationManager.AppSettings["SDKAndroidPackageIcon"];
-                string uploadPatch = SDKAndroidPackageIcon + gamename + "\\" + gamename + "_Default\\";
+                string uploadPatch = SDKAndroidPackageIcon + gameid + "\\" + gamename + "_Default\\";
                 if (!System.IO.Directory.Exists(uploadPatch))
                 {
                     System.IO.Directory.CreateDirectory(uploadPatch);
@@ -330,6 +330,7 @@ namespace SDKPackage.GameConfig
                     ImageHelper.CreateSDKGameDefault(Server.MapPath("\\") + gameicon, thumbnailPath, imgsize, imgsize);
 
                 }
+                ImageHelper.CreateSDKGameDefault(Server.MapPath("\\") + gameicon, uploadPatch + "app_icon.png", 512, 512);
                 if (sqlFlag)
                 {
                     Dictionary<string, string> dic = new Dictionary<string, string>();
@@ -356,7 +357,7 @@ namespace SDKPackage.GameConfig
             string SDKPackageDir = string.Empty;
             SDKPackageDir = System.Configuration.ConfigurationManager.AppSettings["SDKIOSPackageIcon"];
 
-            string uploadPatch = SDKPackageDir + gamename + "\\" + gamename + "_Default\\";
+            string uploadPatch = SDKPackageDir + gameid + "\\" + gamename + "_Default\\";
             try
             {
                 if (!System.IO.Directory.Exists(uploadPatch))
@@ -420,6 +421,7 @@ namespace SDKPackage.GameConfig
                     thumbnailPath = uploadPatch + "AppIcon.appiconset\\" + IconType[i] + ".png";
                     ImageHelper.CreateSDKGameDefault(Server.MapPath("\\") + gameicon, thumbnailPath, imgsize, imgsize);
                 }
+                ImageHelper.CreateSDKGameDefault(Server.MapPath("\\") + gameicon, uploadPatch + "app_icon.png", 512, 512);
                 if (sqlFlag)
                 {
                     Dictionary<string, string> dic = new Dictionary<string, string>();

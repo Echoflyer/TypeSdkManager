@@ -7,11 +7,11 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2>选择项目文件</h2>
-					<ul class="nav navbar-right panel_toolbox">
+                    <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
                     </ul>
-				<div class="clearfix"></div>
+                <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
                     <div class="form-inline navbar-left">
@@ -20,7 +20,7 @@
                             <%--<span class="value text-primary"><%= gameDisplayName %></span>--%>
                             <asp:DropDownList ID="ddlGames" runat="server" DataSourceID="dsGameNameList" DataTextField="GameDisplayName" DataValueField="GameID" AutoPostBack="True" OnSelectedIndexChanged="ddlGames_SelectedIndexChanged">
                             </asp:DropDownList>
-                            <asp:SqlDataSource ID="dsGameNameList" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="sdk_getGameList" SelectCommandType="StoredProcedure">
+                            <asp:SqlDataSource ID="dsGameNameList" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="sdk_getGameList" SelectCommandType="StoredProcedure">
                                 <SelectParameters>
                                     <asp:ControlParameter ControlID="saveusername" Type="String" Name="UserName" />
                                 </SelectParameters>
@@ -47,12 +47,12 @@
                             </EmptyDataTemplate>
 
                             <ItemTemplate>
-									<div class="form-group">
-									<div class="checkbox">
+                                    <div class="form-group">
+                                    <div class="checkbox">
                                 <tr>
                                     <td>
                                         <input type="radio" class="flat" name="radiogame" value="<%#Eval("ID") %>" />
-						            </td>
+                                    </td>
                                     <td><%#Eval("GameVersion") %></td>
                                     <td><%#Eval("PageageTable") %></td>
                                     <td><%#Eval("CollectDatetime") %></td>
@@ -92,7 +92,7 @@
                             </LayoutTemplate>
                         </asp:ListView>
                     </div>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="select upi.ID,upi.[GameVersion],upi.[PageageTable],upi.[CollectDatetime],upi.FileSize,upi.StrCollectDatetime,us.[Compellation],upi.[Status] from 
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="select upi.ID,upi.[GameVersion],upi.[PageageTable],upi.[CollectDatetime],upi.FileSize,upi.StrCollectDatetime,us.[Compellation],upi.[Status] from 
   [sdk_UploadPackageInfo] upi inner join AspNetUsers us on upi.UploadUser=us.UserName and GameID=@GameID and GamePlatFrom=@SystemName order by upi.id desc">
                         <SelectParameters>
                             <%--<asp:QueryStringParameter QueryStringField="gameid" Type="Int32" Name="GameID" />--%>

@@ -276,11 +276,11 @@ namespace SDKPackage.GameIcon
             string SDKPackageDir = string.Empty;
             SDKPackageDir = System.Configuration.ConfigurationManager.AppSettings["SDKAndroidPackageIcon"];
             string iconPatch = SDKPackageDir;
-            string gameName = this.ddlGameList.SelectedValue;
+            string gameID = this.ddlGameList.SelectedValue;
             string masterSaveFileName;
             string masterIconPatch;
 
-            masterIconPatch = SDKPackageDir + gameName + "\\" + DropDownListIcon.SelectedValue + "\\";
+            masterIconPatch = SDKPackageDir + gameID + "\\" + DropDownListIcon.SelectedValue + "\\";
 
             string ssUploadFileMd5;
             string ssUploadFileLastName;
@@ -322,7 +322,7 @@ namespace SDKPackage.GameIcon
                 ssSaveFileName = Server.MapPath(this.DropDownList2.SelectedValue);
             }
 
-            string IconPatch = SDKPackageDir + gameName + "\\" + IconName + "\\";
+            string IconPatch = SDKPackageDir + gameID + "\\" + IconName + "\\";
             createPatch(IconPatch);
 
             string[] IconType = { "drawable", "drawable-ldpi", "drawable-mdpi", "drawable-hdpi", "drawable-xhdpi", "drawable-xxhdpi", "drawable-xxxhdpi" };
@@ -490,5 +490,43 @@ namespace SDKPackage.GameIcon
                 //throw new Exception("error");
             }
         }
+
+        protected void SqlDataSourceGameIcon_Deleted(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            //e.Command.Parameters["@Id"].Value;
+            string SDKPackageDir = string.Empty;
+            string platform = CtrlHelper.GetSelectValue(DropDownListSystem);
+            
+            SDKPackageDir = string.Equals(platform,"1") ? System.Configuration.ConfigurationManager.AppSettings["SDKAndroidPackageIcon"]
+                                                        : System.Configuration.ConfigurationManager.AppSettings["SDKIOSPackageIcon"];
+
+            string gameID = this.ddlGameList.SelectedValue;
+
+            //OldValuesParameterFormatString = "old_{0}"
+            string IconPath = SDKPackageDir + gameID + "\\" + e.Command.Parameters["@IconName"].Value + "\\";
+
+            DeleteFolder(IconPath);
+
+            MessageLabel.Text = "";
+        }
+
+        /// <summary>  
+        /// 用递归方法删除文件夹目录及文件  
+        /// </summary>  
+        /// <param name="dir">带文件夹名的路径</param>   
+        public void DeleteFolder(string dir)
+        {
+            if (Directory.Exists(dir)) //如果存在这个文件夹删除之   
+            {
+                foreach (string d in Directory.GetFileSystemEntries(dir))
+                {
+                    if (File.Exists(d))
+                        File.Delete(d); //直接删除其中的文件                          
+                    else
+                        DeleteFolder(d); //递归删除子文件夹   
+                }
+                Directory.Delete(dir, true); //删除已空文件夹                   
+            }
+        } 
     }
 }

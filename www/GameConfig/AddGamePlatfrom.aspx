@@ -94,12 +94,13 @@
                             if (arrList[i] == checkboxList[j].value) {
                                 $(checkboxList[j]).parent("div").addClass("checked");
                                 $(checkboxList[j]).attr("checked", true);
-                                    for (var k = 0; k < pfidlist.length; k++) {
-                                        if (pfidlist[k].value == checkboxList[j].value) {
-                                            $(checkboxList[j]).closest("tr").children("td:nth-child(1) > select").val($(pfidlist[k]).closest("tr").children("td:nth-child(2) > input").val());//version list 选中
-                                            $(checkboxList[j]).closest("tr").children("td:nth-child(3) > select").val($(pfidlist[k]).closest("tr").children("td:nth-child(2) > input").val());//sign list 选中
-                                        }
+
+                                for (var k = 0; k < pfidlist.length; k++) {
+                                    if (pfidlist[k].value == checkboxList[j].value) {
+                                        $(checkboxList[j]).closest("tr").find("td:nth-child(2) > select").val($(pfidlist[k]).closest("tr").find("td:nth-child(3) > input").val());//version list 选中
+                                        $(checkboxList[j]).closest("tr").find("td:nth-child(4) > select").val($(pfidlist[k]).closest("tr").find("td:nth-child(4) > input").val());//sign list 选中
                                     }
+                                }
                                 break;
                             }
                             $(checkboxList[j]).next("input:checkbox").attr("checked", false);
@@ -115,12 +116,12 @@
                 for (var i = 0; i < arrList.length; i++) {
                     if (arrList[i] == checkboxList[j].value) {
                         //alert(arrList[i]);
-						$(checkboxList[j]).parent("div").addClass("checked");
-						$(checkboxList[j]).attr("checked", true);
+                        $(checkboxList[j]).parent("div").addClass("checked");
+                        $(checkboxList[j]).attr("checked", true);
 
                         for (var k = 0; k < pfidlist.length; k++) {
                             if (pfidlist[k].value == checkboxList[j].value) {
-                                $(checkboxList[j]).closest("tr").children("td:nth-child(1) > select").val($(pfidlist[k]).closest("tr").children("td:nth-child(2) > input").val());//version list 选中
+                                $(checkboxList[j]).closest("tr").find("td:nth-child(2) > select").val($(pfidlist[k]).closest("tr").find("td:nth-child(3) > input").val());//version list 选中
                             }
                         }
 
@@ -140,21 +141,21 @@
     <link href="/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="nav navbar-right">
+            <div class="nav navbar-right">
                         <a class="btn btn-primary " data-toggle="modal" data-target="#divGameSDKRedisList" id="syncRedis"><i class="fa fa-check-square-o"></i> 同步SDK服务器</a>
-			</div>
-		</div>
-	</div>
-	<div class="row">
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
                     <h2><%= gamedisplayname %> Android渠道设定</h2>
-					<ul class="nav navbar-right panel_toolbox">
+                    <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
                     </ul>
-				<div class="clearfix"></div>
+                <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
                     <div>
@@ -201,11 +202,11 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2><%= gamedisplayname %> IOS渠道设定</h2>
-					<ul class="nav navbar-right panel_toolbox">
+                    <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
                     </ul>
-				<div class="clearfix"></div>
+                <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
                     <div>

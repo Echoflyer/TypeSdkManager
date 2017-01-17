@@ -21,7 +21,7 @@ namespace SDKPackage.Data.Factory
         /// <returns></returns>
         public static INativeWebDataProvider GetINativeWebDataProvider()
         {
-            return ProxyFactory.CreateInstance<NativeWebDataProvider>(ConfigurationManager.ConnectionStrings["SdkPackageConnString2"].ToString());
+            return ProxyFactory.CreateInstance<NativeWebDataProvider>(ConfigurationManager.ConnectionStrings["SdkPackageConnString"].ToString());
         }
     }
 }

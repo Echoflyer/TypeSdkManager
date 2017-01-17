@@ -69,7 +69,7 @@
                             <tr runat="server" id="itemPlaceholder"></tr>
                         </LayoutTemplate>
                     </asp:ListView>
-                    <asp:SqlDataSource runat="server" ID="SqlDataSourceIcon" ConnectionString='<%$ ConnectionStrings:DefaultConnection %>' SelectCommand="sdk_getGameIconList" SelectCommandType="StoredProcedure" UpdateCommand="exec sdk_setPlatformGameIcon @IconName, @GameID, @PlatformID">
+                    <asp:SqlDataSource runat="server" ID="SqlDataSourceIcon" ConnectionString='<%$ ConnectionStrings:SdkPackageConnString %>' SelectCommand="sdk_getGameIconList" SelectCommandType="StoredProcedure" UpdateCommand="exec sdk_setPlatformGameIcon @IconName, @GameID, @PlatformID">
                         <SelectParameters>
                             <asp:QueryStringParameter QueryStringField="gameid" Name="GameID" Type="String"></asp:QueryStringParameter>
                             <asp:QueryStringParameter QueryStringField="systemid" Name="SystemID" Type="Int32"></asp:QueryStringParameter>

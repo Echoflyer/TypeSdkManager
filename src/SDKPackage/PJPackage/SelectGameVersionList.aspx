@@ -128,7 +128,7 @@
                             </LayoutTemplate>
                         </asp:ListView>
                     </div>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="select upi.ID,upi.[GameVersion],upi.[PageageTable],upi.[CollectDatetime],upi.FileSize,upi.StrCollectDatetime,us.[Compellation],upi.[Status] from 
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="select upi.ID,upi.[GameVersion],upi.[PageageTable],upi.[CollectDatetime],upi.FileSize,upi.StrCollectDatetime,us.[Compellation],upi.[Status] from 
   [sdk_UploadPackageInfo] upi inner join AspNetUsers us on upi.UploadUser=us.UserName and GameID=@GameID and GamePlatFrom=@SystemName and (case when @Status = 0 then upi.[Status] else @Status end) = upi.[Status] order by upi.id desc">
                         <SelectParameters>
                             <asp:QueryStringParameter QueryStringField="gameid" Type="Int32" Name="GameID" />

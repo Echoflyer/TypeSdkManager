@@ -150,15 +150,18 @@
                     </div>
                     <hr />
 
-                    <asp:ListView ID="ListView3" runat="server" DataSourceID="SqlDataSourceGameIcon">
+                    <asp:ListView ID="ListView3" runat="server" DataKeyNames="Id,IconName" DataSourceID="SqlDataSourceGameIcon">
                         <EmptyDataTemplate>
                             <div style="font-size: 20px; color: #f00; margin-top: 20px;">未配置</div>
                         </EmptyDataTemplate>
                         <ItemTemplate>
-                            <div class="col-md-3">
-                                <div class="thumbnail">
+                            <div class="col-md-3 text-center">
+                                <div class="thumbnail" style="height: 250px;">
                                     <img data-src="holder.js/150x150?text=<%# Eval("IconName") %>" alt="150x150" style="width: 150px; height: auto; margin-top:10px" src="/icon<%# (DropDownListSystem.SelectedValue == "2") ? "-ios" : "" %>/<%# Eval("GameID") %>/<%# Eval("IconName") %>/app_icon.png"></img>
                                     <label style="text-align:center" class="btn-block"><%# Eval("IconName") %></label>
+                                    <br />
+									<asp:Button style="margin: 0 auto" runat="server" CommandName="Delete" CssClass="btn btn-sm btn-danger fa" Text="&#xf1f8; 删除" OnClientClick="return confirm('确定要删除数据吗？')" ID="DeleteButton" />
+									<br />
                                 </div>
                             </div>
                         </ItemTemplate>
@@ -167,11 +170,16 @@
                                 </tr>
                         </LayoutTemplate>
                     </asp:ListView>
-                    <asp:SqlDataSource ID="SqlDataSourceGameIcon" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="sdk_getGameIconList" SelectCommandType="StoredProcedure">
+                    <asp:SqlDataSource ID="SqlDataSourceGameIcon" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="sdk_getGameIconList" SelectCommandType="StoredProcedure" 
+                        DeleteCommand="delete from sdk_icon where [Id]=@Id" OnDeleted="SqlDataSourceGameIcon_Deleted" >
                         <SelectParameters>
                             <asp:ControlParameter ControlID="ddlGameList" Name="GameID" PropertyName="SelectedValue" Type="String" />
                             <asp:ControlParameter ControlID="DropDownListSystem" Name="SystemID" Type="String" PropertyName="SelectedValue" />
                         </SelectParameters>
+                        <DeleteParameters>
+                            <asp:Parameter Name="Id" DbType="Int32" />
+                            <asp:Parameter Name="IconName" DbType="String"/>
+                        </DeleteParameters>
                     </asp:SqlDataSource>
                 </div>
             </div>

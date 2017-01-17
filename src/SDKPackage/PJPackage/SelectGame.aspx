@@ -83,7 +83,7 @@
                                     </div>
                                 </ItemTemplate>
                             </asp:Repeater>
-                            <asp:SqlDataSource ID="GameNameList" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="sdk_getGameList" SelectCommandType="StoredProcedure">
+                            <asp:SqlDataSource ID="GameNameList" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="sdk_getGameList" SelectCommandType="StoredProcedure">
                                 <SelectParameters>
                                     <asp:ControlParameter ControlID="saveusername" Type="String" Name="UserName" />
                                 </SelectParameters>

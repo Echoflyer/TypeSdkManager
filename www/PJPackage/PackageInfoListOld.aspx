@@ -1,4 +1,4 @@
-﻿<%@ Page Title="查询打包任务" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="PackageInfoList.aspx.cs" Inherits="SDKPackage.PJPackage.PackageInfoList" %>
+<%@ Page Title="查询打包任务" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="PackageInfoListOld.aspx.cs" Inherits="SDKPackage.PJPackage.PackageInfoListOld" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager runat="server">
@@ -64,7 +64,6 @@
             location.href = href;
         }
     </script>
-
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
@@ -196,21 +195,21 @@
     </div>
 
     <script type="text/javascript">
-         function deleteFile(obj, id, platform, filepath) {
-             if (confirm("确定要删除数据吗？")) {
-                 var tr = $(obj).parent("td").parent("tr");
-                 $.ajax({
-                     contentType: "application/json",
-                     async: false,
-                     url: "/WS/WSNativeWeb.asmx/DeletePlatformPackage",
-                     data: "{id:'" + id + "',platform:'" + platform + "',filepath:'" + filepath + "'}",
-                     type: "POST",
-                     dataType: "json", success: function () {
-                         tr.hide();
-                     }
-                 });
-             }
-         }
+        function deleteFile(obj, id, platform, filepath) {
+            if (confirm("确定要删除数据吗？")) {
+                var tr = $(obj).parent("td").parent("tr");
+                $.ajax({
+                    contentType: "application/json",
+                    async: false,
+                    url: "/WS/WSNativeWeb.asmx/DeletePlatformPackage",
+                    data: "{id:'" + id + "',platform:'" + platform + "',filepath:'" + filepath + "'}",
+                    type: "POST",
+                    dataType: "json", success: function () {
+                        tr.hide();
+                    }
+                });
+            }
+        }
     </script>
 
     <!-- Datatables -->
@@ -232,79 +231,78 @@
 
     <!-- Datatables -->
     <script>
-        $(document).ready(function () {
-            $('#example').dataTable({
-                "order": [[0, "desc"]],
-                "sPaginationType": "full_numbers",
-                "oLanguage": {
-                    "sLengthMenu": "每页显示 _MENU_ 条记录",
-                    "sZeroRecords": "抱歉， 没有找到",
-                    "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
-                    "sInfoEmpty": "没有数据",
-                    "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
-                    "sZeroRecords": "没有检索到数据",
-                    "sSearch": "名称:",
-                    "oPaginate": {
-                        "sFirst": "首页",
-                        "sPrevious": "前一页",
-                        "sNext": "后一页",
-                        "sLast": "尾页"
-                    }
-                }
-            });
-
-            var statuslist = $(".clStatus");
-
-            var id = [];
-            for (var k = 0; k < statuslist.length; k++) {
-                var c = statuslist.eq(k).attr('data-status');
-                if (c < 3) {
-                    id.push(statuslist.eq(k).attr('id'));
-                    if (c <= 1) {
-                        statuslist.eq(k).children('i').removeClass('hidden').css('color', '#ff0000');
-                    } else if (c == 2) {
-                        statuslist.eq(k).children('i').removeClass('hidden').css('color', '#00ff00');
-                    }
+      $(document).ready(function() {
+        $('#example').dataTable({
+            "order": [[ 0, "desc" ]],
+            "sPaginationType" : "full_numbers",
+            "oLanguage" : {
+                "sLengthMenu": "每页显示 _MENU_ 条记录",
+                "sZeroRecords": "抱歉， 没有找到",
+                "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+                "sInfoEmpty": "没有数据",
+                "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
+                "sZeroRecords": "没有检索到数据",
+                 "sSearch": "名称:",
+                "oPaginate": {
+                "sFirst": "首页",
+                "sPrevious": "前一页",
+                "sNext": "后一页",
+                "sLast": "尾页"
                 }
             }
-            var systemname = $("#MainContent_DropDownList3").val();
-
-            $(function () {
-                function getWorkStatus() {
-                    if (id.length > 0) {
-                        $.ajax({
-                            contentType: "application/json",
-                            async: false,
-                            url: "/WS/WSNativeWeb.asmx/GetPackgeStatus",
-                            data: "{id:'" + id.join(',') + "',systemname:'" + systemname + "'}",
-                            type: "POST",
-                            dataType: "json",
-                            success: function (json) {
-                                json = eval("(" + json.d + ")");
-                                if (json.ret === 0) {
-                                    $.each(json.data, function (idx, item) {
-                                        if (item.PackageTaskStatus === 4) {
-                                            $('#' + item.RecID).html('<span style="color:#f00">失败</span>');
-                                            id.splice($.inArray('item.RecID', id), 1);
-                                            window.location.reload();
-                                        } else if (item.PackageTaskStatus === 3) {
-                                            $('#' + item.RecID).html('<span style="color:#338610">完成</span>');
-                                            id.splice($.inArray('item.RecID', id), 1);
-                                            window.location.reload();
-                                        } else if (item.PackageTaskStatus === 2) {
-                                            $('#' + item.RecID).html('<i id="spinner" class="fa fa=fw fa-spinner fa-spin" style="color: #00ff00;"></i> 进行中');
-                                        }
-                                    });
-                                } else {
-                                }
-                            }
-                        });
-                    }
-                }
-                setInterval(getWorkStatus, 3000);
-            });
         });
+
+        var statuslist = $(".clStatus");
+        
+        var id = [];
+        for (var k = 0; k < statuslist.length; k++) {
+            var c = statuslist.eq(k).attr('data-status');
+            if (c < 3) {
+                id.push(statuslist.eq(k).attr('id'));
+                if (c <= 1) {
+                    statuslist.eq(k).children('i').removeClass('hidden').css('color', '#ff0000');
+                } else if (c == 2){
+                    statuslist.eq(k).children('i').removeClass('hidden').css('color', '#00ff00');
+                }
+            }
+        }
+        var systemname = $("#MainContent_DropDownList3").val();
+        
+        $(function(){
+            function getWorkStatus(){
+                if (id.length > 0){
+                    $.ajax({
+                        contentType: "application/json",
+                        async: false,
+                        url: "/WS/WSNativeWeb.asmx/GetPackgeStatus",
+                        data: "{id:'" + id.join(',') + "',systemname:'" + systemname + "'}",
+                        type: "POST",
+                        dataType: "json",
+                        success: function (json) {
+                            json = eval("(" + json.d + ")");
+                            if (json.ret === 0) {
+                                $.each(json.data,function(idx,item){
+                                    if (item.PackageTaskStatus === 4){
+                                        $('#'+item.RecID).html('<span style="color:#f00">失败</span>');
+                                            id.splice($.inArray('item.RecID',id),1);
+                                            window.location.reload();
+                                    } else if (item.PackageTaskStatus === 3){
+                                        $('#'+item.RecID).html('<span style="color:#338610">完成</span>');
+                                            id.splice($.inArray('item.RecID',id),1);
+                                            window.location.reload();
+                                    } else if (item.PackageTaskStatus === 2){
+                                        $('#'+item.RecID).html('<i id="spinner" class="fa fa=fw fa-spinner fa-spin" style="color: #00ff00;"></i> 进行中');
+                                    }
+                                });
+                            } else {
+                            }
+                        }
+                    });
+                }
+            }
+            setInterval(getWorkStatus,3000);
+        });
+      });
     </script>
     <!-- /Datatables -->
-
 </asp:Content>

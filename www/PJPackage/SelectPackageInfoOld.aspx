@@ -1,4 +1,4 @@
-﻿<%@ Page Title="任务进度" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="SelectPackageInfo.aspx.cs" Inherits="SDKPackage.PJPackage.SelectPackageInfo" %>
+<%@ Page Title="任务进度" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="SelectPackageInfoOld.aspx.cs" Inherits="SDKPackage.PJPackage.SelectPackageInfoOld" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager runat="server">
@@ -173,27 +173,27 @@
             $("#MainContent_GamePlaceList_thjm").hide();
             <%}%>
         })
-
-        $(document).ready(function () {
-            var statuslist = $(".clStatus");
-
-            var id = [];
-            for (var k = 0; k < statuslist.length; k++) {
-                var c = statuslist.eq(k).attr('data-status');
-                if (c < 3) {
-                    id.push(statuslist.eq(k).attr('id'));
-                    if (c == 1) {
-                        statuslist.eq(k).children('i').removeClass('hidden').css('color', '#ff0000');
-                    } else if (c == 2) {
-                        statuslist.eq(k).children('i').removeClass('hidden').css('color', '#00ff00');
-                    }
+        
+      $(document).ready(function() {
+        var statuslist = $(".clStatus");
+        
+        var id = [];
+        for (var k = 0; k < statuslist.length; k++) {
+            var c = statuslist.eq(k).attr('data-status');
+            if (c < 3) {
+                id.push(statuslist.eq(k).attr('id'));
+                if (c == 1) {
+                    statuslist.eq(k).children('i').removeClass('hidden').css('color', '#ff0000');
+                } else if (c == 2){
+                    statuslist.eq(k).children('i').removeClass('hidden').css('color', '#00ff00');
                 }
             }
-            var systemname = '<%= platform %>';
-
-        $(function () {
-            function getWorkStatus() {
-                if (id.length > 0) {
+        }
+        var systemname = '<%= platform %>';
+        
+        $(function(){
+            function getWorkStatus(){
+                if (id.length > 0){
                     $.ajax({
                         contentType: "application/json",
                         async: false,
@@ -204,17 +204,17 @@
                         success: function (json) {
                             json = eval("(" + json.d + ")");
                             if (json.ret === 0) {
-                                $.each(json.data, function (idx, item) {
-                                    if (item.PackageTaskStatus === 4) {
-                                        $('#' + item.RecID).html('<span style="color:#f00">失败</span>');
-                                        id.splice($.inArray('item.RecID', id), 1);
-                                        window.location.reload();
-                                    } else if (item.PackageTaskStatus === 3) {
-                                        $('#' + item.RecID).html('<span style="color:#338610">完成</span>');
-                                        id.splice($.inArray('item.RecID', id), 1);
-                                        window.location.reload();
-                                    } else if (item.PackageTaskStatus === 2) {
-                                        $('#' + item.RecID).html('<i id="spinner" class="fa fa=fw fa-spinner fa-spin" style="color: #00ff00;"></i> 进行中');
+                                $.each(json.data,function(idx,item){
+                                    if (item.PackageTaskStatus === 4){
+                                        $('#'+item.RecID).html('<span style="color:#f00">失败</span>');
+                                            id.splice($.inArray('item.RecID',id),1);
+                                            window.location.reload();
+                                    } else if (item.PackageTaskStatus === 3){
+                                        $('#'+item.RecID).html('<span style="color:#338610">完成</span>');
+                                            id.splice($.inArray('item.RecID',id),1);
+                                            window.location.reload();
+                                    } else if (item.PackageTaskStatus === 2){
+                                        $('#'+item.RecID).html('<i id="spinner" class="fa fa=fw fa-spinner fa-spin" style="color: #00ff00;"></i> 进行中');
                                     }
                                 });
                             } else {
@@ -223,7 +223,7 @@
                     });
                 }
             }
-            setInterval(getWorkStatus, 3000);
+            setInterval(getWorkStatus,3000);
         });
       });
     </script>

@@ -1,12 +1,14 @@
-﻿using SDKPackage.Facade;
-using SDKPackage.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
+using System.Data;
+
+using SDKPackage.Facade;
+using SDKPackage.Utils;
 
 namespace SDKPackage.PJPackage
 {
@@ -14,6 +16,7 @@ namespace SDKPackage.PJPackage
     {
         protected string systemname;
         NativeWebFacade aideNativeWebFacade = new NativeWebFacade();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (GameRequest.GetQueryString("gameid") != "")
@@ -80,16 +83,6 @@ namespace SDKPackage.PJPackage
                 Cache["Roleid"] = "0";
             else
                 Cache["Roleid"] = "1";
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            //this.GamePlaceList.DataBind();
-        }
-
-        protected void ButtonDelete_Click(object sender, EventArgs e)
-        {
-            //this.GamePlaceList.DataBind();
         }
 
         /// <summary>
@@ -164,11 +157,5 @@ namespace SDKPackage.PJPackage
                 }
             }
         }
-
-        protected void Timer1_Tick(object sender, EventArgs e)
-        {
-            BindingList();
-        }
-
     }
 }

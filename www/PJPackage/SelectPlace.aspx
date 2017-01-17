@@ -311,7 +311,7 @@
         $('#itemPlaceholderContainer').dataTable({
             "paging": false,
             "order": [[ 2, "asc" ]],
-			"orderFixed": [ 4, "asc" ],
+            "orderFixed": [ 4, "asc" ],
             "sPaginationType" : "full_numbers",
             "aoColumnDefs" : [ { "bSortable": false, "aTargets": [0,1,3,4] } ],
             "oLanguage" : {

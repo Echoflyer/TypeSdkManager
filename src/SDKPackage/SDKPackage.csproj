@@ -176,7 +176,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
-    <Content Include="Account\Register778899.aspx" />
+    <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Account\ResetPassword.aspx" />
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
@@ -298,16 +298,18 @@
     <Content Include="ADMIN\Web.config" />
     <Content Include="GameConfig\Web.config" />
     <Content Include="PJPackage\GameVersionAdd.aspx" />
-    <Content Include="PJPackage\PackageInfoList.aspx" />
+    <Content Include="PJPackage\PackageInfoListOld.aspx" />
     <Content Include="PJPackage\sdkPackageLog.aspx" />
     <Content Include="PJPackage\SelectFinalPlace.aspx" />
     <Content Include="PJPackage\SelectGame.aspx" />
     <Content Include="PJPackage\SelectGameVersionList.aspx" />
-    <Content Include="PJPackage\SelectPackageInfo.aspx" />
+    <Content Include="PJPackage\SelectPackageInfoOld.aspx" />
     <Content Include="PJPackage\SelectPlace.aspx" />
     <Content Include="PJPackage\SelectPlatform.aspx" />
     <Content Include="packages.config" />
     <Content Include="js\maps\us-unemployment.json" />
+    <Content Include="PJPackage\PackageInfoList.aspx" />
+    <Content Include="PJPackage\SelectPackageInfo.aspx" />
     <Content Include="SystemManagement\SystemManagement.aspx" />
     <Content Include="TaskManage.aspx" />
     <Content Include="WS\WSNativeWeb.asmx" />
@@ -384,12 +386,12 @@
     <Compile Include="Account\OpenAuthProviders.ascx.designer.cs">
       <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Register778899.aspx.cs">
-      <DependentUpon>Register778899.aspx</DependentUpon>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\Register778899.aspx.designer.cs">
-      <DependentUpon>Register778899.aspx</DependentUpon>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\RegisterExternalLogin.aspx.cs">
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
@@ -597,12 +599,12 @@
     <Compile Include="PJPackage\GameVersionAdd.aspx.designer.cs">
       <DependentUpon>GameVersionAdd.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PJPackage\PackageInfoList.aspx.cs">
-      <DependentUpon>PackageInfoList.aspx</DependentUpon>
+    <Compile Include="PJPackage\PackageInfoListOld.aspx.cs">
+      <DependentUpon>PackageInfoListOld.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PJPackage\PackageInfoList.aspx.designer.cs">
-      <DependentUpon>PackageInfoList.aspx</DependentUpon>
+    <Compile Include="PJPackage\PackageInfoListOld.aspx.designer.cs">
+      <DependentUpon>PackageInfoListOld.aspx</DependentUpon>
     </Compile>
     <Compile Include="PJPackage\sdkPackageLog.aspx.cs">
       <DependentUpon>sdkPackageLog.aspx</DependentUpon>
@@ -632,12 +634,12 @@
     <Compile Include="PJPackage\SelectGameVersionList.aspx.designer.cs">
       <DependentUpon>SelectGameVersionList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PJPackage\SelectPackageInfo.aspx.cs">
-      <DependentUpon>SelectPackageInfo.aspx</DependentUpon>
+    <Compile Include="PJPackage\SelectPackageInfoOld.aspx.cs">
+      <DependentUpon>SelectPackageInfoOld.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PJPackage\SelectPackageInfo.aspx.designer.cs">
-      <DependentUpon>SelectPackageInfo.aspx</DependentUpon>
+    <Compile Include="PJPackage\SelectPackageInfoOld.aspx.designer.cs">
+      <DependentUpon>SelectPackageInfoOld.aspx</DependentUpon>
     </Compile>
     <Compile Include="PJPackage\SelectPlace.aspx.cs">
       <DependentUpon>SelectPlace.aspx</DependentUpon>
@@ -652,6 +654,20 @@
     </Compile>
     <Compile Include="PJPackage\SelectPlatform.aspx.designer.cs">
       <DependentUpon>SelectPlatform.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PJPackage\PackageInfoList.aspx.cs">
+      <DependentUpon>PackageInfoList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PJPackage\PackageInfoList.aspx.designer.cs">
+      <DependentUpon>PackageInfoList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PJPackage\SelectPackageInfo.aspx.cs">
+      <DependentUpon>SelectPackageInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PJPackage\SelectPackageInfo.aspx.designer.cs">
+      <DependentUpon>SelectPackageInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="PJPackage\UpdateGameZip.ashx.cs">
       <DependentUpon>UpdateGameZip.ashx</DependentUpon>

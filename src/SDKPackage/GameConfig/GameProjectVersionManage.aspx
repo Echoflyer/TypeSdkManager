@@ -20,7 +20,7 @@
                             <%--<span class="value text-primary"><%= gameDisplayName %></span>--%>
                             <asp:DropDownList ID="ddlGames" runat="server" DataSourceID="dsGameNameList" DataTextField="GameDisplayName" DataValueField="GameID" AutoPostBack="True" OnSelectedIndexChanged="ddlGames_SelectedIndexChanged">
                             </asp:DropDownList>
-                            <asp:SqlDataSource ID="dsGameNameList" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="sdk_getGameList" SelectCommandType="StoredProcedure">
+                            <asp:SqlDataSource ID="dsGameNameList" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="sdk_getGameList" SelectCommandType="StoredProcedure">
                                 <SelectParameters>
                                     <asp:ControlParameter ControlID="saveusername" Type="String" Name="UserName" />
                                 </SelectParameters>
@@ -92,7 +92,7 @@
                             </LayoutTemplate>
                         </asp:ListView>
                     </div>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="select upi.ID,upi.[GameVersion],upi.[PageageTable],upi.[CollectDatetime],upi.FileSize,upi.StrCollectDatetime,us.[Compellation],upi.[Status] from 
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="select upi.ID,upi.[GameVersion],upi.[PageageTable],upi.[CollectDatetime],upi.FileSize,upi.StrCollectDatetime,us.[Compellation],upi.[Status] from 
   [sdk_UploadPackageInfo] upi inner join AspNetUsers us on upi.UploadUser=us.UserName and GameID=@GameID and GamePlatFrom=@SystemName order by upi.id desc">
                         <SelectParameters>
                             <%--<asp:QueryStringParameter QueryStringField="gameid" Type="Int32" Name="GameID" />--%>

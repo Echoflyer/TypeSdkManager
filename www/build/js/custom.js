@@ -13,7 +13,7 @@ var CURRENT_URL = window.location.href.split('?')[0],
     $RIGHT_COL = $('.right_col'),
     $NAV_MENU = $('.nav_menu'),
     $FOOTER = $('footer');
-	
+    
 // Sidebar
 $(document).ready(function() {
     // TODO: This is some kind of easy fix, maybe we can improve this
@@ -36,17 +36,17 @@ $(document).ready(function() {
         var $li = $(this).parent();
 
         if ($li.is('.active')) {
-			if($li.find('ul').is(":hidden")) {
-				$li.find('ul').slideUp();
-				$('ul:first', $li).slideDown(function() {
-					setContentHeight();
-				});
-			} else {
-				$li.removeClass('active active-sm');
-				$('ul:first', $li).slideUp(function() {
-					setContentHeight();
-				});
-			}
+            if($li.find('ul').is(":hidden")) {
+                $li.find('ul').slideUp();
+                $('ul:first', $li).slideDown(function() {
+                    setContentHeight();
+                });
+            } else {
+                $li.removeClass('active active-sm');
+                $('ul:first', $li).slideUp(function() {
+                    setContentHeight();
+                });
+            }
         } else {
             // prevent closing menu if we are on child menu
             if (!$li.parent().is('.child_menu')) {
@@ -65,11 +65,11 @@ $(document).ready(function() {
     // toggle small or large menu
     $MENU_TOGGLE.on('click', function() {
         if ($BODY.hasClass('nav-md')) {
-			$.cookie('MenuToggle', "true" , { path: '/', expires: 300 }); 
+            $.cookie('MenuToggle', "true" , { path: '/', expires: 300 }); 
             $SIDEBAR_MENU.find('li.active ul').hide();
             $SIDEBAR_MENU.find('li.active').addClass('active-sm').removeClass('active');
         } else {
-			$.cookie('MenuToggle', "false" , { path: '/', expires: 300 }); 
+            $.cookie('MenuToggle', "false" , { path: '/', expires: 300 }); 
             $SIDEBAR_MENU.find('li.active-sm ul').show();
             $SIDEBAR_MENU.find('li.active-sm').addClass('active').removeClass('active-sm');
         }
@@ -103,15 +103,15 @@ $(document).ready(function() {
             mouseWheel:{ preventDefault: true }
         });
     }
-	
-	// Cookie
-	if( $.cookie('MenuToggle') == "true" ){
-		$BODY.addClass('nav-sm').removeClass('nav-md');
+    
+    // Cookie
+    if( $.cookie('MenuToggle') == "true" ){
+        $BODY.addClass('nav-sm').removeClass('nav-md');
             $SIDEBAR_MENU.find('li.active ul').hide();
-	 } else {
-		$BODY.addClass('nav-md').removeClass('nav-sm');
+     } else {
+        $BODY.addClass('nav-md').removeClass('nav-sm');
             $SIDEBAR_MENU.find('li.active-sm ul').hide();
-	}
+    }
 });
 // /Sidebar
 
