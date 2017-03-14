@@ -18,7 +18,7 @@
                         <div class="form-group">
                             <span class="name">游戏:</span>
                             <%--<span class="value text-primary"><%= gameDisplayName %></span>--%>
-                            <asp:DropDownList ID="ddlGames" runat="server" DataSourceID="dsGameNameList" DataTextField="GameDisplayName" DataValueField="GameID" AutoPostBack="True" OnSelectedIndexChanged="ddlGames_SelectedIndexChanged">
+                            <asp:DropDownList ID="ddlGames" CssClass="form-control" runat="server" DataSourceID="dsGameNameList" DataTextField="GameDisplayName" DataValueField="GameID" AutoPostBack="True" OnSelectedIndexChanged="ddlGames_SelectedIndexChanged">
                             </asp:DropDownList>
                             <asp:SqlDataSource ID="dsGameNameList" runat="server" ConnectionString="<%$ ConnectionStrings:SdkPackageConnString %>" SelectCommand="sdk_getGameList" SelectCommandType="StoredProcedure">
                                 <SelectParameters>

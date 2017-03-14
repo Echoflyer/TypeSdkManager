@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="SDKPackage.Admin" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="SDKPackage.Admin" %>
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -137,13 +137,27 @@
             </ul>
             </li>
             <li>
-			<a><i class="fa fa-github"></i> 源代码 <span class="fa fa-chevron-down"></span></a>
+      <a><i class="fa fa-github"></i> 源代码 <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
                         <li>
-                            <a target="_blank" href="http://www.typesdk.com/download/?c=5">CSDN</a>
+                            <a target="_blank" href="https://code.csdn.net/typesdk_code">CSDN</a>
                         </li>
                         <li>
                             <a target="_blank" href="https://github.com/typesdk">GitHub</a>
+                        </li>
+            </ul>
+            </li>
+            <li>
+      <a><i class="fa fa-book"></i> 使用帮助 <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+                        <li>
+                            <a target="_blank" href="http://www.typesdk.com/documents">技术文档</a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="http://www.chuanke.com/s8060364.html">视频教程</a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="http://www.typesdk.com">官方网站</a>
                         </li>
             </ul>
             </li>
@@ -207,13 +221,12 @@
           <!-- footer -->
         <footer>
           <div class="pull-right">
-            TypeSDK Team - &copy; 2014 <a href="http://typdsdk.com" target="_blank">typesdk.com</a>
+            TypeSDK Team - &copy; 2014 <a href="http://www.typdsdk.com" target="_blank">typesdk.com</a>
           </div>
           <div class="clearfix"></div>
         </footer>
             </div>
         </form>
-
     <!-- Bootstrap -->
     <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

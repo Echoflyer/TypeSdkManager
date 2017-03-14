@@ -167,7 +167,7 @@ namespace SDKPackage
                             string strproductname = gt.ProductName;
 
                             //msg = "{\"status\":\"success\",\"msg\":\"gainTask_OK\",\"data\":[{\"TaskID\":\"" + recid + "\",\"Channel\":\"" + platFormName.ToLower() + "\",\"GameID\":\"" + strgamenamespell + "\",\"GameVersion\":\"" + strCollectDatetime + "\",\"IconID\":\"" + strIconPath + "\",\"BatchNo\":\"" + strCreateTaskID + "\",\"SdkVer\":\"" + strmyversion + "\",\"GameFileName\":\"" + gameVersion + "\",\"UnityVer\":\"" + strunityver + "\",\"ProductName\":\"" + strproductname + "\"}]}";
-                            msg = "{\"status\":\"success\",\"msg\":\"gainTask_OK\",\"data\":[{\"TaskID\":\"" + recid + "\",\"Channel\":\"" + platFormName + "\",\"GameID\":\"" + gameid + "\",\"ChannelVersion\":\"" + strChannelVersion + "\",\"GameVersion\":\"" + gameVersion + "\",\"IconID\":\"" + strIconPath + "\",\"BatchNo\":\"" + strCreateTaskID + "\",\"SdkVer\":\"" + strmyversion + "\",\"GameFileName\":\"" + gamename + "\",\"UnityVer\":\"" + strunityver + "\",\"ProductName\":\"" + strproductname + "\"}]}";
+                            msg = "{\"status\":\"success\",\"msg\":\"gainTask_OK\",\"data\":[{\"TaskID\":\"" + recid + "\",\"Channel\":\"" + platFormName + "\",\"GameID\":\"" + gameid + "\",\"ChannelVersion\":\"" + strChannelVersion + "\",\"GameVersion\":\"" + gameVersion + "\",\"CreateTime\":\"" + strCollectDatetime + "\",\"IconID\":\"" + strIconPath + "\",\"BatchNo\":\"" + strCreateTaskID + "\",\"SdkVer\":\"" + strmyversion + "\",\"GameFileName\":\"" + gamename + "\",\"UnityVer\":\"" + strunityver + "\",\"ProductName\":\"" + strproductname + "\"}]}";
 
                             PrintLog(recid, platform, msg);
                         }

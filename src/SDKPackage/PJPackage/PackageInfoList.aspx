@@ -144,7 +144,7 @@
                                 <td><%# (Eval("PackageTaskStatus").ToString()=="0" || Eval("PackageTaskStatus").ToString()=="1" || Eval("PackageTaskStatus").ToString()=="2" )?" ":"<a onclick=\"openfile('"+Eval("RecID")+"','"+Eval("CreateTaskID")+"');\" class=\"btn btn-default btn-sm\"><i class=\"fa fa-fw fa-info-circle\"></i>详情</a>" %></td>
 
                                 <td><%# Eval("PackageTaskStatus").ToString()=="3"?(systemname=="Android"? "<a href=\"/share/output/apk/"+Eval("GameID")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\" class=\"btn btn-primary btn-sm\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>"
-                        :"<a class=\"btn btn-primary btn-sm\" href=\"/share/ios-output/ipa/"+Eval("GameID")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>"):Eval("PackageTaskStatus").ToString()=="4"?"<a style=\"cursor:pointer;\" onclick=\"packageAgain("+Eval("RecID")+")\" class=\"btn btn-warning btn-sm\"><i class=\"fa fa-fw fa-refresh\"></i>重新打包</a>":" " %>
+                        :"<a class=\"btn btn-primary btn-sm\" href=\"/share/ios-output/ipa/"+Eval("GameID")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>"):Eval("PackageTaskStatus").ToString()=="4"?"<a style=\"cursor:pointer;\" onclick=\"packageAgain("+Eval("RecID")+")\" class=\"btn btn-warning btn-sm\"><i class=\"fa fa-fw fa-refresh\"></i>重新打包</a>":"<a onclick='stopTask(\"/taskmanage?action=loseTask&platform=Android&taskid=" + Eval("RecID") + "\");' class='btn btn-warning btn-sm' target='_blank'><i class='fa fa-fw fa-warning'></i> 强制终止</a>" %>
 
                                     <a class="btn btn-danger btn-sm" style='<%#((Eval("qx").ToString()=="0"&&Eval("qx2").ToString()=="0")||(Eval("PackageTaskStatus").ToString()!="1"&&Eval("PackageTaskStatus").ToString()!="3"&&Eval("PackageTaskStatus").ToString()!="4"))?"display:none;": ""%>'
                                         onclick='deleteFile(this,<%#Eval("RecID").ToString() %>,"<%=systemname %>","<%#systemname=="Android"?Eval("GameName").ToString()+"/"+Eval("CreateTaskID").ToString()+"/"+Eval("PackageName").ToString():
@@ -232,6 +232,22 @@
 
     <!-- Datatables -->
     <script>
+    
+        function stopTask(u){
+              $.ajax({
+                    url: 'http://'+window.location.host+u,
+                    success: function(data) {
+                        if (data.indexOf('loseTask_OK')>=0){
+                          alert('终止任务成功');
+                          location.reload();
+                          }
+                    },
+                    error: function(err) {
+                        alert('终止任务失败');
+                    }
+                });
+        }
+
         $(document).ready(function () {
             $('#example').dataTable({
                 "order": [[0, "desc"]],

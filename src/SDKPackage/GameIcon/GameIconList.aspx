@@ -117,11 +117,11 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2>游戏渠道图标管理</h2>
-					<ul class="nav navbar-right panel_toolbox">
+                    <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
                     </ul>
-				<div class="clearfix"></div>
+                <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
                     <div class="form-inline">
@@ -155,9 +155,9 @@
                             <div style="font-size: 20px; color: #f00; margin-top: 20px;">未配置</div>
                         </EmptyDataTemplate>
                         <ItemTemplate>
-                            <div class="col-md-3">
-                                <div class="thumbnail">
-                                    <img data-src="holder.js/150x150?text=<%# Eval("IconName") %>" alt="150x150" style="width: 150px; height: auto; margin-top:10px" src="/icon<%# (DropDownListSystem.SelectedValue == "2") ? "-ios" : "" %>/<%# Eval("GameID") %>/<%# Eval("IconName") %>/app_icon.png"></img>
+                            <div class="col-md-3 text-center">
+                                <div class="thumbnail" style="height: 250px;">
+                                    <img data-src="holder.js/150x150?text=<%# Eval("IconName") %>" alt="150x150" src="/icon<%# (DropDownListSystem.SelectedValue == "2") ? "-ios" : "" %>/<%# Eval("GameID") %>/<%# Eval("IconName") %>/app_icon.png"></img>
                                     <label style="text-align:center" class="btn-block"><%# Eval("IconName") %></label>
                                     <br />
                                     <asp:Button style="margin: 0 auto" runat="server" CommandName="Delete" CssClass="btn btn-sm btn-danger fa" Text="&#xf1f8; 删除" OnClientClick="return confirm('确定要删除数据吗？')" ID="DeleteButton" />

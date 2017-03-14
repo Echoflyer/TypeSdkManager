@@ -262,7 +262,17 @@ namespace SDKPackage.GameConfig
                 {
                     item.Value.Add("itemLists", productlist.ContainsKey(item.Key) ? productlist[item.Key] : new List<object>());
                     var jsonout = new { id = item.Value["channel_id"], name = item.Value["sdk_name"], attrs =item.Value };
-                    jsonoutlist.Add("ch"+item.Value["channel_id"],jsonout);
+                    if (!string.IsNullOrWhiteSpace((string)item.Value["channel_id"]))
+                    {
+                        if (jsonoutlist.ContainsKey("ch" + item.Value["channel_id"]))
+                        {
+                            throw new ChannelException("渠道编号 " + item.Key + " ChannelID配置重复，请检查");
+                        }
+                        else
+                        {
+                            jsonoutlist.Add("ch" + item.Value["channel_id"], jsonout);
+                        }
+                    }
                 }
 
                 
@@ -300,7 +310,13 @@ namespace SDKPackage.GameConfig
                 
 
                 lblSyncRedis.Text = "同步成功";
-            }catch(Exception ex)
+            }
+            catch (ChannelException ex)
+            {
+                lblSyncRedis.Text = ex.Message;
+                return;
+            }
+            catch(Exception ex)
             {
                 lblSyncRedis.Text = "REDIS 同步出错";
                 return;
@@ -443,5 +459,20 @@ namespace SDKPackage.GameConfig
             return configString.ToString();
         }
 
+    }
+
+    class ChannelException : ApplicationException
+    {
+        public ChannelException()      
+        {      
+        }
+        public ChannelException(string message): base(message)
+        {
+
+        }
+        public ChannelException(string message, Exception inner):base(message,inner)     
+        {    
+ 
+        }
     }
 }

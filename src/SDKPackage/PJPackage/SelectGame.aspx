@@ -71,7 +71,7 @@
                                     <div class="col-md-55">
                                         <a onclick="NextStep(<%# Eval("GameId") %>);">
                                             <div class="thumbnail">
-                                                <img style="width: 150px; height: auto; display: block;" src="<%# Eval("GameIcon") %>" alt="image">
+                                                <img src="<%# Eval("GameIcon") %>" alt="image">
                                                 <div class="text-center">
                                                     <p><%# Eval("GameDisplayName") %></p>
                                                 </div>

@@ -4303,3 +4303,20 @@ ul.notifications {
   border: 1px solid #e5e5e5; }
 
 /** /Dropzone.js **/
+
+#example td,#itemPlaceholderContainer td{
+  line-height: 28px;
+  vertical-align: middle;
+}
+#example .btn,#itemPlaceholderContainer .btn,.modal-footer .btn{
+  margin-bottom: 0px;
+}
+.thumbnail img{
+  display: block;
+    width: 150px;
+    height: auto;
+  padding: 8px 0 5px 0;
+}
+.form-control{
+  height:30px;
+}

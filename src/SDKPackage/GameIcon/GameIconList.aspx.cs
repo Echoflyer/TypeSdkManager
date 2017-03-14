@@ -192,53 +192,81 @@ namespace SDKPackage.GameIcon
                     System.IO.Directory.CreateDirectory(uploadPatch + "AppIcon.appiconset\\");
                 }
                 
-                string[] IconType = { "icon", "icon@2x", "icon-2", "icon-29-2", "Icon-40@2x", "icon-40-2", "Icon-41", "icon-58-2", "Icon-60@2x", "Icon-60@3x", "icon-72", 
-                                      "Icon-72@2x", "Icon-76", "icon-80-2", "icon-120-2", "icon-152","Icon-Small","Icon-Small@2x","Icon-Small-50","Icon-Small-50@2x","iTunesArtwork"};
+                //string[] IconType = { "icon", "icon@2x", "icon-2", "icon-29-2", "Icon-40@2x", "icon-40-2", "Icon-41", "icon-58-2", "Icon-60@2x", "Icon-60@3x", "icon-72", 
+                //                      "Icon-72@2x", "Icon-76", "icon-80-2", "icon-120-2", "icon-152","Icon-Small","Icon-Small@2x","Icon-Small-50","Icon-Small-50@2x","iTunesArtwork"};
+
+                string[] IconType = { "Icon", "Icon@2x", "Icon-120", "Icon-180", "Icon-72", "Icon-144", "Icon-76", "Icon-152", "Icon-167", "iTunesArtwork" };
                 int imgsize = 0;
                 string thumbnailPath = "";
                 for (int i = 0; i < IconType.Length; i++)
                 {
+                    //switch (IconType[i])
+                    //{
+                    //    case "icon": imgsize = 57;
+                    //        break;
+                    //    case "icon@2x": imgsize = 144;
+                    //        break;
+                    //    case "icon-2": imgsize = 57;
+                    //        break;
+                    //    case "icon-29-2": imgsize = 29;
+                    //        break;
+                    //    case "Icon-40@2x": imgsize = 80;
+                    //        break;
+                    //    case "icon-40-2": imgsize = 40;
+                    //        break;
+                    //    case "Icon-41": imgsize = 40;
+                    //        break;
+                    //    case "icon-58-2": imgsize = 58;
+                    //        break;
+                    //    case "Icon-60@2x": imgsize = 120;
+                    //        break;
+                    //    case "Icon-60@3x": imgsize = 180;
+                    //        break;
+                    //    case "icon-72": imgsize = 72;
+                    //        break;
+                    //    case "Icon-72@2x": imgsize = 144;
+                    //        break;
+                    //    case "Icon-76": imgsize = 76;
+                    //        break;
+                    //    case "icon-80-2": imgsize = 80;
+                    //        break;
+                    //    case "icon-120-2": imgsize = 120;
+                    //        break;
+                    //    case "icon-152": imgsize = 152;
+                    //        break;
+                    //    case "Icon-Small": imgsize = 29;
+                    //        break;
+                    //    case "Icon-Small@2x": imgsize = 58;
+                    //        break;
+                    //    case "Icon-Small-50": imgsize = 50;
+                    //        break;
+                    //    case "Icon-Small-50@2x": imgsize = 100;
+                    //        break;
+                    //    case "iTunesArtwork": imgsize = 512;
+                    //        break;
+                    //    default:
+                    //        break;
+                    //}
+
                     switch (IconType[i])
                     {
-                        case "icon": imgsize = 57;
+                        case "Icon": imgsize = 57;
                             break;
-                        case "icon@2x": imgsize = 144;
+                        case "Icon@2x": imgsize = 114;
                             break;
-                        case "icon-2": imgsize = 57;
+                        case "Icon-120": imgsize = 120;
                             break;
-                        case "icon-29-2": imgsize = 29;
+                        case "Icon-180": imgsize = 180;
                             break;
-                        case "Icon-40@2x": imgsize = 80;
+                        case "Icon-72@2x": imgsize = 72;
                             break;
-                        case "icon-40-2": imgsize = 40;
-                            break;
-                        case "Icon-41": imgsize = 40;
-                            break;
-                        case "icon-58-2": imgsize = 58;
-                            break;
-                        case "Icon-60@2x": imgsize = 120;
-                            break;
-                        case "Icon-60@3x": imgsize = 180;
-                            break;
-                        case "icon-72": imgsize = 72;
-                            break;
-                        case "Icon-72@2x": imgsize = 144;
+                        case "Icon-144": imgsize = 144;
                             break;
                         case "Icon-76": imgsize = 76;
                             break;
-                        case "icon-80-2": imgsize = 80;
+                        case "Icon-152": imgsize = 152;
                             break;
-                        case "icon-120-2": imgsize = 120;
-                            break;
-                        case "icon-152": imgsize = 152;
-                            break;
-                        case "Icon-Small": imgsize = 29;
-                            break;
-                        case "Icon-Small@2x": imgsize = 58;
-                            break;
-                        case "Icon-Small-50": imgsize = 50;
-                            break;
-                        case "Icon-Small-50@2x": imgsize = 100;
+                        case "Icon-167": imgsize = 167;
                             break;
                         case "iTunesArtwork": imgsize = 512;
                             break;
@@ -419,9 +447,11 @@ namespace SDKPackage.GameIcon
             string IconPatch = SDKPackageDir + gameID + "\\" + IconName + "\\";
             createPatch(IconPatch);
 
-            string[] IconType = { "icon", "icon@2x", "icon-2", "icon-29-2", "Icon-40@2x", "icon-40-2", "Icon-41", "icon-58-2", "Icon-60@2x", "Icon-60@3x", "icon-72", 
-                                      "Icon-72@2x", "Icon-76", "icon-80-2", "icon-120-2", "icon-152","Icon-Small","Icon-Small@2x","Icon-Small-50","Icon-Small-50@2x","iTunesArtwork"};
+            //string[] IconType = { "icon", "icon@2x", "icon-2", "icon-29-2", "Icon-40@2x", "icon-40-2", "Icon-41", "icon-58-2", "Icon-60@2x", "Icon-60@3x", "icon-72", 
+            //                          "Icon-72@2x", "Icon-76", "icon-80-2", "icon-120-2", "icon-152","Icon-Small","Icon-Small@2x","Icon-Small-50","Icon-Small-50@2x","iTunesArtwork"};
             //string[] IconType = { "29", "40", "80", "58", "57", "114", "180", "120", "50", "100", "72" ,"144" ,"76" ,"152", "512" };
+
+            string[] IconType = { "Icon", "Icon@2x", "Icon-120", "Icon-180", "Icon-72", "Icon-144", "Icon-76", "Icon-152", "Icon-167", "iTunesArtwork" };
             string bodyIcon = SDKPackageDir + "white\\";
             try
             {
