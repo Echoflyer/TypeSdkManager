@@ -1,4 +1,4 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="SDKPackage.Admin" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="SDKPackage.Admin" %>
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -137,7 +137,7 @@
             </ul>
             </li>
             <li>
-      <a><i class="fa fa-github"></i> 源代码 <span class="fa fa-chevron-down"></span></a>
+			<a><i class="fa fa-github"></i> 源代码 <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
                         <li>
                             <a target="_blank" href="https://code.csdn.net/typesdk_code">CSDN</a>
@@ -148,7 +148,7 @@
             </ul>
             </li>
             <li>
-      <a><i class="fa fa-book"></i> 使用帮助 <span class="fa fa-chevron-down"></span></a>
+			<a><i class="fa fa-book"></i> 使用帮助 <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
                         <li>
                             <a target="_blank" href="http://www.typesdk.com/documents">技术文档</a>

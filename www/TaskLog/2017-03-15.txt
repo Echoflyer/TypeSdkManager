@@ -1,0 +1,6 @@
+2017-03-15 04:02:31 任务ID:1 目标IP:127.0.0.1 Android
+ msg:{"status":"error99","msg":"%e6%9c%aa%e8%83%bd%e6%89%be%e5%88%b0%e8%b7%af%e5%be%84%e2%80%9cC%3a%5cTypeSdk%5cTypeSdkPackge%5ctypesdk%5cshare%5cgame_file%5c30%5c100.0.0_20170226141116649%5cAndroidManifest.xml%e2%80%9d%e7%9a%84%e4%b8%80%e9%83%a8%e5%88%86%e3%80%82","data":null}
+
+2017-03-15 04:05:01 任务ID:1 目标IP:127.0.0.1 Android
+ msg:{"status":"success","msg":"gainTask_OK","data":[{"TaskID":"1","Channel":"DebugAliGame","GameID":"30","ChannelVersion":"6.1.0","GameVersion":"100.0.0_20170226141116649","IconID":"demo_uc","BatchNo":"20170315160213547","SdkVer":"2.0","IsEncrypt":"0","AdID":"0","PluginID":"0","PluginVersion":"","CompileMode":"release","SignKey":"typesdk"}]}
+
