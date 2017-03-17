@@ -34,7 +34,7 @@
     <span style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0); font-size: 19px; font-family: Arial, sans-serif;">2</span><span style="color: rgb(255, 0, 0); font-size: 19px;">、</span><span style="color: rgb(255, 0, 0); font-size: 19px; font-family: 黑体;">简单理解为Manager就是整个统一接入框架的用户操作和管理模块，</span>该项目使用.NET4.5编写。</span>
 </h3>
 <h3 style="margin: 16px 0;background: white">
-    <span style="color: rgb(255, 0, 0);"><span style="font-size: 19px; font-family: Arial, sans-serif;">3</span><span style="font-size: 19px;">、</span><span style="font-size: 19px; font-family: 黑体;">Manager的版本和功能目前已比较完善和稳定，不定期更新版本，以修复BUG为主。</span></span>
+    <span style="color: rgb(255, 0, 0);"><span style="font-size: 19px; font-family: Arial, sans-serif;">3</span><span style="font-size: 19px;">、一键安装包请到官网下载，GIT上仅放源码</span></span>
 </h3>
 <p>
     <span style="color: rgb(255, 0, 0);"><span style="font-size: 19px; font-family: 黑体;"></span></span>
