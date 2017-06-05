@@ -77,7 +77,7 @@
                                             <asp:Label ID="Label4" runat="server" Text='<%# Eval("Compellation") %>' />
                                         </td>
                                         <td>
-                                            <%#Eval("IsSign").ToString()=="1"?"<a class=\"btn btn-primary btn-sm\" href=\"/share/output/apk/"+Eval("GameID")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>":"<a class=\"btn btn-primary btn-xs\" href=\"/share/output/apk/"+Eval("GameName")+"/"+Eval("CreateTaskID")+"/us_"+Eval("PackageName")+"\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>" %>
+                                            <%#Eval("IsSign").ToString()=="1"?"<a class=\"btn btn-primary btn-sm\" href=\"/share/output/apk/"+Eval("GameID")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>":"<a class=\"btn btn-primary btn-xs\" href=\"/share/output/apk/"+Eval("GameID")+"/"+Eval("CreateTaskID")+"/us_"+Eval("PackageName")+"\"><i class=\"fa fa-fw fa-download\"></i> 下载</a>" %>
                                         </td>
                                     </tr>
                                 </AlternatingItemTemplate>

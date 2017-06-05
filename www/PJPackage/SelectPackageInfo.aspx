@@ -125,7 +125,7 @@
 
                                 <td class="clStatus" id='<%#Eval("RecID") %>' data-status="<%# Eval("PackageTaskStatus")%>"><i id="spinner" class="hidden fa fa=fw fa-spinner fa-spin"></i> <%# Eval("PackageTaskStatus").ToString()=="0"?"等待调度":Eval("PackageTaskStatus").ToString()=="1"?"等待调度":Eval("PackageTaskStatus").ToString()=="2"?"进行中":Eval("PackageTaskStatus").ToString()=="3"?"<span style=\"color:#338610\">完成</span>":"<span style=\"color:#f00\">失败</span>" %></td>
 
-                                <td><%# Eval("PackageTaskStatus").ToString()=="0"?" ":Eval("PackageTaskStatus").ToString()=="1"?" ":"<a onclick=\"openfile('"+Eval("RecID")+"','"+ createtaskid +"','"+platform+"');\" class='btn btn-default btn-sm'><i class='fa fa-fw fa-info-circle'></i> 详情</a>" %></td>
+                                <td><%# Eval("PackageTaskStatus").ToString()=="0"?" ":Eval("PackageTaskStatus").ToString()=="1"?" ":"<a onclick=\"openfile('"+Eval("RecID")+"','"+ createtaskid+"','"+platform+"');\" class='btn btn-default btn-sm'><i class='fa fa-fw fa-info-circle'></i> 详情</a>" %></td>
                                 <%--<a onclick=\"openfile("+Eval("RecID")+","+createtaskid+");\">详情</a>--%>
 
                                 <td><%# Eval("PackageTaskStatus").ToString()=="3"?(platform=="Android"?"<a href=\"/share/output/apk/"+gameid+"/"+createtaskid+"/"+Eval("PackageName")+"\" class='btn btn-primary btn-sm'><i class='fa fa-fw fa-download'></i> 下载</a>":
@@ -173,20 +173,20 @@
             <%}%>
         })
 
-        function stopTask(u){
-              $.ajax({
-                    url: 'http://'+window.location.host+u,
-                    success: function(data) {
-                        if (data.indexOf('loseTask_OK')>=0){
-                          alert('终止任务成功');
-                          location.reload();
-                          }
-                    },
-                    error: function(err) {
-                        alert('终止任务失败');
-                    }
-                });
-        }
+		function stopTask(u){
+		      $.ajax({
+					url: 'http://'+window.location.host+u,
+					success: function(data) {
+						if (data.indexOf('loseTask_OK')>=0){
+						  alert('终止任务成功');
+						  location.reload();
+						  }
+					},
+					error: function(err) {
+						alert('终止任务失败');
+					}
+				});
+		}
 
         $(document).ready(function () {
             var statuslist = $(".clStatus");

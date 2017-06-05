@@ -220,12 +220,14 @@
         });
 
         function reviewPackage(id, status) {
+            var platform = "<%=ddlPlatforms.SelectedValue%>";
             if (confirm("确定要审核数据吗？")) {
                 $.ajax({
-                    contentType: "application/json",
+                    contentType: "application/json;charset=utf-8",
                     async: false,
                     url: "/WS/WSNativeWeb.asmx/ReviewPackage",
-                    data: "{id:" + id + ",status:" + status + "}",
+                    //data: "{id:" + id + ",status:" + status + "}",
+                    data: "{id:" + id + ",status:" + status + ",platform:'" + platform + "'}",
                     type: "POST",
                     dataType: "json", success: function (json) {
                         json = eval("(" + json.d + ")");

@@ -2,15 +2,16 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
-        $(function () {
+        $(document).ready(function () {
             //android 渠道列表展开
+            var androidHiddenlist = $("#ListViewAndroid_itemGamesContainer input[name='hfPlatformID']");
             $("#addAndroidPlatform").click(function () {
-                var hiddenlist = $("#ListViewAndroid_itemGamesContainer input[name='hfPlatformID']");
                 var platformIdList = "";
-                for (var i = 0; i < hiddenlist.length; i++) {
-                    platformIdList = platformIdList + hiddenlist[i].value + ",";
+                for (var i = 0; i < androidHiddenlist.length; i++) {
+                    platformIdList = platformIdList + androidHiddenlist[i].value + ",";
                 }
                 platformIdList = platformIdList.substring(0, platformIdList.length - 1);
+                console.log(platformIdList);
                 if (platformIdList.length > 0)
                     checkPlatform(platformIdList);
                 else {
@@ -20,11 +21,11 @@
                 }
             });
 
+            var iosHiddenlist = $("#ListViewIOS_itemGamesContainer input[name='hfPlatformID']");
             $("#addIOSPlatform").click(function () {
-                var hiddenlist = $("#ListViewIOS_itemGamesContainer input[name='hfPlatformID']");
                 var platformIdList = "";
-                for (var i = 0; i < hiddenlist.length; i++) {
-                    platformIdList = platformIdList + hiddenlist[i].value + ",";
+                for (var i = 0; i < iosHiddenlist.length; i++) {
+                    platformIdList = platformIdList + iosHiddenlist[i].value + ",";
                 }
                 platformIdList = platformIdList.substring(0, platformIdList.length - 1);
                 if (platformIdList.length > 0)
@@ -111,7 +112,7 @@
         function checkPlatformIOS(platformlist) {
             var arrList = platformlist.split(',');
             var checkboxList = $("#ListViewIOSPlatformList_itemGamesContainer input[name='hfPlatformID']");
-            var pfidlist = $("#ListViewAndroid_itemGamesContainer input[name='hfPlatformID']");
+            var pfidlist = $("#ListViewIOS_itemGamesContainer input[name='hfPlatformID']");
             for (var j = 0; j < checkboxList.length; j++) {
                 for (var i = 0; i < arrList.length; i++) {
                     if (arrList[i] == checkboxList[j].value) {
@@ -274,9 +275,9 @@
                 <div class="modal-body">
                     <asp:ListView ID="ListViewAndroidPlatformList" runat="server" DataSourceID="SqlDataSourceAndroidPlatformList">
                         <LayoutTemplate>
-                            <table id="ListViewAndroidPlatformList_itemGamesContainer" class="table table-striped jambo_table">
+                            <table id="ListViewAndroidPlatformList_itemGamesContainer" class="table table-striped jambo_table bulk_action">
                                 <thead>
-                                    <tr style="left: 30px; position: relative;">
+                                    <tr class="headings" style="left: 30px; position: relative;">
                                         <th runat="server">渠道名</th>
                                         <th runat="server">渠道 SDK 版本</th>
                                         <th runat="server">支持最高版本</th>

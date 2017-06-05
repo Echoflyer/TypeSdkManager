@@ -56,5 +56,5 @@
     <span style="font-family: 黑体;">TypeSdk文档：</span><a href="http://www.typesdk.com/documents" target="_blank">文档中心</a>
 </p>
 <p style="margin-top: 0px; margin-bottom: 16px; white-space: normal;">
-    <span style="font-family: 黑体;">DEMO演示地址：</span><a href="http://demo.typesdk.com:56789/"><span style="font-family: 黑体; color: black;">演示地址</span></a><span style="font-family: Calibri, sans-serif;">&nbsp;</span><span style="font-family: 黑体;">（用户名和密码：demo@typesdk.com/123.com）</span>
+    <span style="font-family: 黑体;">打包工具DEMO演示地址：</span><a href="http://demo.typesdk.com:56789/"><span style="font-family: 黑体; color: black;">演示地址</span></a><span style="font-family: Calibri, sans-serif;">&nbsp;</span><span style="font-family: 黑体;">（用户名和密码：demo@typesdk.com/123.com）</span>
 </p>

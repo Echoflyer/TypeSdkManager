@@ -25,6 +25,17 @@
   
     <!-- jQuery -->
     <script src="/vendors/jquery/dist/jquery.min.js"></script>
+
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?92efd071d088dab92a3201c92743fe18";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    
 </head>
 <body class="nav-md">
     <!-- main / large navbar -->
@@ -137,7 +148,7 @@
             </ul>
             </li>
             <li>
-			<a><i class="fa fa-github"></i> 源代码 <span class="fa fa-chevron-down"></span></a>
+      <a><i class="fa fa-github"></i> 源代码 <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
                         <li>
                             <a target="_blank" href="https://code.csdn.net/typesdk_code">CSDN</a>
@@ -148,7 +159,7 @@
             </ul>
             </li>
             <li>
-			<a><i class="fa fa-book"></i> 使用帮助 <span class="fa fa-chevron-down"></span></a>
+      <a><i class="fa fa-book"></i> 使用帮助 <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
                         <li>
                             <a target="_blank" href="http://www.typesdk.com/documents">技术文档</a>

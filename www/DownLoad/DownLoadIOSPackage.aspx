@@ -67,7 +67,7 @@
                                 <ItemTemplate>
                                     <tr>
                                         <td>
-                                            <%#"<a href=\"/share/ios-output/ipa/"+Eval("GameNameSpell")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\">下载</a>" %>
+                                            <%#"<a href=\"/share/ios-output/ipa/"+Eval("GameID")+"/"+Eval("CreateTaskID")+"/"+Eval("PackageName")+"\">下载</a>" %>
                                         </td>
                                         <td>
                                             <asp:Label ID="platformNameLabel" runat="server" Text='<%# Eval("platformName") %>' />
